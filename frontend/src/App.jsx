@@ -4,13 +4,13 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 // --- Friend's Pages ---
-import AboutAnish from './pagesData/AboutAnish/AboutAnish'; // Note: Adjust this path if it's different
-import OurPrograms from './pagesData/OurProgram/OurProgram'; // Note: Adjust this path if it's different
+import AboutAnish from './components/AboutAnish'; // Note: Adjust this path if it's different
+import OurPrograms from './components/OurProgram'; // Note: Adjust this path if it's different
 
 // --- Your Pages ---
-import Home from './pages/Home';
-import CampusAndFacilities from './pages/CampusAndFacilities';
-import GetInvolved from './pages/GetInvolved';
+import Home from './components/Home';
+import CampusAndFacilities from './components/CampusAndFacilities';
+import GetInvolved from './components/GetInvolved';
 
 function App() {
   return (
