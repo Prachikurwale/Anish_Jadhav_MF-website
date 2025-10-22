@@ -3,31 +3,39 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// इंपोर्ट किए गए कॉम्पोनेंट्स
-import AboutAnish from './components/AboutAnish';
-import OurPrograms from './components/OurProgram'; // 💡 नया इंपोर्ट
+// --- Friend's Pages ---
+import AboutAnish from './components/AboutAnish'; // Note: Adjust this path if it's different
+import OurPrograms from './components/OurProgram'; // Note: Adjust this path if it's different
 
-// होम पेज के लिए एक साधारण कॉम्पोनेंट 
-const Home = () => <div className="flex-grow flex items-center justify-center p-10 text-4xl font-bold text-gray-700">Welcome to the Foundation Home Page</div>
+// --- Your Pages ---
+import Home from './components/Home';
+import CampusAndFacilities from './components/CampusAndFacilities';
+import GetInvolved from './components/GetInvolved';
 
 function App() {
   return (
     <div className="App flex flex-col min-h-screen">
-      
       <Navbar />
+
+      {/* This main tag ensures the footer stays at the bottom */}
+      <main className="flex-grow">
+        <Routes>
+          {/* --- All Routes Go Here --- */}
+
+          {/* Your Pages' Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/campus" element={<CampusAndFacilities />} />
+          <Route path="/involved" element={<GetInvolved />} />
+
+          {/* Friend's Pages' Routes */}
+          <Route path="/about" element={<AboutAnish />} />
+          <Route path="/programs" element={<OurPrograms />} />
+
+          {/* Placeholder Routes */}
+          <Route path="/contact" element={<div className='p-10 text-xl'>Contact Us Page</div>} />
+        </Routes>
+      </main>
       
-      <Routes>
-        <Route path="/" element={<Home />} /> {/* Home page */}
-        <Route path="/about" element={<AboutAnish />} /> {/* About Anish page */}
-        
-        {/* 💡 नया रूट यहाँ जोड़ा गया */}
-        <Route path="/programs" element={<OurPrograms />} /> 
-        {/* ... अन्य राउट्स */}
-        <Route path="/campus" element={<div className='flex-grow p-10 text-xl'>Campus & Facilities Page</div>} />
-        <Route path="/involved" element={<div className='flex-grow p-10 text-xl'>Get Involved Page</div>} />
-        <Route path="/contact" element={<div className='flex-grow p-10 text-xl'>Contact Us Page</div>} />
-
-
       <Footer />
     </div>
   );
