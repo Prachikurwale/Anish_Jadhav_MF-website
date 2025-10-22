@@ -8,8 +8,7 @@ import AboutAnish from './components/AboutAnish';
 import OurPrograms from './components/OurProgram'; // 💡 नया इंपोर्ट
 
 // होम पेज के लिए एक साधारण कॉम्पोनेंट 
-const Home = () => <div className="flex-grow flex items-center justify-center p-10 text-4xl font-bold text-gray-700">Welcome to the Foundation Home Page</div>;
-
+const Home = () => <div className="flex-grow flex items-center justify-center p-10 text-4xl font-bold text-gray-700">Welcome to the Foundation Home Page</div>
 
 function App() {
   return (
@@ -28,8 +27,7 @@ function App() {
         <Route path="/involved" element={<div className='flex-grow p-10 text-xl'>Get Involved Page</div>} />
         <Route path="/contact" element={<div className='flex-grow p-10 text-xl'>Contact Us Page</div>} />
 
-      </Routes>
-      
+
       <Footer />
     </div>
   );
