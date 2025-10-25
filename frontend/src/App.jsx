@@ -2,10 +2,11 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 // --- Friend's Pages ---
-import AboutAnish from './components/AboutAnish'; // Note: Adjust this path if it's different
-import OurPrograms from './components/OurProgram'; // Note: Adjust this path if it's different
+import AboutAnish from './components/AboutAnish';
+import OurPrograms from './components/OurProgram';
 
 // --- Your Pages ---
 import Home from './components/Home';
@@ -14,10 +15,11 @@ import GetInvolved from './components/GetInvolved';
 
 function App() {
   return (
-    <div className="App flex flex-col min-h-screen">
+    // 💡 UI CHANGE: Ensure the entire app has a dark background
+    <div className="App flex flex-col min-h-screen bg-gray-900">
+      <CustomCursor />
       <Navbar />
 
-      {/* This main tag ensures the footer stays at the bottom */}
       <main className="flex-grow">
         <Routes>
           {/* --- All Routes Go Here --- */}
@@ -32,7 +34,7 @@ function App() {
           <Route path="/programs" element={<OurPrograms />} />
 
           {/* Placeholder Routes */}
-          <Route path="/contact" element={<div className='p-10 text-xl'>Contact Us Page</div>} />
+          <Route path="/contact" element={<div className='p-10 text-xl text-white'>Contact Us Page</div>} /> {/* 💡 UI CHANGE: Added text-white for placeholder */}
         </Routes>
       </main>
       
