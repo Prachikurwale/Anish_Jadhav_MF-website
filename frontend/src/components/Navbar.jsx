@@ -12,7 +12,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-black shadow-sm">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo - Link to Home */}
@@ -27,9 +27,9 @@ function Navbar() {
               key={link.name}
               to={link.path}
               className={({ isActive }) => `
-                text-gray-600 hover:text-blue-600 transition duration-150
+                text-gray-600 hover:text-white-600 transition duration-150 
                 ${isActive
-                  ? 'text-blue-600 border-b-2 border-blue-600 font-semibold' 
+                  ? 'text-blue-600 border-b-2 border-white-600 font-semibold' 
                   : ''
                 }
               `}

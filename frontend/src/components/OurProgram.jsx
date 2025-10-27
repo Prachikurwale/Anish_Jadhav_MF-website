@@ -1,4 +1,5 @@
 import React from 'react';
+
 // Framer Motion ko import karein
 import { motion } from 'framer-motion';
 import { CheckCircle, Code, Briefcase, GraduationCap, RefreshCw } from 'lucide-react';
@@ -36,11 +37,11 @@ const itemVariants = {
   visible: { opacity: 1, x: 0 }
 };
 
-// === Reusable component for displaying Curriculum or Outcomes lists ===
 const ListSection = (props) => {
   const { title, items, icon: Icon } = props;
 
   return (
+
     <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
       {/* Style Change: Naya border-left style */}
       <h4 className="text-xl font-bold text-gray-800 mb-5 border-l-4 border-purple-500 pl-4">
@@ -71,6 +72,7 @@ const ListSection = (props) => {
 
 // === Reusable component for the four individual School Cards ===
 const ProgramCard = (props) => {
+
   const { icon: Icon, title, tagline, description, duration, residential, curriculum, outcomes } = props;
   
   // Is component se 'isReversed' hata diya, hum isse parent mein handle karenge
@@ -93,8 +95,9 @@ const ProgramCard = (props) => {
         <p className="text-gray-600 leading-relaxed">{description}</p>
         
         {/* Details Tag */}
-        <div className="flex space-x-6 text-sm font-medium pt-3 text-gray-600">
+        <div className="flex space-x-6 text-sm font-medium pt-3 text-gray-400">
           <span className="flex items-center">
+
             {/* Style Change: Icon color ko purple kiya */}
             <CheckCircle className="w-4 h-4 mr-1 text-purple-500" /> {duration}
           </span>
@@ -110,13 +113,13 @@ const ProgramCard = (props) => {
         <ListSection title="Program Outcomes" items={outcomes} icon={CheckCircle} />
       </div>
 
-    </div>
+    </MotionDiv>
   );
 };
 
 // --- Data (Koi badlaav nahi) ---
 const PROGRAMS_DATA = [
-  // ... (Aapka poora data jaisa tha waisa hi rahega) ...
+
   {
     icon: Code,
     title: "School of Programming",
@@ -185,6 +188,7 @@ const PROGRAMS_DATA = [
 // === Main Component ===
 const OurPrograms = () => {
   return (
+
     <div className="flex-grow bg-gray-50 overflow-x-hidden"> {/* Overflow hidden taaki slide-in animation sahi dikhe */}
       <div className="container mx-auto px-6 py-16 md:py-24">
         
@@ -238,19 +242,22 @@ const OurPrograms = () => {
         >
           {/* Style Change: text-white */}
           <h2 className="text-4xl font-bold mb-4 text-white">
+
             Ready to Transform Your Future?
           </h2>
           {/* Style Change: text-purple-100 */}
           <p className="text-lg text-purple-100 mb-8 max-w-3xl mx-auto">
             All programs are completely free for eligible students and include residential facilities, meals, and comprehensive support.
           </p>
+
           <button className="bg-white text-purple-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
             Apply Now
           </button>
         </motion.section>
 
+
       </div>
-    </div>
+    </MotionDiv>
   );
 };
 
