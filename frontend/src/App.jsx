@@ -11,6 +11,7 @@ import OurPrograms from './components/OurProgram'; // Note: Adjust this path if 
 import Home from './components/Home';
 import CampusAndFacilities from './components/CampusAndFacilities';
 import GetInvolved from './components/GetInvolved';
+import ContactUs from './components/ContactUs'; // Yeh import sahi hai
 
 function App() {
   return (
@@ -32,7 +33,9 @@ function App() {
           <Route path="/programs" element={<OurPrograms />} />
 
           {/* Placeholder Routes */}
-          <Route path="/contact" element={<div className='p-10 text-xl'>Contact Us Page</div>} />
+          {/* YAHAN BADLAAV KIYA GAYA HAI */}
+          <Route path="/contact" element={<ContactUs />} /> 
+          
         </Routes>
       </main>
       
@@ -42,3 +45,6 @@ function App() {
 }
 
 export default App;
+
+
+
