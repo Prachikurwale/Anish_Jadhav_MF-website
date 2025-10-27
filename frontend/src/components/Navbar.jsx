@@ -17,7 +17,7 @@ function Navbar() {
         
         {/* Logo - Link to Home */}
         <NavLink to="/" className="text-2xl font-bold text-gray-800">
-          AJMF
+          Anish Jadhav Memorial Foundation
         </NavLink>
 
         {/* Navigation Links */}

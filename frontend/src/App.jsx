@@ -12,6 +12,7 @@ import OurPrograms from './components/OurProgram';
 import Home from './components/Home';
 import CampusAndFacilities from './components/CampusAndFacilities';
 import GetInvolved from './components/GetInvolved';
+import ContactUs from './components/ContactUs'; // Yeh import sahi hai
 
 function App() {
   return (
@@ -33,8 +34,10 @@ function App() {
           <Route path="/about" element={<AboutAnish />} />
           <Route path="/programs" element={<OurPrograms />} />
 
-          {/* Placeholder Routes */}
-          <Route path="/contact" element={<div className='p-10 text-xl text-white'>Contact Us Page</div>} /> {/* 💡 UI CHANGE: Added text-white for placeholder */}
+          {/* Placeholder R
+          {/* YAHAN BADLAAV KIYA GAYA HAI */}
+          <Route path="/contact" element={<ContactUs />} /> 
+    
         </Routes>
       </main>
       
@@ -44,3 +47,6 @@ function App() {
 }
 
 export default App;
+
+
+
