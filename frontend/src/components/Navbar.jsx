@@ -1,43 +1,84 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom';
+import { FaChevronDown } from 'react-icons/fa';
+// CSS Module ko import karein
+import styles from './Navbar.module.css';
 
 function Navbar() {
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About Anish", path: "/about" }, 
-    { name: "Our Programs", path: "/programs" }, // 💡 नया लिंक
-    { name: "Campus & Facilities", path: "/campus" },
-    { name: "Get Involved", path: "/involved" },
-    { name: "Contact Us", path: "/contact" },
-  ];
+  
+  // Active/Inactive class set karne ke liye function
+  const getNavLinkClass = ({ isActive }) => {
+    return isActive ? `${styles.navLink} ${styles.active}` : styles.navLink;
+  };
+
+  // Dropdown ke links ke liye function
+  const getDropdownLinkClass = ({ isActive }) => {
+    return isActive ? `${styles.dropdownLink} ${styles.active}` : styles.dropdownLink;
+  };
 
   return (
-    <nav className="bg-black shadow-sm">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className={styles.navbar}>
+      
+      <div className={styles.container}>
         
-        {/* Logo - Link to Home */}
-        <NavLink to="/" className="text-2xl font-bold text-gray-800">
+        {/* Logo */}
+        <NavLink to="/" className={styles.logo}>
           Anish Jadhav Memorial Foundation
         </NavLink>
 
         {/* Navigation Links */}
-        <div className="flex space-x-8">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.path}
-              className={({ isActive }) => `
-                text-gray-600 hover:text-white-600 transition duration-150 
-                ${isActive
-                  ? 'text-blue-600 border-b-2 border-white-600 font-semibold' 
-                  : ''
-                }
-              `}
-              end={link.path === "/"} 
-            >
-              {link.name}
-            </NavLink>
-          ))}
+        <div className={styles.linksContainer}>
+          
+          <NavLink to="/" className={getNavLinkClass} end>
+            Home
+          </NavLink>
+          
+          <NavLink to="/about" className={getNavLinkClass}>
+            About Anish
+          </NavLink>
+
+          {/* --- DROPDOWN MENU --- */}
+          <div className={styles.dropdown}>
+            {/* Dropdown Trigger */}
+            <span className={styles.navLink}>
+              Campus & Facilities
+              <FaChevronDown className={styles.dropdownIcon} />
+            </span>
+            
+            {/* Dropdown Box */}
+            <div className={styles.dropdownMenu}>
+              
+              <NavLink 
+                to="/campus" 
+                className={getDropdownLinkClass}
+              >
+                Campus & Facilities
+              </NavLink>
+              
+              <NavLink 
+                to="/programs" 
+                className={getDropdownLinkClass}
+              >
+                Our Programs
+              </NavLink>
+              
+              <NavLink 
+                to="/involved" 
+                className={getDropdownLinkClass}
+              >
+                Get Involved
+              </NavLink>
+            </div>
+          </div>
+          {/* --- DROPDOWN END --- */}
+
+          {/* FIXED: 'Contact Us' ab main link hai, 
+            dropdown link nahi 
+          */}
+          <NavLink to="/contact" className={getNavLinkClass}>
+            Contact Us
+          </NavLink>
+
         </div>
       </div>
     </nav>

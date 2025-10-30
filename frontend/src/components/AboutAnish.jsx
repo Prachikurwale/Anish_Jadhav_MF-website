@@ -1,29 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion'; 
+// CSS Module ko import karein
+import styles from './AboutAnish.module.css';
 
 const MotionDiv = motion.div;
 const MotionSection = motion.section;
 
-// 💡 Imports remain the same
+// Imports
 import AnishImage from '../assets/Anish.png'; 
 import FoundationImage from '../assets/Foundation.png'; 
-import { Heart, Star, Users } from 'lucide-react';
+import { Heart } from 'lucide-react'; // Star, Users use nahi ho rahe the
 
-// === Animation Variants ===
+// === Animation Variants (No change) ===
 const containerVariants = {
   visible: { transition: { staggerChildren: 0.1 } } 
 };
-
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
-
 const cardVariants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 80, damping: 12, delay: 0.3 } }
 };
-
 const heartBeat = {
   beat: {
     scale: [1, 1.2, 1, 1.1, 1], 
@@ -41,7 +40,7 @@ const heartBeat = {
 // Mock image placeholder component
 const ImagePlaceholder = () => (
   <MotionDiv 
-    className="bg-gray-800 w-150 h-160 rounded-xl overflow-hidden relative border border-gray-700 transition-all duration-300" 
+    className={styles.imagePlaceholder} // 👈 CSS Module
     variants={cardVariants}
     initial="hidden"
     animate="visible"
@@ -52,14 +51,15 @@ const ImagePlaceholder = () => (
     <img 
         src={AnishImage} 
         alt="In Loving Memory of Anish Jadhav" 
-        className="w-full h-full object-cover" 
+        className="" // 👈 img tag par classes ki zaroorat nahi, parent handle kar raha hai
     />
   </MotionDiv>
 );
 
+// Timeline Item component
 const TimelineItem = ({ title, content, tag, isPrimary = false }) => (
   <MotionDiv 
-    className="flex justify-start items-stretch space-x-6 md:space-x-12 my-6 cursor-pointer"
+    className={styles.timelineItem} // 👈 CSS Module
     initial={{ opacity: 0, x: -50 }}
     whileInView={{ opacity: 1, x: 0 }}
     whileHover={{ 
@@ -70,22 +70,25 @@ const TimelineItem = ({ title, content, tag, isPrimary = false }) => (
     viewport={{ once: true, amount: 0.5 }}
     transition={{ duration: 0.5 }}
   >
-    <div className="flex-shrink-0 w-24 md:w-32 pt-2">
+    <div className={styles.timelineTagWrapper}>
+      {/* 👈 Conditional CSS Modules */}
       <div className={`
-        px-3 py-2 text-sm font-semibold text-white text-center rounded-xl shadow-lg
-        ${isPrimary ? 'bg-[#656b75]' : 'bg-gray-700'} 
+        ${styles.timelineTag}
+        ${isPrimary ? styles.tagPrimary : styles.tagDefault} 
       `}>
         {tag}
       </div>
     </div>
     
-    <div className="flex-grow p-6 bg-gray-800 rounded-2xl shadow-xl border border-gray-700 transition duration-300 hover:shadow-2xl"> 
-      <h3 className="text-xl font-bold text-white mb-2">{title}</h3> 
-      <p className="text-gray-300 leading-relaxed">{content}</p> 
+    <div className={styles.timelineContent}> 
+      <h3 className={styles.timelineTitle}>{title}</h3> 
+      <p className={styles.timelineText}>{content}</p> 
     </div>
   </MotionDiv>
 );
 
+// --- BubbleBackground Component (No Change) ---
+// Yeh Tailwind use nahi kar raha tha, isliye ise chhedne ki zaroorat nahi hai.
 const BubbleBackground = () => (
     <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-50">
         <style dangerouslySetInnerHTML={{__html: `
@@ -115,21 +118,21 @@ const BubbleBackground = () => (
         <div className="bubble"></div>
     </div>
 );
+// --- End BubbleBackground Component ---
 
 
 const AboutAnish = () => {
   return (
-    // Main page background
     <div 
-        className="flex-grow text-white" 
+        className={styles.pageContainer} 
         style={{ 
             backgroundImage: 'linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%)' 
         }}
     > 
       
-        {/* 💡 CHANGE 1: Full-width Hero Container for the Image Background */}
+        {/* Section 1: Hero */}
         <section 
-            className="relative w-full mb-24 min-h-[550px] overflow-hidden" // w-full for full width
+            className={styles.heroSection} 
             style={{ 
                 backgroundImage: `url(${FoundationImage})`,
                 backgroundSize: 'cover',
@@ -137,55 +140,54 @@ const AboutAnish = () => {
                 boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)'
             }}
         >
-          {/* 💡 Overlay for the black/white gradient effect and text readability */}
+          {/* Overlay */}
           <div 
-            className="absolute inset-0 z-0" 
+            className={styles.heroOverlay}
             style={{
                 backgroundImage: 'linear-gradient(90deg, rgba(15, 15, 15, 0.9) 0%, rgba(15, 15, 15, 0.7) 40%, rgba(15, 15, 15, 0.4) 100%)',
                 mixBlendMode: 'multiply' 
             }}
           ></div>
           
-          {/* 💡 CHANGE 2: Content Wrapper to center and constrain content over the full-width background */}
-          <div className="relative z-10 container mx-auto px-6 py-16 md:py-24">
-            <div className="grid md:grid-cols-2 gap-12 m-20 mt-5 md:gap-16 items-center">
+          {/* Content Wrapper */}
+          <div className={`${styles.container} ${styles.heroContentWrapper}`}>
+            <div className={styles.heroGrid}>
               
-              {/* Hero Text with Animation (Staggered) */}
+              {/* Hero Text */}
               <MotionDiv 
-                className="space-y-6"
+                className={styles.heroTextContainer}
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
               >
-                {/* Horizontal Line above heading */}
-                <MotionDiv variants={itemVariants} className="w-20 h-1 bg-gray-500 mb-4"></MotionDiv>
+                <MotionDiv variants={itemVariants} className={styles.heroAccentLine}></MotionDiv>
 
                 <MotionDiv variants={itemVariants}>
-                    <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight">
-                      In Loving Memory of <span className="block text-white">Anish Jadhav</span> 
+                    <h1 className={styles.heroHeading}>
+                      In Loving Memory of <span className={styles.heroHeadingSpan}>Anish Jadhav</span> 
                     </h1>
                 </MotionDiv>
                 
                 <MotionDiv variants={itemVariants}>
-                    <p className="text-lg text-gray-300 max-w-lg">
+                    <p className={styles.heroSubtitle}>
                       Anish Jadhav was more than a beloved son—he was a light in the lives of all who knew him. His spirit, warmth, and dreams continue to inspire the mission of this foundation.
                     </p>
                 </MotionDiv>
 
-                <MotionDiv variants={itemVariants} className="flex space-x-4 pt-4"> 
-                    <button className="px-8 py-3 bg-[#656b75] text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition-all duration-300 cursor-pointer">
+                <MotionDiv variants={itemVariants} className={styles.heroButtonContainer}> 
+                    <button className={`${styles.heroButton} ${styles.heroButtonPrimary}`}>
                         Learn More
                     </button>
-                    <button className="px-8 py-3 border border-gray-600 text-gray-300 font-semibold rounded-lg shadow-md hover:bg-gray-800 transition-all duration-300 cursor-pointer">
+                    <button className={`${styles.heroButton} ${styles.heroButtonSecondary}`}>
                         Get Involved
                     </button>
                 </MotionDiv>
 
               </MotionDiv>
               
-              {/* Image Placeholder on the right */}
-              <div className="flex justify-center md:justify-start">
-                <div className="w-full max-w-md">
+              {/* Image Placeholder */}
+              <div className={styles.heroImageContainer}>
+                <div className={styles.heroImageWrapper}>
                   <ImagePlaceholder />
                 </div>
               </div>
@@ -193,12 +195,12 @@ const AboutAnish = () => {
           </div> {/* End content wrapper */}
         </section>
 
-        {/* 💡 CHANGE 3: The rest of the content (Sections 2, 3, 4, 5) needs to be inside a constrained container */}
-        <div className="container mx-auto px-6">
+        {/* --- Content Container Start --- */}
+        <div className={styles.container}>
         
-            {/* === Section 2: The Story Behind the Foundation === */}
+            {/* === Section 2: The Story === */}
             <MotionSection 
-                className="mb-24 p-10 md:p-16 rounded-3xl shadow-2xl" 
+                className={styles.storySection}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
@@ -208,42 +210,39 @@ const AboutAnish = () => {
                     border: '1px solid #2f2f2f'
                 }}
             >
-            {/* ... (Section 2 content) */}
-            <MotionDiv variants={itemVariants} className="text-center">
-                <h2 className="text-4xl font-bold text-white text-center mb-12 inline-block px-4 pb-1 mx-auto border-b-2 border-[#656b75]">
-                    The Story Behind the Foundation
-                </h2>
-            </MotionDiv>
-            
-            <div className="max-w-4xl mx-auto space-y-8 text-lg text-gray-300">
-                <MotionDiv variants={itemVariants} className="leading-relaxed">
-                The Anish Jadhav Memorial Foundation was born from a profound love and an unwavering commitment to honor the memory of **Anish Jadhav**. Established by his father, **Brigadier Kishor Jadhav**, this foundation represents the transformation of personal grief into a powerful force for positive change.
-                </MotionDiv>
-                
-                <MotionDiv variants={itemVariants} className="leading-relaxed">
-                Anish was a young man of exceptional character, compassion, and potential. His life, though tragically cut short, left an indelible mark on everyone he encountered. His dreams, his kindness, and his belief in the power of education and opportunity became the cornerstone of what would become this foundation.
-                </MotionDiv>
-                
-                <MotionDiv 
-                    variants={itemVariants}
-                    className="bg-gray-900 border-l-4 border-[#656b75] p-6 rounded-xl shadow-lg mt-10 cursor-pointer" 
-                    whileHover={{ scale: 1.01, boxShadow: '0 8px 15px rgba(0,0,0,0.3)' }} 
-                >
-                <p className="italic text-gray-200">
-                    "In honoring Anish's memory, we create a future filled with hope. Every student we empower, every life we transform, is a living testament to his spirit and the dreams he carried."
-                </p>
-                <p className="text-right text-sm font-semibold text-[#656b75] mt-4">
-                    — Brigadier Kishor Jadhav
-                </p>
-                </MotionDiv>
-            </div>
+              <MotionDiv variants={itemVariants} className={styles.textCenter}>
+                  <h2 className={styles.storyHeading}>
+                      The Story Behind the Foundation
+                  </h2>
+              </MotionDiv>
+              
+              <div className={styles.storyTextContainer}>
+                  <MotionDiv variants={itemVariants} className={styles.storyText}>
+                  The Anish Jadhav Memorial Foundation was born from a profound love and an unwavering commitment to honor the memory of <strong>Anish Jadhav</strong>. Established by his father, <strong>Brigadier Kishor Jadhav</strong>, this foundation represents the transformation of personal grief into a powerful force for positive change.
+                  </MotionDiv>
+                  
+                  <MotionDiv variants={itemVariants} className={styles.storyText}>
+                  Anish was a young man of exceptional character, compassion, and potential. His life, though tragically cut short, left an indelible mark on everyone he encountered. His dreams, his kindness, and his belief in the power of education and opportunity became the cornerstone of what would become this foundation.
+                  </MotionDiv>
+                  
+                  <MotionDiv 
+                      variants={itemVariants}
+                      className={styles.storyQuote} 
+                      whileHover={{ scale: 1.01, boxShadow: '0 8px 15px rgba(0,0,0,0.3)' }} 
+                  >
+                  <p className={styles.storyQuoteText}>
+                      "In honoring Anish's memory, we create a future filled with hope. Every student we empower, every life we transform, is a living testament to his spirit and the dreams he carried."
+                  </p>
+                  <p className={styles.storyQuoteAuthor}>
+                      — Brigadier Kishor Jadhav
+                  </p>
+                  </MotionDiv>
+              </div>
             </MotionSection>
 
-            {/* --- */}
-
-            {/* === Section 3: Partnership with NavGurukul (Advanced Background) === */}
+            {/* === Section 3: Partnership === */}
             <MotionSection 
-                className="mb-24 relative p-10 md:p-16 rounded-3xl shadow-xl overflow-hidden"
+                className={styles.partnershipSection}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.1 }}
@@ -254,24 +253,22 @@ const AboutAnish = () => {
             >
                 <BubbleBackground />
 
-                <div className="max-w-5xl mx-auto text-lg text-gray-300 space-y-6 relative z-10"> 
-                    <h2 className="text-3xl font-bold text-white mb-6 border-b-2 border-[#656b75] pb-2"> 
+                <div className={styles.partnershipContent}> 
+                    <h2 className={styles.partnershipHeading}> 
                     Our Vision in Partnership
                     </h2>
-                    <p className="leading-relaxed">
-                    In partnership with **NavGurukul**, a pioneering organization committed to providing residential education to underprivileged youth, the foundation has created a comprehensive ecosystem of learning and growth. The partnership ensures that students receive not just education, but a complete transformation—from residential facilities and nutritious meals to world-class instruction and career placement support.
+                    <p className={styles.partnershipText}>
+                    In partnership with <strong>NavGurukul</strong>, a pioneering organization committed to providing residential education to underprivileged youth, the foundation has created a comprehensive ecosystem of learning and growth. The partnership ensures that students receive not just education, but a complete transformation—from residential facilities and nutritious meals to world-class instruction and career placement support.
                     </p>
-                    <p className="leading-relaxed">
-                    Today, the Anish Jadhav Memorial Foundation stands as a beacon of hope, offering four specialized schools that provide pathways to success in **programming, business, education, and second-chance opportunities**. Each student who walks through our doors carries forward Anish's legacy, turning dreams into reality and transforming their lives and communities.
+                    <p className={styles.partnershipText}>
+                    Today, the Anish Jadhav Memorial Foundation stands as a beacon of hope, offering four specialized schools that provide pathways to success in <strong>programming, business, education, and second-chance opportunities</strong>. Each student who walks through our doors carries forward Anish's legacy, turning dreams into reality and transforming their lives and communities.
                     </p>
                 </div>
             </MotionSection>
             
-            {/* --- */}
-
-            {/* === Section 4: A Timeline of Impact === */}
+            {/* === Section 4: Timeline === */}
             <MotionSection 
-                className="mb-24 p-10 md:p-16 rounded-3xl shadow-2xl" 
+                className={styles.timelineSection}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
@@ -281,43 +278,41 @@ const AboutAnish = () => {
                     border: '1px solid #2f2f2f'
                 }}
             >
-            <h2 className="text-4xl font-bold text-white text-center mb-16"> 
-                A Timeline of Impact
-            </h2>
+              <h2 className={styles.timelineHeading}> 
+                  A Timeline of Impact
+              </h2>
 
-            <div className="max-w-4xl mx-auto relative">
-                <TimelineItem
-                tag="The Beginning"
-                title="Foundation Established"
-                content="Brigadier Kishor Jadhav establishes the Anish Jadhav Memorial Foundation in loving memory of his son, partnering with NavGurukul to create a lasting impact."
-                />
-                
-                <TimelineItem
-                tag="Building Hope"
-                title="Campus Development"
-                content="Construction and development of comprehensive residential facilities, creating a nurturing environment for underprivileged youth to learn and grow."
-                />
-                
-                <TimelineItem
-                tag="Programs Launch"
-                title="Four Schools Open"
-                content="Launch of the School of Programming, School of Business, School of Education, and School of Second Chance, offering diverse pathways to success."
-                isPrimary={true}
-                />
+              <div className={styles.timelineContainer}>
+                  <TimelineItem
+                  tag="The Beginning"
+                  title="Foundation Established"
+                  content="Brigadier Kishor Jadhav establishes the Anish Jadhav Memorial Foundation in loving memory of his son, partnering with NavGurukul to create a lasting impact."
+                  />
+                  
+                  <TimelineItem
+                  tag="Building Hope"
+                  title="Campus Development"
+                  content="Construction and development of comprehensive residential facilities, creating a nurturing environment for underprivileged youth to learn and grow."
+                  />
+                  
+                  <TimelineItem
+                  tag="Programs Launch"
+                  title="Four Schools Open"
+                  content="Launch of the School of Programming, School of Business, School of Education, and School of Second Chance, offering diverse pathways to success."
+                  isPrimary={true}
+                  />
 
-                <TimelineItem
-                tag="Today"
-                title="Transforming Lives"
-                content="Continuing to empower students with education, skills, and opportunities, creating a ripple effect of positive change across communities."
-                />
-            </div>
+                  <TimelineItem
+                  tag="Today"
+                  title="Transforming Lives"
+                  content="Continuing to empower students with education, skills, and opportunities, creating a ripple effect of positive change across communities."
+                  />
+              </div>
             </MotionSection>
 
-            {/* --- */}
-
-            {/* === Section 5: His Legacy Lives On (Heartbeat) === */}
+            {/* === Section 5: Legacy === */}
             <MotionSection 
-                className="text-center pt-12 pb-6 rounded-3xl shadow-xl" 
+                className={styles.legacySection}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -327,23 +322,22 @@ const AboutAnish = () => {
                     border: '1px solid #1f1f1f'
                 }}
             >
-            <h2 className="text-3xl font-bold text-white mb-6 inline-block px-4 pb-1 border-b-2 border-[#656b75]">
-                His Legacy Lives On
-            </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                Every student we educate, every life we transform, every dream we help realize is a tribute to Anish Jadhav. His spirit lives on in the halls of our campus, in the determination of our students, and in the hope we carry forward each day.
-            </p>
-            <div className="flex justify-center mt-8">
-                <MotionDiv variants={heartBeat} animate="beat">
-                    <Heart className="w-8 h-8 text-yellow-600 fill-yellow-600" />
-                </MotionDiv>
-            </div>
+              <h2 className={styles.legacyHeading}>
+                  His Legacy Lives On
+              </h2>
+              <p className={styles.legacyText}>
+                  Every student we educate, every life we transform, every dream we help realize is a tribute to Anish Jadhav. His spirit lives on in the halls of our campus, in the determination of our students, and in the hope we carry forward each day.
+              </p>
+              <div className={styles.legacyHeartContainer}>
+                  <MotionDiv variants={heartBeat} animate="beat">
+                      <Heart className={styles.legacyHeart} />
+                  </MotionDiv>
+              </div>
             </MotionSection>
 
-        </div> {/* End container mx-auto for the rest of the content */}
+        </div> {/* End container */}
     </div>
   );
 };
 
 export default AboutAnish;
-
