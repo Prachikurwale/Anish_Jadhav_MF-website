@@ -1,0 +1,112 @@
+/* --- 1. Main Navbar --- */
+.navbar {
+    background-color: oklch(0.95 0.052 163.051);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); /* shadow-sm */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom-left-radius: 0.75rem; /* rounded-b-xl */
+    border-bottom-right-radius: 0.75rem; /* rounded-b-xl */
+  }
+  
+  /* --- 2. Container --- */
+  .container {
+    max-width: 1280px; /* 'container' class ke badle */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;  /* px-6 (aapke code mein 'px-' typo tha) */
+    padding-right: 1.5rem; /* px-6 */
+    padding-top: 0.25rem;   /* py-1 */
+    padding-bottom: 0.25rem;  /* py-1 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* --- 3. Logo --- */
+  .logo {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    color: black;
+    text-decoration: none;
+  }
+  
+  /* --- 4. Links Container --- */
+  .linksContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space-x-4 */
+  }
+  
+  /* --- 5. Main Nav Link (Home, About, Contact) --- */
+  .navLink {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 500; /* font-medium */
+    color: black;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.75rem; /* rounded-xl */
+    transition: background-color 0.2s; /* transition duration-200 */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .navLink:hover {
+    background-color: rgba(124, 249, 142, 0.5); /* hover:bg-[#7CF98E]/50 */
+  }
+  
+  .navLink.active {
+    background-color: #7cf986; /* Active state green */
+  }
+  
+  /* --- 6. Dropdown (Campus & Facilities) --- */
+  .dropdown {
+    position: relative;
+  }
+  
+  /* Dropdown trigger ke liye .navLink style hi use ho jayega */
+  .dropdownIcon {
+    width: 0.75rem; /* w-3 */
+    height: 0.75rem; /* h-3 */
+    margin-left: 0.5rem; /* ml-2 */
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 100%; /* top-full */
+    left: 0;
+    margin-top: 0.5rem; /* mt-2 */
+    width: 18rem; /* w-72 */
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
+    border-radius: 0.5rem; /* rounded-lg */
+    overflow: hidden;
+    z-index: 99;
+    display: none;
+  }
+  
+  /* 'group-hover' ke badle */
+  .dropdown:hover .dropdownMenu {
+    display: block;
+  }
+  
+  /* --- 7. Dropdown ke andar ke Links --- */
+  .dropdownLink {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    font-size: 1.25rem; /* text-xl */
+    color: #1f2937; /* text-gray-800 */
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  
+  .dropdownLink:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+  }
+  
+  .dropdownLink.active {
+    background-color: #7cf98e;
+  }

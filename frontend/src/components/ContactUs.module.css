@@ -1,0 +1,269 @@
+/* --- ⚠️ IMPORTANT: Apne font-family ke naam yahan daalein --- */
+.fontHeading {
+    font-family: 'YourHeadingFont', sans-serif; 
+  }
+  .fontBody {
+    font-family: 'YourBodyFont', sans-serif;
+  }
+  
+  /* --- Global Styles --- */
+  .container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .textCenter {
+    text-align: center;
+  }
+  .textLeft {
+    text-align: left;
+  }
+  .section {
+    padding: 5rem 1.5rem; /* py-20 px-6 */
+  }
+  .sectionBgWhite {
+    background-color: #ffffff;
+  }
+  .sectionBgGray {
+    background-color: #f9fafb; /* bg-gray-50 */
+  }
+  
+  /* --- Page Header --- */
+  .pageHeading {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 700;
+    color: #1f2937; /* text-gray-800 */
+    margin-bottom: 1rem;
+  }
+  .accentBar {
+    width: 6rem; /* w-24 */
+    height: 0.25rem; /* h-1 */
+    background-color: #d97706; /* bg-yellow-600 */
+    margin: 0 auto 2rem auto; /* mx-auto mb-8 */
+  }
+  .accentBarLong {
+    width: 6rem;
+    height: 0.25rem;
+    background-color: #d97706;
+    margin: 0 auto 3rem auto; /* mb-12 */
+  }
+  .pageSubtitle {
+    font-size: 1.125rem; /* text-lg */
+    color: #4b5563; /* text-gray-600 */
+    max-width: 48rem; /* max-w-3xl */
+    margin: 0 auto;
+  }
+  .sectionHeading {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  /* --- Section 1: Contact Grid --- */
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem; /* gap-12 */
+    margin-top: 4rem; /* mt-16 */
+    align-items: flex-start;
+  }
+  @media (min-width: 768px) { /* md: */
+    .gridContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* --- Info Blocks (Left) --- */
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* space-y-8 */
+  }
+  .infoBlock {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem; /* space-x-4 */
+  }
+  .infoIconWrapper {
+    flex-shrink: 0;
+    width: 3rem; /* w-12 */
+    height: 3rem; /* h-12 */
+    border-radius: 9999px;
+    background-color: #dbeafe; /* bg-blue-100 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .infoIcon {
+    color: #2563eb; /* text-blue-600 */
+    font-size: 1.25rem; /* text-xl */
+  }
+  .infoTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  .infoText {
+    color: #4b5563;
+    line-height: 1.6;
+  }
+  .infoLink {
+    color: #2563eb;
+    text-decoration: none;
+  }
+  .infoLink:hover {
+    text-decoration: underline;
+  }
+  .infoSubtext {
+    color: #6b7280; /* text-gray-500 */
+    font-size: 0.875rem; /* text-sm */
+  }
+  
+  /* --- Socials (Left) --- */
+  .socialsBox {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f9fafb; /* bg-gray-50 */
+    border-radius: 0.5rem;
+  }
+  .socialsBoxTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+  .socialsContainer {
+    display: flex;
+    gap: 1rem; /* space-x-4 */
+  }
+  .socialLink {
+    width: 2.5rem; /* w-10 */
+    height: 2.5rem; /* h-10 */
+    border-radius: 9999px;
+    background-color: white;
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b5563; /* text-gray-600 */
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .socialLink:hover {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  /* --- Form (Right) --- */
+  .formContainer {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); /* shadow-2xl */
+    padding: 2rem;
+    border: 1px solid #f3f4f6; /* border-gray-100 */
+  }
+  .formHeading {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space-y-6 */
+  }
+  .formLabel {
+    font-weight: 600;
+    color: #374151; /* text-gray-700 */
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .formInput {
+    width: 100%;
+    padding: 0.75rem; /* p-3 */
+    border: 2px solid #d1d5db; /* border-gray-300 */
+    border-radius: 0.5rem;
+    box-sizing: border-box; /* Taaki padding width ko na badhaye */
+  }
+  .formInput:focus {
+    outline: none;
+    border-color: #3b82f6; /* focus:border-blue-500 */
+  }
+  .submitButton {
+    width: 100%;
+    background-color: #2563eb; /* bg-blue-600 */
+    color: white;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: background-color 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    cursor: pointer;
+  }
+  .submitButton:hover {
+    background-color: #1d4ed8; /* hover:bg-blue-700 */
+  }
+  .buttonIcon {
+    margin-right: 0.75rem; /* mr-3 */
+  }
+  
+  /* --- Section 2: Map --- */
+  .mapPlaceholder {
+    margin-top: 3rem;
+    background-color: #e5e7eb; /* bg-gray-200 */
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    height: 24rem; /* h-96 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280; /* text-gray-500 */
+  }
+  .mapIcon {
+    color: #9ca3af; /* text-gray-400 */
+    font-size: 3rem; /* text-5xl */
+  }
+  .mapText {
+    margin-left: 1rem;
+    font-size: 1.25rem;
+  }
+  
+  /* --- Section 3: FAQ --- */
+  .faqContainer {
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space-y-6 */
+    text-align: left;
+  }
+  .faqItem {
+    background-color: #f9fafb; /* bg-gray-50 */
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
+    border: 1px solid #e5e7eb; /* border-gray-200 */
+  }
+  .faqQuestion {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  .faqAnswer {
+    color: #4b5563;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  @media (min-width: 768px) { /* md: */
+    .formContainer {
+      padding: 3rem; /* md:p-12 */
+    }
+  }

@@ -1,0 +1,224 @@
+/* --- ⚠️ IMPORTANT: Apne font-family ke naam yahan daalein --- */
+/* (Maine inhein .pageContainer mein daal diya hai) */
+.pageContainer {
+    font-family: 'YourBodyFont', sans-serif;
+    background-color: #f9fafb; /* bg-gray-50 */
+    overflow-x: hidden;
+    flex-grow: 1;
+  }
+  
+  .fontHeading {
+    font-family: 'YourHeadingFont', sans-serif; 
+  }
+  
+  /* --- Global Styles --- */
+  .container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4rem 1.5rem; /* py-16 px-6 */
+  }
+  
+  @media (min-width: 768px) { /* md: */
+    .container {
+      padding-top: 6rem; /* md:py-24 */
+      padding-bottom: 6rem;
+    }
+  }
+  
+  /* --- Header Section --- */
+  .headerSection {
+    text-align: center;
+    margin-bottom: 4rem; /* mb-16 */
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .headerHeading {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 800; /* font-extrabold */
+    color: #111827; /* text-gray-900 */
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .headerSubtitle {
+    font-size: 1.25rem; /* text-xl */
+    color: #4b5563; /* text-gray-600 */
+    max-width: 48rem; /* max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) { /* md: */
+    .headerHeading {
+      font-size: 3.75rem; /* md:text-6xl */
+    }
+  }
+  
+  /* --- Program Card (Main Component) --- */
+  .programCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* gap-8 */
+    padding: 2.5rem 0; /* py-10 */
+    margin: 2.5rem 0; /* my-10 */
+    border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
+  }
+  /* last:border-b-0 */
+  .programList > div:last-child .programCard {
+    border-bottom: 0;
+  }
+  @media (min-width: 768px) { /* md: */
+    .programCard {
+      flex-direction: row;
+      gap: 3rem; /* md:gap-12 */
+    }
+  }
+  
+  /* Program Card - Left Side */
+  .programDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space-y-4 */
+  }
+  .programIconWrapper {
+    padding: 1rem;
+    background-color: #f5f3ff; /* bg-purple-100 */
+    border-radius: 9999px;
+    width: fit-content;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  .programIcon {
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+    color: #7c3aed; /* text-purple-700 */
+  }
+  .programTitle {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700;
+    color: #111827;
+  }
+  .programTagline {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600;
+    color: #8b5cf6; /* text-purple-600 */
+  }
+  .programText {
+    color: #4b5563; /* text-gray-600 */
+    line-height: 1.6;
+  }
+  .programDetails {
+    display: flex;
+    gap: 1.5rem; /* space-x-6 */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    padding-top: 0.75rem;
+    color: #9ca3af; /* text-gray-400 */
+  }
+  .programDetailItem {
+    display: flex;
+    align-items: center;
+  }
+  .programDetailIcon {
+    width: 1rem; /* w-4 */
+    height: 1rem; /* h-4 */
+    margin-right: 0.25rem;
+    color: #8b5cf6; /* text-purple-500 */
+  }
+  
+  /* Program Card - Right Side */
+  .programLists {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* space-y-8 */
+  }
+  @media (min-width: 768px) { /* md: */
+    .programDescription,
+    .programLists {
+      width: 50%;
+    }
+  }
+  
+  /* --- List Section (Sub-component) --- */
+  .listSection {
+    background-color: white;
+    padding: 1.5rem; /* p-6 */
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border: 1px solid #f3f4f6; /* border-gray-100 */
+  }
+  .listTitle {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: #1f2937; /* text-gray-800 */
+    margin-bottom: 1.25rem; /* mb-5 */
+    border-left: 4px solid #8b5cf6; /* border-l-4 border-purple-500 */
+    padding-left: 1rem; /* pl-4 */
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* space-y-3 */
+  }
+  .listItem {
+    display: flex;
+    align-items: flex-start;
+    color: #4b5563; /* text-gray-600 */
+  }
+  .listIcon {
+    width: 1.25rem; /* w-5 */
+    height: 1.25rem; /* h-5 */
+    color: #8b5cf6; /* text-purple-500 */
+    flex-shrink: 0;
+    margin-top: 0.25rem; /* mt-1 */
+    margin-right: 0.5rem; /* mr-2 */
+  }
+  @media (min-width: 768px) { /* md: */
+    .listSection {
+      padding: 2rem; /* md:p-8 */
+    }
+  }
+  
+  /* --- CTA Banner Section --- */
+  .ctaBanner {
+    margin-top: 5rem; /* mt-20 */
+    background-image: linear-gradient(to right, #7c3aed, #4f46e5); /* from-purple-600 to-indigo-700 */
+    padding: 3rem; /* p-12 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); /* shadow-2xl */
+    text-align: center;
+  }
+  .ctaHeading {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  .ctaText {
+    font-size: 1.125rem; /* text-lg */
+    color: #e0e7ff; /* text-purple-100 */
+    margin-bottom: 2rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ctaButton {
+    background-color: white;
+    color: #6d28d9; /* text-purple-700 */
+    font-weight: 700;
+    padding: 0.75rem 2rem; /* py-3 px-8 */
+    border: none;
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .ctaButton:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+    transform: scale(1.05);
+  }
+  @media (min-width: 768px) { /* md: */
+    .ctaBanner {
+      padding: 4rem; /* md:p-16 */
+    }
+  }

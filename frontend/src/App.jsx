@@ -4,11 +4,11 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 
-// --- Friend's Pages ---
+
 import AboutAnish from './components/AboutAnish';
 import OurPrograms from './components/OurProgram';
 
-// --- Your Pages ---
+
 import Home from './components/Home';
 import CampusAndFacilities from './components/CampusAndFacilities';
 import GetInvolved from './components/GetInvolved';

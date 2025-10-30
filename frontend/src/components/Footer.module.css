@@ -1,0 +1,105 @@
+/* --- 1. Main Footer --- */
+.footer {
+    background-color: #4b5563; /* bg-gray-600 */
+    color: #9ca3af; /* text-gray-400 */
+  }
+  
+  /* --- 2. Container --- */
+  .container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3rem 1.5rem; /* py-12 px-6 */
+  }
+  
+  /* --- 3. Grid --- */
+  .footerGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem; /* gap-8 */
+  }
+  
+  /* Responsive grid for desktop */
+  @media (min-width: 768px) { /* md: */
+    .footerGrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  /* --- 4. Columns --- */
+  .footerColumn {
+    /* Column 1 (Logo & About) */
+  }
+  .logoHeading {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    color: white;
+    margin-bottom: 1rem; /* mb-4 */
+  }
+  .aboutText {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Column 2 & 3 (Links) */
+  .linksHeading {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    color: white;
+    margin-bottom: 1rem; /* mb-4 */
+  }
+  .linksList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* space-y-2 */
+  }
+  .link {
+    color: #9ca3af; /* text-gray-400 */
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .link:hover {
+    color: white; /* hover:text-white */
+  }
+  
+  /* Column 4 (Socials) */
+  .socialsContainer {
+    display: flex;
+    gap: 1rem; /* space-x-4 */
+  }
+  .socialLink {
+    color: #9ca3af;
+    transition: color 0.2s;
+  }
+  .socialLink:hover {
+    color: white;
+  }
+  
+  /* --- 5. Footer Bottom --- */
+  .footerBottom {
+    /* NOTE: Aapke original code mein border-gray-600 tha 
+      bg-gray-600 par, jo dikhta nahi.
+      Maine ise border-gray-500 (#6b7280) kar diya hai.
+    */
+    border-top: 1px solid #6b7280; 
+    margin-top: 3rem; /* mt-12 */
+    padding-top: 2rem; /* pt-8 */
+    text-align: center;
+  }
+  .madeWith {
+    color: #6b7280; /* text-gray-500 */
+  }
+  .heart {
+    color: #ef4444; /* text-red-500 */
+  }
+  .copyright {
+    /* NOTE: Ise bhi text-gray-500 kar diya hai taaki 
+      yeh background par dikhe.
+    */
+    font-size: 0.875rem; /* text-sm */
+    color: #6b7280; /* text-gray-500 */
+    margin-top: 0.5rem; /* mt-2 */
+  }
