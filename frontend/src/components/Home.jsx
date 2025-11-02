@@ -7,6 +7,12 @@ import {
 } from 'react-icons/fa';
 // CSS Module ko import karein
 import styles from './Home.module.css';
+import campusImg1 from '../assets/campus1.jpg';
+import campusImg2 from '../assets/campus2.jpg';
+import campusImg3 from '../assets/campus3.jpg';
+import campusImg4 from '../assets/campus4.jpg';
+import campusImg5 from '../assets/campus5.jpg';
+import campusImg6 from '../assets/campus6.jpg';
 
 // --- Animation Variants ---
 const sectionSlideInUp = {
@@ -63,6 +69,15 @@ const heroItem = {
 function Home() {
   const heroTitle = "Anish Jadhav Memorial Foundation";
   const titleWords = heroTitle.split(" ");
+
+  const campusImages = [
+    campusImg1, 
+    campusImg2, 
+    campusImg3, 
+    campusImg4, 
+    campusImg5, 
+    campusImg6
+  ];
 
   return (
     <div className={styles.pageContainer}>
@@ -208,53 +223,6 @@ function Home() {
       </motion.section>
       {/* ===== OUR MISSION SECTION END ===== */}
       
-      {/* ===== 
-        --- NAYA PINK SECTION (AAPKE SCREENSHOT JAISA) --- 
-      ===== */}
-      <motion.section 
-        className={`${styles.section} ${styles.focusSection}`}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={sectionSlideInUp}
-      >
-        <div className={styles.sectionContainer}>
-          <h2 className={`${styles.fontHeading} ${styles.sectionHeading}`}>Hyper-focused Solutions</h2>
-          <div className={styles.sectionAccentBlue}></div>
-          <p className={`${styles.fontBody} ${styles.sectionSubtitle}`}>
-            We provide solutions for nonprofits, associations, and school websites.
-          </p>
-          <motion.div 
-            className={styles.focusCardContainer}
-            variants={cardStaggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {/* Card 1: Schools */}
-            <motion.div className={styles.focusCard} variants={sectionSlideInUp}>
-              <FaGraduationCap className={styles.focusIcon} />
-              <h3 className={`${styles.fontHeading} ${styles.focusTitle}`}>Schools & Higher Education</h3>
-            </motion.div>
-            {/* Card 2: Nonprofits */}
-            <motion.div className={styles.focusCard} variants={sectionSlideInUp}>
-              <FaHandsHelping className={styles.focusIcon} />
-              <h3 className={`${styles.fontHeading} ${styles.focusTitle}`}>Nonprofit Organizations</h3>
-            </motion.div>
-            {/* Card 3: Hospitals */}
-            <motion.div className={styles.focusCard} variants={sectionSlideInUp}>
-              <FaHospital className={styles.focusIcon} />
-              <h3 className={`${styles.fontHeading} ${styles.focusTitle}`}>Hospitals & Healthcare</h3>
-            </motion.div>
-            {/* Card 4: Associations */}
-            <motion.div className={styles.focusCard} variants={sectionSlideInUp}>
-              <FaUsers className={styles.focusIcon} />
-              <h3 className={`${styles.fontHeading} ${styles.focusTitle}`}>Associations & Memberships</h3>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
-      {/* ===== NAYA SECTION END ===== */}
 
       {/* ===== OUR PROGRAMS SECTION START ===== */}
       <motion.section 
@@ -374,6 +342,7 @@ function Home() {
             A nurturing residential environment where students thrive
           </p>
 
+          {/* --- YEH NAYA CODE HAI --- */}
           <motion.div 
             className={styles.campusCardGrid}
             variants={cardStaggerContainer}
@@ -381,16 +350,19 @@ function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {/* --- POORA CODE YAHAN ADD KIYA GAYA HAI --- */}
-            {[...Array(6)].map((_, i) => ( 
+            {/* Humne 'campusImages' array ko map kiya */}
+            {campusImages.map((imageSrc, i) => ( 
               <motion.div 
                 key={i} 
                 className={styles.campusImagePlaceholder}
                 variants={sectionSlideInUp}
               >
-                <svg className={styles.placeholderIcon} fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                </svg>
+                {/* SVG ki jagah <img> tag daala */}
+                <img 
+                  src={imageSrc} 
+                  alt={`Campus Life ${i + 1}`} 
+                  className={styles.campusImage} 
+                />
               </motion.div>
             ))}
           </motion.div>
