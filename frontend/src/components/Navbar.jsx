@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
 // CSS Module ko import karein
 import styles from './Navbar.module.css';
+// Logo import karein
+import ajmfLogo from '../assets/AJMF.png'; 
 
 function Navbar() {
   
@@ -23,7 +25,10 @@ function Navbar() {
         
         {/* Logo */}
         <NavLink to="/" className={styles.logo}>
-          Anish Jadhav Memorial Foundation
+          {/* Logo Image */}
+          <img src={ajmfLogo} alt="AJMF Logo" className={styles.logoImage} />
+          {/* Aap text bhi rakh sakti hain */}
+          {/* Anish Jadhav Memorial Foundation */}
         </NavLink>
 
         {/* Navigation Links */}
@@ -39,29 +44,23 @@ function Navbar() {
 
           {/* --- DROPDOWN MENU --- */}
           <div className={styles.dropdown}>
-            {/* Dropdown Trigger */}
             <span className={styles.navLink}>
               Campus & Facilities
               <FaChevronDown className={styles.dropdownIcon} />
             </span>
-            
-            {/* Dropdown Box */}
             <div className={styles.dropdownMenu}>
-              
               <NavLink 
                 to="/campus" 
                 className={getDropdownLinkClass}
               >
                 Campus & Facilities
               </NavLink>
-              
               <NavLink 
                 to="/programs" 
                 className={getDropdownLinkClass}
               >
                 Our Programs
               </NavLink>
-              
               <NavLink 
                 to="/involved" 
                 className={getDropdownLinkClass}
@@ -71,15 +70,18 @@ function Navbar() {
             </div>
           </div>
           {/* --- DROPDOWN END --- */}
-
-          {/* FIXED: 'Contact Us' ab main link hai, 
-            dropdown link nahi 
-          */}
+          
           <NavLink to="/contact" className={getNavLinkClass}>
             Contact Us
           </NavLink>
-
         </div>
+
+        {/* --- Naye CTA Buttons --- */}
+        <div className={styles.ctaContainer}>
+          <button className={styles.ctaButtonSecondary}>Learn More</button>
+          <button className={styles.ctaButtonPrimary}>Get Involved</button>
+        </div>
+
       </div>
     </nav>
   );
