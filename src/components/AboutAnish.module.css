@@ -1,0 +1,397 @@
+/* --- New Color Variables (No Change) --- */
+/* Base Colors: */
+:root {
+  --color-primary: #124b33; /* Dark Forest Green (like the logo/text background) */
+  --color-secondary: #d97706; /* Gold/Orange (for main accents) */
+  --color-accent-light: #124b33; /* Brighter Green Accent */
+  --color-background-dark: #fcfcfc; /* Near White Background */
+  --color-text-dark: #333333; /* Dark Text */
+  --color-text-light: #555555; /* Lighter Text */
+  --color-border: #e0e0e0; /* Light border */
+}
+
+/* --- Page Container (No Change) --- */
+.pageContainer {
+    flex-grow: 1;
+    /* Changed from dark gradient to light, clean background */
+    background-color: var(--color-background-dark); 
+    color: var(--color-text-dark); /* Dark text on light background */
+}
+  
+  /* --- Global Styles (No Change) --- */
+  .container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem;
+  }
+  
+  /* --- Image Placeholder (Helper Component) (No Change) --- */
+  .imagePlaceholder {
+    /* Changed from dark gray to a cleaner white/light background with a light border */
+    background-color: white; 
+    width: 150px; 
+    height: 160px; 
+    border-radius: 0.75rem; 
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--color-border); 
+    transition: all 0.3s;
+  }
+  .imagePlaceholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* --- Timeline Item (Helper Component) (No Change) --- */
+  .timelineItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1.5rem; 
+    margin: 1.5rem 0; 
+    cursor: pointer;
+  }
+  .timelineTagWrapper {
+    flex-shrink: 0;
+    width: 6rem; 
+    padding-top: 0.5rem;
+  }
+  .timelineTag {
+    padding: 0.5rem 0.75rem; 
+    font-size: 0.875rem; 
+    font-weight: 600; 
+    color: white;
+    text-align: center;
+    border-radius: 0.75rem; 
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
+  }
+  /* Primary Tag: Now uses the brighter green accent */
+  .tagPrimary {
+    background-color: var(--color-accent-light);
+  }
+  /* Default Tag: Now uses the dark forest green */
+  .tagDefault {
+    background-color: var(--color-primary);
+  }
+  .timelineContent {
+    flex-grow: 1;
+    padding: 1.5rem; 
+    /* Changed from dark gray to light background */
+    background-color: white; 
+    border-radius: 1rem; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Lighter shadow for cleaner look */
+    border: 1px solid var(--color-border); 
+    transition: box-shadow 0.3s;
+  }
+  .timelineContent:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); 
+  }
+  .timelineTitle {
+    font-size: 1.25rem; 
+    font-weight: 700;
+    color: var(--color-text-dark); /* Dark text */
+    margin-bottom: 0.5rem; 
+  }
+  .timelineText {
+    color: var(--color-text-light); /* Lighter text */
+    line-height: 1.6;
+  }
+  
+  @media (min-width: 768px) { 
+    .timelineItem {
+      gap: 3rem; 
+    }
+    .timelineTagWrapper {
+      width: 8rem; 
+    }
+  }
+  
+  /* --- Hero Section (Section 1) --- */
+  .heroSection {
+    position: relative;
+    width: 100%;
+    margin-bottom: 6rem; 
+    min-height: 550px;
+    overflow: hidden;
+  }
+  .heroOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .heroContentWrapper {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 1.5rem; 
+  }
+  .heroGrid {
+    display: grid;
+    /* Grid is now always 1 column on small screens, which is the default */
+    gap: 3rem; 
+    margin: 1.25rem 5rem 5rem 5rem; 
+    align-items: center;
+  }
+  .heroTextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+    /* This element now spans the full width of the grid */
+    grid-column: 1 / -1; 
+  }
+  .heroAccentLine {
+    width: 5rem; 
+    height: 0.25rem; 
+    /* New accent color */
+    background-color: var(--color-secondary); 
+    margin-bottom: 1rem; 
+  }
+  .heroHeading {
+    font-size: 3rem; 
+    font-weight: 800; 
+    color: white; /* Text remains white on the dark image/overlay */
+    line-height: 1.1;
+  }
+  .heroHeadingSpan {
+    display: block;
+    color: white; 
+  }
+  .heroSubtitle {
+    font-size: 1.125rem; 
+    color: #e0e0e0; /* Light gray text for contrast */
+    max-width: 32rem; 
+  }
+  .heroButtonContainer {
+    display: flex;
+    gap: 1rem; 
+    padding-top: 1rem; 
+  }
+  .heroButton {
+    padding: 0.75rem 2rem; 
+    font-weight: 600; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .heroButtonPrimary {
+    /* Primary button now uses the dark forest green */
+    background-color: var(--color-primary);
+    color: white;
+  }
+  .heroButtonPrimary:hover {
+    background-color: #0d3826; /* Slightly darker green on hover */
+    opacity: 1;
+  }
+  .heroButtonSecondary {
+    /* Secondary button uses the gold/orange accent for border */
+    border: 1px solid var(--color-secondary); 
+    color: var(--color-secondary);
+    background-color: transparent;
+  }
+  .heroButtonSecondary:hover {
+    background-color: rgba(217, 119, 6, 0.1); /* Light tint on hover */
+    color: white;
+    background-color: var(--color-secondary);
+  }
+  /* REMOVED .heroImageContainer & .heroImageWrapper styles as they are no longer in JSX */
+  
+  @media (min-width: 768px) { 
+    .heroContentWrapper {
+      padding: 6rem 1.5rem; 
+    }
+    /* Set back to a single column for the grid on desktop now that the image is gone */
+    .heroGrid {
+      grid-template-columns: 1fr; 
+      gap: 4rem; 
+    }
+    .heroHeading {
+      font-size: 3.75rem; 
+    }
+    /* REMOVED .heroImageContainer media query styles */
+  }
+  
+  /* --- Section 2: Story (No Change) --- */
+  .storySection {
+    margin-bottom: 6rem; 
+    padding: 2.5rem; 
+    /* Changed from dark gradient to light, clean background */
+    background-color: white; 
+    border-radius: 1.5rem; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+    border: 1px solid var(--color-border);
+  }
+  .storyHeading {
+    font-size: 2.25rem; 
+    font-weight: 700;
+    color: var(--color-text-dark); /* Dark text */
+    text-align: center;
+    margin-bottom: 3rem; 
+    display: inline-block;
+    padding: 0 1rem 0.25rem 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    /* Border color changed to dark forest green */
+    border-bottom: 2px solid var(--color-primary);
+  }
+  .storyTextContainer {
+    max-width: 56rem; 
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; 
+    font-size: 1.125rem; 
+    color: var(--color-text-light); /* Lighter text */
+  }
+  .storyText {
+    line-height: 1.6;
+  }
+  .storyText strong {
+    font-weight: 700;
+  }
+  .storyQuote {
+    /* Quote styling changed to look more like a clean card */
+    background-color: #f7f7f7; 
+    border-left: 4px solid var(--color-secondary); /* Accent color border */
+    padding: 1.5rem;
+    border-radius: 0.75rem; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .storyQuote:hover {
+    transform: none; /* Removed scale on hover to match cleaner aesthetic */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); 
+  }
+  .storyQuoteText {
+    font-style: italic;
+    color: var(--color-text-dark); 
+  }
+  .storyQuoteAuthor {
+    text-align: right;
+    font-size: 0.875rem; 
+    font-weight: 600;
+    color: var(--color-secondary); /* Gold/Orange text */
+    margin-top: 1rem;
+  }
+  @media (min-width: 768px) { 
+    .storySection {
+      padding: 4rem; 
+    }
+  }
+  
+  /* --- Section 3: Partnership (No Change) --- */
+  .partnershipSection {
+    margin-bottom: 6rem;
+    position: relative;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    /* Changed from dark gradient to the dark forest green background */
+    background-color: var(--color-primary); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); 
+    overflow: hidden;
+  }
+  .partnershipContent {
+    max-width: 64rem; 
+    margin: 0 auto;
+    font-size: 1.125rem;
+    color: #e0e0e0; /* Light text on dark background */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+    position: relative;
+    z-index: 10;
+  }
+  .partnershipHeading {
+    font-size: 1.875rem; 
+    font-weight: 700;
+    color: white; /* White text on dark green */
+    margin-bottom: 1.5rem;
+    /* Border color changed to gold/orange accent */
+    border-bottom: 2px solid var(--color-secondary); 
+    padding-bottom: 0.5rem;
+  }
+  .partnershipText {
+    line-height: 1.6;
+  }
+  .partnershipText strong {
+    font-weight: 700;
+  }
+  @media (min-width: 768px) { 
+    .partnershipSection {
+      padding: 4rem; 
+    }
+  }
+  
+  /* --- Section 4: Timeline (No Change) --- */
+  .timelineSection {
+    margin-bottom: 6rem;
+    padding: 2.5rem;
+    /* Changed from dark gradient to light background */
+    background-color: #f7f7f7; 
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border);
+  }
+  .timelineHeading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-text-dark); /* Dark text */
+    text-align: center;
+    margin-bottom: 4rem; 
+  }
+  .timelineContainer {
+    max-width: 56rem;
+    margin: 0 auto;
+    position: relative;
+  }
+  @media (min-width: 768px) { 
+    .timelineSection {
+      padding: 4rem; 
+    }
+  }
+  
+  /* --- Section 5: Legacy (No Change) --- */
+  .legacySection {
+    text-align: center;
+    padding: 3rem 0 1.5rem 0; 
+    border-radius: 1.5rem;
+    /* Changed from dark to a light, prominent card look */
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--color-border);
+    margin-bottom: 6rem;
+  }
+  .legacyHeading {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-text-dark); /* Dark text */
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding: 0 1rem 0.25rem 1rem;
+    /* Border color changed to dark forest green */
+    border-bottom: 2px solid var(--color-primary);
+  }
+  .legacyText {
+    font-size: 1.25rem; 
+    color: var(--color-text-light); /* Lighter text */
+    max-width: 56rem;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .legacyHeartContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .legacyHeart {
+    width: 2.5rem; 
+    height: 2.5rem; 
+    /* Heart color changed to the gold/orange accent */
+    color: var(--color-secondary); 
+    fill: var(--color-secondary); 
+  }
+  /* Animation for the heart remains the same */

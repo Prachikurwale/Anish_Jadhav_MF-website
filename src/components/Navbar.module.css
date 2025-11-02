@@ -1,0 +1,138 @@
+/* --- 1. Main Navbar --- */
+.navbar {
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+/* --- 2. Container --- */
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem 1.5rem; /* Thoda chota navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- 3. Logo --- */
+.logo {
+  text-decoration: none;
+}
+.logoImage {
+  height: 100px; /* Logo ki height */
+  width: auto;
+}
+
+/* --- 4. Links Container --- */
+.linksContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Links ke beech space */
+}
+
+/* --- 5. Main Nav Link --- */
+.navLink {
+  font-size: 1rem; /* Thoda chota text */
+  font-weight: 500;
+  color: #333;
+  padding: 1.25rem 0; /* Upar-neeche padding se link bada dikhega */
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.navLink:hover {
+  color: #007bff; /* Accent color on hover */
+}
+.navLink.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff; /* Active link underline */
+}
+
+/* --- 6. Dropdown --- */
+.dropdown {
+  position: relative;
+}
+.dropdownIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: 0.5rem;
+}
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0;
+  width: 18rem;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  z-index: 99;
+  display: none;
+  padding: 0.5rem 0;
+}
+.dropdown:hover .dropdownMenu {
+  display: block;
+}
+
+/* --- 7. Dropdown Links --- */
+.dropdownLink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1.5rem; /* Badi padding */
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.dropdownLink:hover {
+  background-color: #f4f4f4;
+  color: #007bff;
+}
+.dropdownLink.active {
+  background-color: #f4f4f4;
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* --- 8. Naye CTA Buttons --- */
+.ctaContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ctaButtonPrimary,
+.ctaButtonSecondary {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+/* Yellow button (Morweb jaisa) */
+.ctaButtonPrimary {
+  background-color: #fdb813;
+  color: #111;
+}
+.ctaButtonPrimary:hover {
+  filter: brightness(0.9);
+}
+/* Blue button (Morweb jaisa) */
+.ctaButtonSecondary {
+  background-color: #00a0d2;
+  color: white;
+}
+.ctaButtonSecondary:hover {
+  filter: brightness(0.9);
+}
