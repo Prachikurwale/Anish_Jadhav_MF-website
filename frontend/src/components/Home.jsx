@@ -71,7 +71,7 @@ function Home() {
         
         <video
           ref={videoRef}
-          src="/video.mp4"
+          src=""
           autoPlay
           loop
           muted
