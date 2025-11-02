@@ -37,7 +37,7 @@
 
 /* --- 5. Main Nav Link --- */
 .navLink {
-  font-size: 1rem; /* Thoda chota text */
+  font-size: 1.3rem; /* Thoda chota text */
   font-weight: 500;
   color: #333;
   padding: 1.25rem 0; /* Upar-neeche padding se link bada dikhega */
@@ -47,6 +47,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  font-family: monospace;
 }
 .navLink:hover {
   color: #007bff; /* Accent color on hover */

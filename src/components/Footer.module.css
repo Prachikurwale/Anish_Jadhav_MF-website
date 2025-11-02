@@ -36,7 +36,7 @@
 }
 @media (min-width: 1024px) {
   .footerGrid {
-    grid-template-columns: repeat(4, 1fr); /* Desktop: 5 columns */
+    grid-template-columns: repeat(4, 1fr);  
   }
 }
 
