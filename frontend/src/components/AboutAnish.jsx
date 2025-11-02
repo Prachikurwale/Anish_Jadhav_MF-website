@@ -58,8 +58,8 @@ const ImagePlaceholder = () => (
   </MotionDiv>
 );
 
-// Timeline Item component (No changes needed here as styles are in CSS Module)
-const TimelineItem = ({ title, content, tag, isPrimary = false }) => (
+// Timeline Item component - MODIFIED TO ACCEPT A 'tagColorClass' PROP
+const TimelineItem = ({ title, content, tag, tagColorClass }) => (
   <MotionDiv 
     className={styles.timelineItem} 
     initial={{ opacity: 0, x: -50 }}
@@ -74,11 +74,8 @@ const TimelineItem = ({ title, content, tag, isPrimary = false }) => (
     transition={{ duration: 0.5 }}
   >
     <div className={styles.timelineTagWrapper}>
-      {/* 👈 Conditional CSS Modules */}
-      <div className={`
-        ${styles.timelineTag}
-        ${isPrimary ? styles.tagPrimary : styles.tagDefault} 
-      `}>
+      {/* 👈 Using tagColorClass directly now */}
+      <div className={`${styles.timelineTag} ${tagColorClass}`}> 
         {tag}
       </div>
     </div>
@@ -189,17 +186,7 @@ const AboutAnish = () => {
                         Get Involved
                     </button>
                 </MotionDiv>
-
               </MotionDiv>
-              
-              {/* *** REMOVED THE IMAGE PLACEHOLDER FROM THE HERO SECTION ***
-                
-                <div className={styles.heroImageContainer}>
-                  <div className={styles.heroImageWrapper}>
-                    <ImagePlaceholder />
-                  </div>
-                </div> 
-              */}
               
             </div> {/* End grid */}
           </div> {/* End content wrapper */}
@@ -273,7 +260,7 @@ const AboutAnish = () => {
                 </div>
             </MotionSection>
             
-            {/* === Section 4: Timeline (No Change) === */}
+            {/* === Section 4: Timeline - MODIFIED TAG COLORS === */}
             <MotionSection 
                 className={styles.timelineSection}
                 initial="hidden"
@@ -290,25 +277,28 @@ const AboutAnish = () => {
                   tag="The Beginning"
                   title="Foundation Established"
                   content="Brigadier Kishor Jadhav establishes the Anish Jadhav Memorial Foundation in loving memory of his son, partnering with NavGurukul to create a lasting impact."
+                  tagColorClass={styles.tagBlue} // Assign blue color
                   />
                   
                   <TimelineItem
                   tag="Building Hope"
                   title="Campus Development"
                   content="Construction and development of comprehensive residential facilities, creating a nurturing environment for underprivileged youth to learn and grow."
+                  tagColorClass={styles.tagOrange} // Assign orange color
                   />
                   
                   <TimelineItem
                   tag="Programs Launch"
                   title="Four Schools Open"
                   content="Launch of the School of Programming, School of Business, School of Education, and School of Second Chance, offering diverse pathways to success."
-                  isPrimary={true}
+                  tagColorClass={styles.tagPurple} // Assign purple color
                   />
 
                   <TimelineItem
                   tag="Today"
                   title="Transforming Lives"
                   content="Continuing to empower students with education, skills, and opportunities, creating a ripple effect of positive change across communities."
+                  tagColorClass={styles.tagGreen} // Assign green color
                   />
               </div>
             </MotionSection>
@@ -340,13 +330,3 @@ const AboutAnish = () => {
 };
 
 export default AboutAnish;
-
-
-
-
-
-
-
-
-
-
