@@ -9,7 +9,7 @@ const MotionSection = motion.section;
 // Imports
 import AnishImage from '../assets/Anish.png'; 
 import FoundationImage from '../assets/Foundation.png'; 
-import { Heart } from 'lucide-react'; // Star, Users use nahi ho rahe the
+import { Heart } from 'lucide-react'; 
 
 // === Animation Variants (No change) ===
 const containerVariants = {
@@ -37,35 +37,38 @@ const heartBeat = {
 // === End Animation Variants ===
 
 
-// Mock image placeholder component
+// Mock image placeholder component (Still needed for the import, but not rendered in Hero)
 const ImagePlaceholder = () => (
   <MotionDiv 
-    className={styles.imagePlaceholder} // 👈 CSS Module
+    className={styles.imagePlaceholder} 
     variants={cardVariants}
     initial="hidden"
     animate="visible"
     style={{ 
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.28), 0 0 15px rgba(255,255,255,0.1) inset' 
+        /* Clean box-shadow for a lighter look */
+        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.1)', 
+        border: '1px solid var(--color-border)' /* Using CSS variable for border */
     }}
   >
     <img 
         src={AnishImage} 
         alt="In Loving Memory of Anish Jadhav" 
-        className="" // 👈 img tag par classes ki zaroorat nahi, parent handle kar raha hai
+        className="" 
     />
   </MotionDiv>
 );
 
-// Timeline Item component
+// Timeline Item component (No changes needed here as styles are in CSS Module)
 const TimelineItem = ({ title, content, tag, isPrimary = false }) => (
   <MotionDiv 
-    className={styles.timelineItem} // 👈 CSS Module
+    className={styles.timelineItem} 
     initial={{ opacity: 0, x: -50 }}
     whileInView={{ opacity: 1, x: 0 }}
     whileHover={{ 
         scale: 1.02, 
         rotateX: 1, 
-        boxShadow: "0 10px 20px rgba(0,0,0,0.3)" 
+        /* Lighter shadow on hover */
+        boxShadow: "0 10px 20px rgba(0,0,0,0.1)" 
     }} 
     viewport={{ once: true, amount: 0.5 }}
     transition={{ duration: 0.5 }}
@@ -88,7 +91,6 @@ const TimelineItem = ({ title, content, tag, isPrimary = false }) => (
 );
 
 // --- BubbleBackground Component (No Change) ---
-// Yeh Tailwind use nahi kar raha tha, isliye ise chhedne ki zaroorat nahi hai.
 const BubbleBackground = () => (
     <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-50">
         <style dangerouslySetInnerHTML={{__html: `
@@ -101,7 +103,8 @@ const BubbleBackground = () => (
                 bottom: -150px;
                 width: 40px;
                 height: 40px;
-                background-color: rgba(101, 107, 117, 0.15);
+                /* Bubbles now use the bright accent green for a subtle effect */
+                background-color: rgba(82, 177, 68, 0.3); 
                 border-radius: 50%;
                 animation: float 25s infinite linear;
             }
@@ -125,32 +128,34 @@ const AboutAnish = () => {
   return (
     <div 
         className={styles.pageContainer} 
-        style={{ 
-            backgroundImage: 'linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%)' 
-        }}
+        /* Background is now set via CSS module's var(--color-background-dark) */
     > 
       
         {/* Section 1: Hero */}
         <section 
             className={styles.heroSection} 
             style={{ 
-                backgroundImage: `url(${FoundationImage})`,
+                // Set AnishImage as the background
+                backgroundImage: `url(${AnishImage})`, 
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)'
+                /* Shadow changed to a cleaner, darker one */
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)'
             }}
         >
           {/* Overlay */}
           <div 
             className={styles.heroOverlay}
             style={{
-                backgroundImage: 'linear-gradient(90deg, rgba(15, 15, 15, 0.9) 0%, rgba(15, 15, 15, 0.7) 40%, rgba(15, 15, 15, 0.4) 100%)',
+                /* Overlay adjusted for a dark green/black tint on the image */
+                backgroundImage: 'linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(18, 75, 51, 0.7) 40%, rgba(18, 75, 51, 0.4) 100%)',
                 mixBlendMode: 'multiply' 
             }}
           ></div>
           
           {/* Content Wrapper */}
           <div className={`${styles.container} ${styles.heroContentWrapper}`}>
+            {/* The heroGrid will now only contain the text element */}
             <div className={styles.heroGrid}>
               
               {/* Hero Text */}
@@ -159,6 +164,8 @@ const AboutAnish = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
+                // The style change here ensures the text container spans the full grid width
+                style={{ gridColumn: '1 / -1' }} 
               >
                 <MotionDiv variants={itemVariants} className={styles.heroAccentLine}></MotionDiv>
 
@@ -185,12 +192,15 @@ const AboutAnish = () => {
 
               </MotionDiv>
               
-              {/* Image Placeholder */}
-              <div className={styles.heroImageContainer}>
-                <div className={styles.heroImageWrapper}>
-                  <ImagePlaceholder />
-                </div>
-              </div>
+              {/* *** REMOVED THE IMAGE PLACEHOLDER FROM THE HERO SECTION ***
+                
+                <div className={styles.heroImageContainer}>
+                  <div className={styles.heroImageWrapper}>
+                    <ImagePlaceholder />
+                  </div>
+                </div> 
+              */}
+              
             </div> {/* End grid */}
           </div> {/* End content wrapper */}
         </section>
@@ -198,17 +208,13 @@ const AboutAnish = () => {
         {/* --- Content Container Start --- */}
         <div className={styles.container}>
         
-            {/* === Section 2: The Story === */}
+            {/* === Section 2: The Story (No Change) === */}
             <MotionSection 
                 className={styles.storySection}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
                 variants={containerVariants}
-                style={{ 
-                    backgroundImage: 'linear-gradient(145deg, #1c1c1c 0%, #2a2a2a 100%)', 
-                    border: '1px solid #2f2f2f'
-                }}
             >
               <MotionDiv variants={itemVariants} className={styles.textCenter}>
                   <h2 className={styles.storyHeading}>
@@ -228,7 +234,11 @@ const AboutAnish = () => {
                   <MotionDiv 
                       variants={itemVariants}
                       className={styles.storyQuote} 
-                      whileHover={{ scale: 1.01, boxShadow: '0 8px 15px rgba(0,0,0,0.3)' }} 
+                      whileHover={{ 
+                          /* Lighter hover effect */
+                          scale: 1.01, 
+                          boxShadow: '0 6px 12px rgba(0,0,0,0.08)' 
+                      }} 
                   >
                   <p className={styles.storyQuoteText}>
                       "In honoring Anish's memory, we create a future filled with hope. Every student we empower, every life we transform, is a living testament to his spirit and the dreams he carried."
@@ -240,16 +250,13 @@ const AboutAnish = () => {
               </div>
             </MotionSection>
 
-            {/* === Section 3: Partnership === */}
+            {/* === Section 3: Partnership (No Change) === */}
             <MotionSection 
                 className={styles.partnershipSection}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 1 }}
-                style={{ 
-                    backgroundImage: 'linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 70%, #2f2f2f 100%)', 
-                }}
             >
                 <BubbleBackground />
 
@@ -266,17 +273,13 @@ const AboutAnish = () => {
                 </div>
             </MotionSection>
             
-            {/* === Section 4: Timeline === */}
+            {/* === Section 4: Timeline (No Change) === */}
             <MotionSection 
                 className={styles.timelineSection}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
                 variants={containerVariants}
-                style={{ 
-                    backgroundImage: 'linear-gradient(145deg, #1c1c1c 0%, #2a2a2a 100%)', 
-                    border: '1px solid #2f2f2f'
-                }}
             >
               <h2 className={styles.timelineHeading}> 
                   A Timeline of Impact
@@ -310,17 +313,13 @@ const AboutAnish = () => {
               </div>
             </MotionSection>
 
-            {/* === Section 5: Legacy === */}
+            {/* === Section 5: Legacy (No Change) === */}
             <MotionSection 
                 className={styles.legacySection}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 1 }}
-                style={{ 
-                    backgroundImage: 'linear-gradient(145deg, #1a1a1a 0%, #0c0c0c 100%)', 
-                    border: '1px solid #1f1f1f'
-                }}
             >
               <h2 className={styles.legacyHeading}>
                   His Legacy Lives On
