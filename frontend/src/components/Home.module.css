@@ -1,376 +1,391 @@
-/* --- Global Styles --- */
+/* ⚠️ Apne fonts yahan daalein */
+.fontHeading { font-family: 'YourHeadingFont', sans-serif; }
+.fontBody { font-family: 'YourBodyFont', sans-serif; }
+
+/* --- Global --- */
 .container {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* ⚠️ IMPORTANT: Apne font-family ke naam yahan daalein */
-  .fontHeading {
-    font-family: 'YourHeadingFont', sans-serif; 
-  }
-  .fontBody {
-    font-family: 'YourBodyFont', sans-serif;
-  }
-  
-  /* --- Hero Section --- */
-  .heroSection {
-    position: relative;
-    height: 80vh;
-    min-height: 600px;
-    color: white;
-    overflow: hidden;
-  }
-  .heroVideo {
-    position: absolute;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .heroOverlay {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px);
-  }
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Naya Hero Section --- */
+.heroSection {
+  position: relative;
+  background-color: #ffffff; /* White background */
+  min-height: 90vh;
+  color: #111; /* Dark text */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 5rem 1.5rem;
+}
+.heroTextContainer {
+  text-align: center;
+  z-index: 10;
+}
+.heroHeading {
+  /* --- TEXT BADA KIYA --- */
+  font-size: 3.5rem; /* Pehle 3rem tha */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.heroHeadingSpan {
+  display: inline-block;
+  margin-right: 0.75rem;
+}
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #555; /* Gray text */
+  margin-bottom: 2.5rem;
+}
+.heroButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* --- Naye Hero Buttons (Navbar se milte julte) --- */
+.heroButtonPrimary,
+.heroButtonSecondary {
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+.heroButtonPrimary {
+  background-color: #fdb813; /* Yellow */
+  color: #111;
+  border: none;
+}
+.heroButtonSecondary {
+  background-color: #00a0d2; /* Blue */
+  color: white;
+  border: none;
+}
+
+/* --- Naya Hero Image Collage --- */
+.heroImageCollage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+  /* --- AAPKA TYPO THEEK KIYA --- */
+  width: 100%; /* Pehle 400% tha */
+  max-width: 500px; /* Pehle 1000px tha */
+  aspect-ratio: 1 / 1;
+  z-index: 5;
+}
+.collageItem {
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+/* --- AAPKI IMAGES WAISE HI HAIN --- */
+.item1 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+  border-radius: 999px 0 0 0; /* Top-left curve */
+  background-image: url('../assets/image.jpeg');
+}
+.item2 {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  border-radius: 0 1rem 0 0;
+  background-image: url('../assets/image1.jpeg');
+}
+.item3 {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  border-radius: 0 0 0 1rem;
+  background-image: url('../assets/image2.jpeg');
+}
+.item4 {
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
+  border-radius: 0 0 999px 0; /* Bottom-right curve */
+  background-image: url('../assets/image3.jpeg');
+}
+.item5 {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  border-radius: 50%; /* Beech mein circle */
+  background-image: url('../assets/image4.jpeg');
+}
+
+/* --- Hero Responsive --- */
+@media (min-width: 768px) {
   .heroContent {
-    position: relative;
-    z-index: 20;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    padding: 0 1.5rem; /* px-6 */
+    flex-direction: row;
+    padding: 6rem 1.5rem;
   }
   .heroTextContainer {
-    text-align: center;
-    padding-top: 5rem;
-  }
-  .heroHeading {
-    font-size: 3rem; /* text-5xl */
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-  .heroHeadingSpan {
-    display: inline-block;
-    margin-right: 0.75rem;
-  }
-  .heroSubtitle {
-    font-size: 1.25rem; /* text-xl */
-    color: #e5e7eb; /* text-gray-200 */
-    margin-bottom: 2.5rem;
-  }
-  .heroButtonsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
-  }
-  .heroButton {
-    font-weight: 700;
-    font-size: 1.125rem;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .heroButton:hover {
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    transform: translateY(-0.25rem);
-  }
-  .heroButtonPrimary {
-    background-color: #9333ea; /* bg-purple-600 */
-    color: white;
-    border: none;
-  }
-  .heroButtonPrimary:hover {
-    background-color: #7e22ce; /* hover:bg-purple-700 */
-  }
-  .heroButtonSecondary {
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-  }
-  .heroButtonSecondary:hover {
-    background-color: white;
-    color: #7e22ce;
-  }
-  .heroImageContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2.5rem;
-  }
-  .heroImage {
-    width: 16rem; /* w-64 */
-    height: 16rem; /* h-64 */
-    object-fit: contain;
-  }
-  
-  /* --- Responsive Media Queries --- */
-  @media (min-width: 768px) { /* md: */
-    .heroSection {
-      height: 100vh;
-    }
-    .heroContent {
-      flex-direction: row;
-    }
-    .heroTextContainer {
-      width: 50%;
-      text-align: left;
-      padding-top: 0;
-    }
-    .heroHeading {
-      font-size: 4.5rem; /* md:text-7xl */
-    }
-    .heroSubtitle {
-      font-size: 1.5rem; /* md:text-2xl */
-    }
-    .heroButtonsContainer {
-      flex-direction: row;
-      justify-content: flex-start;
-    }
-    .heroImageContainer {
-      width: 50%;
-      margin-top: 0;
-    }
-    .heroImage {
-      width: 20rem; /* md:w-80 */
-      height: 20rem; /* md:h-80 */
-    }
-  }
-  
-  /* --- Shared Section Styles --- */
-  .section {
-    padding: 5rem 1.5rem; /* py-20 px-6 */
-  }
-  .sectionContainer {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-  .sectionHeading {
-    font-size: 2.25rem; /* text-4xl */
-    font-weight: 700;
-    color: #111827; /* text-gray-900 */
-    margin-bottom: 1rem;
-  }
-  .sectionSubtitle {
-    font-size: 1.125rem; /* text-lg */
-    color: #374151; /* text-gray-700 */
-    margin-bottom: 3rem;
-    max-width: 42rem; /* max-w-2xl */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .sectionAccentGreen {
-    width: 6rem; /* w-24 */
-    height: 4px; /* h-1 */
-    background-color: #10b981; /* bg-emerald-500 */
-    margin: 0 auto 3rem auto;
-  }
-  .sectionAccentCyan {
-    width: 6rem;
-    height: 4px;
-    background-color: #06b6d4; /* bg-cyan-500 */
-    margin: 0 auto 3rem auto;
-  }
-  .sectionAccentAmber {
-    width: 6rem;
-    height: 4px;
-    background-color: #f59e0b; /* bg-amber-500 */
-    margin: 0 auto 1rem auto;
-  }
-  
-  /* --- Card Grids --- */
-  .cardGrid3 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-  .cardGrid4 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .campusCardGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  @media (min-width: 768px) { /* md: */
-    .cardGrid3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .cardGrid4 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .campusCardGrid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 1024px) { /* lg: */
-    .cardGrid4 {
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .campusCardGrid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  /* --- Card Styles --- */
-  .card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transition: transform 0.3s;
-  }
-  .card:hover {
-    transform: scale(1.05);
-  }
-  .cardHeading {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 600; /* font-semibold */
-    color: #111827; /* text-gray-900 */
-    margin-bottom: 0.75rem;
-  }
-  .cardText {
-    font-size: 1rem;
-    color: #374151; /* text-gray-700 */
-  }
-  
-  /* --- Mission Section --- */
-  .missionSection {
-    background-color: white;
-  }
-  .missionIconWrapper {
-    width: 4rem; /* w-16 */
-    height: 4rem; /* h-16 */
-    border-radius: 9999px; /* rounded-full */
-    background-color: #d1fae5; /* bg-emerald-100 */
-    color: #059669; /* text-emerald-600 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem auto;
-  }
-  .icon {
-    font-size: 1.875rem; /* text-3xl */
-  }
-  .missionInfoBox {
-    background-color: #ecfeff; /* bg-cyan-50 */
-    border-left: 4px solid #06b6d4; /* border-l-4 border-cyan-500 */
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    max-width: 56rem; /* max-w-4xl */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .missionInfoText {
-    color: #0e7490; /* text-cyan-800 */
-    line-height: 1.6;
+    width: 50%;
     text-align: left;
   }
-  .missionInfoText strong {
-    font-weight: 600; /* font-semibold */
-    color: #164e63; /* text-cyan-900 */
+  .heroHeading {
+    /* --- TEXT BADA KIYA --- */
+    font-size: 5.5rem; /* Pehle 4rem tha */
   }
-  
-  /* --- Programs Section --- */
-  .programsSection {
-    background-color: #f9fafb; /* bg-gray-50 */
+  .heroSubtitle {
+    font-size: 1.5rem;
   }
-  .programIconWrapper {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 9999px;
-    background-color: #cffafe; /* bg-cyan-100 */
-    color: #0891b2; /* text-cyan-600 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem auto;
+  .heroButtonsContainer {
+    flex-direction: row;
+    justify-content: flex-start;
   }
-  .programCardText {
-    color: #374151; /* text-gray-700 */
-    margin-bottom: 1rem;
+  .heroImageCollage {
+    width: 50%;
   }
-  .tagContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
+}
+
+/* --- Naye Section Styles --- */
+.section {
+  padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.sectionWithPattern {
+  background-color: #ffffff;
+}
+.programsSection {
+  background-color: #f8f9fa; /* Light gray bg */
+}
+.sectionContainer {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.sectionHeading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+.sectionSubtitle {
+  font-size: 1.125rem;
+  color: #555;
+  margin-bottom: 3rem;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sectionAccentBlue {
+  width: 6rem;
+  height: 4px;
+  background-color: #00a0d2; /* Morweb blue */
+  margin: 0 auto 3rem auto;
+}
+
+/* --- Naye Colorful Patterns (Blurry) --- */
+.pattern {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.1;
+  filter: blur(50px);
+}
+.pattern1 {
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  left: -200px;
+  background: radial-gradient(circle, #00a0d2 0%, #fdb813 100%);
+}
+.pattern2 {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  right: -150px;
+  background: radial-gradient(circle, #fdb813 0%, #e84a27 100%);
+}
+
+/* --- 
+  --- NAYA PINK SECTION (AAPKE SCREENSHOT JAISA) --- 
+--- */
+.focusSection {
+  background-color: #fceeee; /* Light Pink from screenshot */
+}
+.focusCardContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2x2 grid on mobile */
+  gap: 1.5rem;
+}
+.focusCard {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #fff;
+  transition: all 0.3s;
+}
+.focusCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.focusIcon {
+  font-size: 2.5rem;
+  color: #00a0d2; /* Morweb Blue */
+  margin-bottom: 1rem;
+}
+.focusTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111;
+}
+@media (min-width: 768px) {
+  .focusCardContainer {
+    grid-template-columns: repeat(4, 1fr); /* 4-in-a-row on desktop */
   }
-  .tag {
-    background-color: #e5e7eb; /* bg-gray-200 */
-    color: #374151; /* text-gray-700 */
-    font-size: 0.75rem; /* text-xs */
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-weight: 500; /* font-medium */
+  .focusTitle {
+    font-size: 1.25rem;
   }
-  
-  /* --- Campus Life Section --- */
-  .campusSection {
-    background-color: white;
-  }
-  .campusImagePlaceholder {
-    padding: 1.5rem;
-    background-color: #f3f4f6; /* bg-gray-100 */
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    aspect-ratio: 16 / 9; /* aspect-video */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease-in-out;
-  }
-  .campusImagePlaceholder:hover {
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); /* hover:shadow-2xl */
-    transform: scale(1.05);
-  }
-  .placeholderIcon {
-    width: 33.33%;
-    height: 33.33%;
-    color: #9ca3af; /* text-gray-400 */
-  }
-  .campusButton {
-    margin-top: 4rem;
-    background-color: #9333ea; /* bg-purple-600 */
-    color: white;
-    font-weight: 600;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-  }
-  .campusButton:hover {
-    background-color: #7e22ce; /* hover:bg-purple-700 */
-  }
-  .buttonIcon {
-    margin-left: 0.5rem;
-    width: 1rem;
-    height: 1rem;
-  }
+}
+
+/* --- Naye Card Styles --- */
+.cardGrid3, .cardGrid4, .campusCardGrid {
+  display: grid;
+  gap: 2rem;
+}
+.cardGrid3 { grid-template-columns: 1fr; }
+.cardGrid4 { grid-template-columns: 1fr; }
+.campusCardGrid { grid-template-columns: 1fr; }
+
+.card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  transition: all 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.cardHeading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+.cardText {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Naye Icon Wrappers */
+.missionIconWrapper, .programIconWrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  color: white;
+}
+.icon { font-size: 1.875rem; }
+.iconBgBlue { background-color: #00a0d2; }
+.iconBgYellow { background-color: #fdb813; }
+.iconBgGreen { background-color: #8ec63f; }
+.programIconWrapper { background-color: #00a0d2; color: white; }
+
+@media (min-width: 768px) {
+  .cardGrid3 { grid-template-columns: repeat(3, 1fr); }
+  .cardGrid4 { grid-template-columns: repeat(2, 1fr); }
+  .campusCardGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .cardGrid4 { grid-template-columns: repeat(4, 1fr); }
+  .campusCardGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Baaki ke classes jo aapke purane code mein thin --- */
+.missionInfoBox {
+  background-color: #ecfeff;
+  border-left: 4px solid #06b6d4;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+}
+.missionInfoText {
+  color: #0e7490;
+  line-height: 1.6;
+  text-align: left;
+}
+.missionInfoText strong {
+  font-weight: 600;
+  color: #164e63;
+}
+.programCardText {
+  color: #555;
+  margin-bottom: 1rem;
+}
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.tag {
+  background-color: #e5e7eb;
+  color: #374151;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+.campusSection { /* Campus section ke liye specific class */
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+.campusImagePlaceholder {
+  padding: 1.5rem;
+  background-color: #f3f4f6;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.campusImagePlaceholder:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+}
+.placeholderIcon {
+  width: 33.33%;
+  height: 33.33%;
+  color: #9ca3af;
+}
+.buttonIcon {
+  margin-left: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+}
