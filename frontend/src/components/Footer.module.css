@@ -1,158 +1,215 @@
-/* --- 1. Main Footer Wrapper --- */
+/* Variables for colors */
+:root {
+  --footer-bg: #2f3840; /* Dark background color */
+  --footer-text: #bdbfc1; /* Light gray text color */
+  --footer-heading: #ffffff; /* White heading color */
+  --footer-link-hover: #f0c330; /* Example yellow/accent hover color */
+  --footer-bottom-bg: #272d33; /* Even darker bottom bar */
+}
+
 .footerWrapper {
-  font-family: Arial, sans-serif;
-  color: #555; /* Default text color */
+  position: relative;
+  /* Dark color for the main footer background */
+  background-color: var(--footer-bg); 
+  /* The crucial part for the curved top-right corner */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  /* To simulate the top curve on the right (Optional: Requires more complex styling if you want the exact SFS curve) */
+  /* For simplicity, we are using a standard rectangular dark block with a subtle curve effect */
 }
 
-/* --- 2. Main Footer (Light gray part) --- */
+/* Main Footer Section */
 .footer {
-  background-color: #f8f9fa; /* Light gray */
-  padding: 4rem 0;
+  padding: 40px 0;
+  color: var(--footer-text);
 }
 
-/* --- 3. Container --- */
 .container {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* --- 4. Grid (5 columns) --- */
+/* 3-Column Grid for main content */
 .footerGrid {
   display: grid;
-  grid-template-columns: 1fr; /* Mobile */
-  gap: 2.5rem;
-  align-items: flex-start;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #ddd;
+  /* 3-column layout: first column wider, others equal */
+  grid-template-columns: 2fr 1fr 1.5fr; 
+  gap: 40px;
+  padding-bottom: 20px;
 }
 
-@media (min-width: 768px) {
-  .footerGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (min-width: 1024px) {
-  .footerGrid {
-    grid-template-columns: repeat(5, 1fr); /* Desktop: 5 columns */
-  }
+/* --- Column 1: Logo and About --- */
+.logoAndLinksColumn {
+  display: flex;
+  flex-direction: column;
 }
 
-/* --- 5. Columns --- */
-.footerColumn {
-  /* Khali container */
+.logoSocialsGroup {
+  margin-bottom: 40px; /* Space between logo/socials and 'About' links */
 }
 
+.logoSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.mainFooterLogo {
+  /* Style your logo image to match the SFS logo size */
+  width: 50px; 
+  height: 50px;
+  margin-right: 15px;
+  object-fit: contain;
+}
+
+.schoolName {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--footer-heading);
+  text-transform: uppercase;
+}
+
+.socialsContainer {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.socialLink {
+  color: var(--footer-text);
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.socialLink:hover {
+  color: var(--footer-link-hover);
+}
+
+.linksBlock {
+  /* Separates the 'About' links group from the Logo/Socials if it needs vertical space */
+}
+
+
+/* --- Shared Styling for Headings and Links --- */
 .linksHeading {
   font-size: 1rem;
+  color: var(--footer-heading);
+  text-transform: uppercase;
   font-weight: 700;
-  color: #111; /* Dark heading */
-  margin-bottom: 1.5rem;
-  text-transform: capitalize;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
 }
 
 .linksList {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+}
+
+.linksList li {
+  margin-bottom: 8px;
 }
 
 .link {
-  color: #555;
+  color: var(--footer-text);
   text-decoration: none;
-  transition: color 0.2s;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  transition: color 0.3s;
 }
+
 .link:hover {
-  color: #007bff; /* Accent color */
+  color: var(--footer-link-hover);
 }
 
-/* Contact info (Col 5) */
-.contactInfo {
+/* --- Column 3: Contact Info --- */
+.contactInfo p {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* --- Separator and Statement --- */
+.footerSeparator {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15); /* Light line */
+  margin: 30px 0;
+}
+
+.statementSection {
+  padding-bottom: 40px;
+}
+
+.statementHeading {
   font-size: 0.9rem;
+  color: var(--footer-heading);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.statementText {
+  font-size: 0.85rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  color: var(--footer-text);
+  max-width: 80%; /* Match the narrow width in the SFS image */
 }
 
-/* Socials (Col 5) */
-.socialsContainer {
-  display: flex;
-  gap: 1.25rem;
-  margin-top: 1rem;
-}
-.socialLink {
-  color: #555;
-  font-size: 1.25rem;
-  transition: color 0.2s;
-}
-.socialLink:hover {
-  color: #007bff;
-}
-
-/* --- 6. Top Resources (Footer ke neeche) --- */
-.topResources {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid #ddd;
-}
-.resourceLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-@media (min-width: 768px) {
-  .topResources {
-    border-top: none; /* Desktop par border nahi */
-  }
-  .resourceLinks {
-    flex-direction: row; /* Aaju-baaju */
-    gap: 2rem;
-  }
-}
-
-/* --- 7. Bottom Bar (Dark Copyright wala) --- */
+/* --- Bottom Bar (Copyright) --- */
 .footerBottomBar {
-  background-color: #343a40; /* Dark gray */
-  padding: 1.5rem 0;
-  color: #f8f9fa;
+  background-color: var(--footer-bottom-bg); /* Slightly darker color */
+  color: var(--footer-text);
+  font-size: 0.8rem;
+  padding: 20px 0;
 }
 
 .footerBottomContent {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
 }
-@media (min-width: 768px) {
-  .footerBottomContent {
-    flex-direction: row;
+
+.copyright,
+.poweredBy {
+  margin: 0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .footerGrid {
+    /* Stack columns on smaller screens */
+    grid-template-columns: 1fr 1fr; 
+  }
+  
+  .logoAndLinksColumn {
+      /* Stack logo/socials and links vertically on small screens */
+      flex-direction: row; 
+      justify-content: space-between;
+      gap: 30px;
   }
 }
 
-.logoAndCopyright {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.footerLogo {
-  height: 30px; /* Chota logo */
-  width: auto;
-  filter: brightness(0) invert(1); /* Logo ko white banaya */
-}
-.copyright {
-  font-size: 0.875rem;
-  color: #ccc;
-}
-.poweredBy {
-  font-size: 0.875rem;
-  color: #ccc;
+@media (max-width: 768px) {
+  .footerGrid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 30px;
+  }
+  
+  .logoAndLinksColumn {
+    flex-direction: column; 
+  }
+  
+  .statementText {
+    max-width: 100%;
+  }
+  
+  .footerBottomContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
 }
