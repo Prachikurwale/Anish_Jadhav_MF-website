@@ -1,60 +1,54 @@
-/* --- Global Variables and Base Styles (Assuming these are consistent across your app) --- */
+/* ========================================= */
+/* GLOBAL UTILITIES & VARS */
+/* ========================================= */
+
 :root {
-    --color-primary: #121f3d; /* Dark Blue/Navy */
-    --color-accent: #52b144; /* Bright Green (Primary CTA color) */
-    --color-accent-darker: #b3efaa;
-    --color-text-dark: #333333;
-    --color-text-light: #ffffff;
-    --color-background-light: #f9f9f9;
-    --color-border-light: #e0e0e0;
-    --color-heading: #121f3d;
-    
-    /* Tag Colors (Reused from previous context) */
-    --color-tag-blue: #a8c7f8;
-    --color-tag-orange: #ffde9f;
-    --color-tag-purple: #eea8fa;
-    --color-tag-green: #c1fab8;
+    --primary-color: #36454f; /* Charcoal/Slate Blue */
+    --secondary-color: #f7a233; /* Orange/Yellow Accent (from APPLY button) */
+    --dark-purple: #1e003c;
+    --light-gray: #f9f9f9;
+    --text-dark: #333;
+    --text-light: #fff;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-heavy: rgba(0, 0, 0, 0.2);
 }
 
 .pageContainer {
-    background-color: var(--color-background-light);
-    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-dark);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 1.5rem;
 }
 
 .textCenter {
     text-align: center;
+    margin-bottom: 3rem;
 }
 
-.sectionSubtitle {
-    text-align: center;
-    font-size: 1.15rem;
-    color: var(--color-text-dark);
-    margin: 10px auto 0 auto;
-    max-width: 700px;
-}
+/* ========================================= */
+/* 1. HERO SECTION */
+/* ========================================= */
 
-
-/* --- 1. Hero Section Styling (Reuse of 'heroSection' classes) --- */
 .heroSection {
     position: relative;
-    padding: 120px 0;
-    color: var(--color-text-light);
-    /* For image background properties (set inline in component) */
-    background-attachment: fixed;
+    padding: 8rem 0 6rem;
+    min-height: 500px;
+    color: var(--text-light);
+    overflow: hidden;
+    /* Styles are applied inline in the component */
 }
 
 .heroOverlay {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
-    /* Overlay gradient set inline in component for specific color */
-    opacity: 0.9;
 }
 
 .heroContentWrapper {
@@ -62,313 +56,259 @@
     z-index: 2;
 }
 
-.heroGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.heroTextContainer {
-    max-width: 700px;
-}
-
-.heroAccentLine {
-    width: 60px;
-    height: 4px;
-    background-color: var(--color-accent);
-    margin-bottom: 20px;
-}
-
 .heroHeading {
-    font-size: 3.5rem;
-    line-height: 1.1;
+    font-size: 3rem;
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
 .heroHeadingSpan {
-    color: var(--color-accent);
+    color: var(--secondary-color);
+    /* underline, etc., can be added here */
 }
 
 .heroSubtitle {
-    font-size: 1.25rem;
-    line-height: 1.5;
-    margin-bottom: 30px;
-    opacity: 0.9;
+    font-size: 1.1rem;
+    max-width: 700px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.heroAccentLine {
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin-bottom: 1.5rem;
 }
 
 .heroButtonContainer {
     display: flex;
-    gap: 15px;
+    gap: 1.5rem;
+    margin-top: 1rem;
 }
 
 .heroButton {
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 600;
+    padding: 0.8rem 2rem;
     text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
     transition: all 0.3s ease;
-    cursor: pointer;
-    border: 2px solid transparent;
-    font-size: 1rem;
-    text-align: center;
+    text-transform: uppercase;
 }
 
 .heroButtonPrimary {
-    background-color: var(--color-accent);
-    color: var(--color-text-light);
+    background-color: var(--secondary-color);
+    color: var(--dark-purple);
+    border: 2px solid var(--secondary-color);
 }
 
 .heroButtonPrimary:hover {
-    background-color: var(--color-accent-darker);
+    background-color: transparent;
+    color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 .heroButtonSecondary {
     background-color: transparent;
-    color: var(--color-text-light);
-    border-color: var(--color-text-light);
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
 }
 
 .heroButtonSecondary:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 
-/* --- 2. Ways to Give (Action Cards) --- */
-.storySection { /* Reused for padding/spacing */
-    padding: 80px 0;
+/* ========================================= */
+/* 2. WAYS TO GIVE (ACTION CARDS) */
+/* ========================================= */
+
+.storySection {
+    padding: 5rem 0; /* Reusing for padding */
 }
 
 .storyHeading {
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--color-heading);
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
-/* Action Card Grid */
+.sectionSubtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
 .actionCardGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    gap: 3rem;
 }
 
-/* Individual Action Card */
+/* --- Action Card Styling (Slanted Effect) --- */
+
 .actionCard {
     position: relative;
-    background-color: #ffffff; 
-    border-radius: 12px;
-    padding: 30px;
+    padding: 2.5rem;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
     text-align: center;
-    border: 1px solid var(--color-border-light);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px var(--shadow-light);
+
+    /* Slanted Effect */
+    transform: skewX(-5deg); /* Card ko thoda jhukayen */
 }
 
-.iconCircle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin: 0 auto 20px auto;
-}
-
-.cardIcon {
-    /* lucide icons will inherit color from .iconCircle */
-}
-
-/* Card specific color overrides */
-.actionCard.tagGreen .iconCircle {
-    background-color: rgba(82, 177, 68, 0.1); 
-    color: var(--color-tag-green); 
-}
-.actionCard.tagOrange .iconCircle {
-    background-color: rgba(255, 165, 0, 0.1); 
-    color: var(--color-tag-orange);
-}
-.actionCard.tagBlue .iconCircle {
-    background-color: rgba(66, 133, 244, 0.1); 
-    color: var(--color-tag-blue); 
+/* Ensure content is readable inside the skewed card */
+.actionCard > * {
+    transform: skewX(5deg); /* Content ko wapas seedha karen */
 }
 
 .cardTitle {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--color-heading);
+    color: var(--secondary-color); /* Heading color for differentiation */
+    margin-bottom: 1rem;
 }
 
 .cardDescription {
-    font-size: 1rem;
-    color: var(--color-text-dark);
-    margin-bottom: 25px;
-    min-height: 70px; /* Ensures cards have similar height */
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
 .cardButton {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 0.7rem 1.8rem;
     text-decoration: none;
     font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 50px;
-    color: #ffffff;
-    background-color: var(--color-accent); 
-    transition: background-color 0.3s, transform 0.3s;
-    border: 2px solid var(--color-accent);
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
 }
 
 .cardButton:hover {
-    background-color: var(--color-accent-darker);
-    transform: translateY(-2px);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: scale(1.05);
 }
 
 
-/* --- 3. Volunteer Roles (Timeline Styling Reuse) --- */
+/* ========================================= */
+/* 3. VOLUNTEER ROLES (TIMELINE) */
+/* ========================================= */
+
 .timelineSection {
-    padding: 80px 0;
+    padding: 5rem 0;
 }
 
 .timelineHeading {
-    text-align: center;
     font-size: 2.2rem;
     font-weight: 800;
-    color: var(--color-heading);
-    margin-bottom: 40px;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 4rem;
 }
 
 .timelineContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for timeline items */
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .timelineContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
 }
 
 .timelineItem {
-    display: flex;
-    align-items: flex-start;
-    padding: 20px;
-    background-color: #ffffff;
+    position: relative;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    background-color: var(--text-light);
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border-left: 5px solid var(--color-accent); /* Accent border */
+    box-shadow: 0 4px 10px var(--shadow-light);
+    transition: all 0.3s ease;
 }
 
 .timelineTagWrapper {
-    flex-shrink: 0;
-    margin-right: 20px;
+    margin-bottom: 1rem;
 }
 
 .timelineTag {
     display: inline-block;
-    padding: 6px 12px;
-    border-radius: 50px;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 700;
-    color: var(--color-text-light);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-/* Tag Color Assignments */
-.tagBlue { background-color: var(--color-tag-blue); }
-.tagOrange { background-color: var(--color-tag-orange); }
-.tagPurple { background-color: var(--color-tag-purple); }
-.tagGreen { background-color: var(--color-tag-green); }
-
-
-.timelineContent {
-    flex-grow: 1;
-}
+/* Tag Colors */
+.tagBlue { background-color: #e0f7fa; color: #00bcd4; }
+.tagPurple { background-color: #f3e5f5; color: #9c27b0; }
+.tagOrange { background-color: #ffe0b2; color: #ff9800; }
+.tagGreen { background-color: #e8f5e9; color: #4caf50; }
 
 .timelineTitle {
     font-size: 1.25rem;
     font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 8px;
-    color: var(--color-heading);
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
 }
 
 .timelineText {
     font-size: 0.95rem;
-    color: var(--color-text-dark);
-    line-height: 1.5;
+    color: #666;
 }
 
 
-/* --- 4. Partnership Impact Section (Reused Styling) --- */
+/* ========================================= */
+/* 4. PARTNERSHIP SECTION */
+/* ========================================= */
+
 .partnershipSection {
     position: relative;
-    padding: 60px 40px;
-    margin: 80px 0;
-    border-radius: 15px;
+    padding: 6rem 1.5rem;
+    margin: 4rem 0;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-radius: 10px;
     overflow: hidden;
-    /* Dark Background for contrast */
-    background-color: var(--color-primary); 
-    color: var(--color-text-light);
-    z-index: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px var(--shadow-heavy);
 }
 
 .partnershipContent {
     position: relative;
-    z-index: 10;
+    z-index: 5;
     max-width: 800px;
-    text-align: center;
     margin: 0 auto;
+    text-align: center;
 }
 
 .partnershipHeading {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    color: var(--color-accent);
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
 }
 
 .partnershipText {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
 }
 
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 992px) {
-    .heroSection {
-        padding: 80px 0;
-    }
-    
-    .heroHeading {
-        font-size: 2.8rem;
-    }
-    
-    .timelineContainer {
-        grid-template-columns: 1fr; /* Single column on tablets */
-    }
-}
-
-@media (max-width: 600px) {
-    .heroHeading {
-        font-size: 2rem;
-    }
-
-    .heroSubtitle {
-        font-size: 1rem;
-    }
-    
-    .heroButtonContainer {
-        flex-direction: column;
-    }
-    
-    .storyHeading, .timelineHeading, .partnershipHeading {
-        font-size: 1.8rem;
-    }
-    
-    .partnershipSection {
-        padding: 40px 20px;
-        margin: 60px 0;
-    }
-}
+/* Reusing heroButtonPrimary style for consistency */
+/* The style is applied inline in the component */
