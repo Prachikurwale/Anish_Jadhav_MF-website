@@ -1,224 +1,352 @@
-/* --- ⚠️ IMPORTANT: Apne font-family ke naam yahan daalein --- */
-/* (Maine inhein .pageContainer mein daal diya hai) */
+:root {
+  --color-primary-green: #124b33; /* Dark Green */
+  --color-primary-gold: #d1a33a; /* Gold/Amber */
+  --color-secondary-green: #1a6245; /* Lighter Green */
+  --color-secondary-gold: #f2c75a; /* Lighter Gold */
+  
+  --color-background-light: #f9fafb;
+  --color-text-dark: #111827;
+  --color-text-light: #4b5563;
+  --color-accent-light: #fcfcfc;
+  --card-shadow-dark: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
 .pageContainer {
     font-family: 'YourBodyFont', sans-serif;
-    background-color: #f9fafb; /* bg-gray-50 */
+    background-color: var(--color-background-light); 
     overflow-x: hidden;
     flex-grow: 1;
-  }
-  
-  .fontHeading {
-    font-family: 'YourHeadingFont', sans-serif; 
-  }
-  
-  /* --- Global Styles --- */
+}
+
+.fontHeading {
+  font-family: 'YourHeadingFont', sans-serif; 
+}
+
+/* --- Global Styles --- */
+.container {
+  max-width: 1400px; 
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4rem 1.5rem; 
+}
+
+@media (min-width: 768px) {
   .container {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 4rem 1.5rem; /* py-16 px-6 */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
-  
-  @media (min-width: 768px) { /* md: */
-    .container {
-      padding-top: 6rem; /* md:py-24 */
-      padding-bottom: 6rem;
-    }
-  }
-  
-  /* --- Header Section --- */
-  .headerSection {
-    text-align: center;
-    margin-bottom: 4rem; /* mb-16 */
-    max-width: 56rem; /* max-w-4xl */
-    margin-left: auto;
-    margin-right: auto;
-  }
+}
+
+/* --- Header Section --- */
+.headerSection {
+  text-align: center;
+  margin-bottom: 6rem; 
+  max-width: 60rem; 
+  margin-left: auto;
+  margin-right: auto;
+}
+.headerHeading {
+  font-size: 4rem; 
+  font-weight: 800; 
+  color: var(--color-primary-green); 
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.headerSubtitle {
+  font-size: 1.4rem; 
+  color: var(--color-text-light); 
+  max-width: 50rem; 
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+  line-height: 1.7;
+}
+.headerSubtitle strong {
+    color: var(--color-primary-gold); 
+    font-weight: 700;
+}
+@media (min-width: 768px) {
   .headerHeading {
-    font-size: 3rem; /* text-5xl */
-    font-weight: 800; /* font-extrabold */
-    color: #111827; /* text-gray-900 */
-    line-height: 1.1;
-    margin-bottom: 1rem;
+    font-size: 5rem;
   }
-  .headerSubtitle {
-    font-size: 1.25rem; /* text-xl */
-    color: #4b5563; /* text-gray-600 */
-    max-width: 48rem; /* max-w-3xl */
-    margin-left: auto;
-    margin-right: auto;
-  }
-  @media (min-width: 768px) { /* md: */
-    .headerHeading {
-      font-size: 3.75rem; /* md:text-6xl */
-    }
-  }
-  
-  /* --- Program Card (Main Component) --- */
-  .programCard {
+}
+
+/* --- Program Card (Base Styles) --- */
+.programCard {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2rem; /* gap-8 */
-    padding: 2.5rem 0; /* py-10 */
-    margin: 2.5rem 0; /* my-10 */
-    border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
-  }
-  /* last:border-b-0 */
-  .programList > div:last-child .programCard {
-    border-bottom: 0;
-  }
-  @media (min-width: 768px) { /* md: */
+    align-items: stretch; 
+    gap: 3rem; 
+    margin: 4rem 0; 
+    background-color: var(--color-accent-light); 
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow-dark);
+    overflow: hidden;
+    border: 3px solid #eee; 
+    position: relative;
+    
+    /* Default theme properties (Green) */
+    --card-primary: var(--color-primary-green);
+    --card-secondary: var(--color-primary-gold);
+    --card-secondary-light: var(--color-secondary-gold);
+}
+
+/* Diagonal Effect - Remains Gold/Yellow for contrast */
+.programCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary-gold); /* Always Gold */
+    z-index: 1;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    transition: clip-path 0.5s ease-in-out;
+    opacity: 0.05; 
+}
+
+.programCard:hover::before {
+    opacity: 0.1;
+}
+
+/* --- Alternate Themes --- */
+
+.programCard.themeGreen {
+    /* No change needed as Green is the default */
+}
+
+.programCard.themeGold {
+    /* Swap Primary/Secondary colors for Gold Theme */
+    --card-primary: var(--color-primary-gold);
+    --card-secondary: var(--color-primary-green);
+    --card-secondary-light: var(--color-secondary-green);
+}
+
+/* --- Program Card - Layout & Shared Styles --- */
+
+@media (min-width: 1024px) { 
     .programCard {
-      flex-direction: row;
-      gap: 3rem; /* md:gap-12 */
+        flex-direction: row;
+        min-height: 450px; 
     }
-  }
-  
-  /* Program Card - Left Side */
-  .programDescription {
+    .programImageContainer {
+        width: 45%; 
+        flex-shrink: 0;
+    }
+    .programContent {
+        width: 55%;
+        padding: 3rem 4rem 3rem 2rem;
+    }
+}
+
+.programCard.reversed {
+    flex-direction: column-reverse; 
+}
+@media (min-width: 1024px) {
+    .programCard.reversed {
+        flex-direction: row-reverse;
+    }
+    .programCard.reversed .programImageContainer {
+        border-radius: 0 1.5rem 1.5rem 0;
+    }
+    .programCard.reversed::before {
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+        left: unset;
+        right: 0;
+    }
+    .programCard.reversed .programContent {
+        padding: 3rem 2rem 3rem 4rem;
+    }
+}
+
+/* --- Program Card - Image Side (FIXED BACKGROUND COLOR) --- */
+.programImageContainer {
+    position: relative;
+    height: 300px; 
+    overflow: hidden;
+    background-color: var(--card-primary); /* Uses theme color (Green or Gold) */
+    border-radius: 1.5rem 1.5rem 0 0; 
+    z-index: 2;
+    padding: 1.5rem; 
     display: flex;
-    flex-direction: column;
-    gap: 1rem; /* space-y-4 */
-  }
-  .programIconWrapper {
-    padding: 1rem;
-    background-color: #f5f3ff; /* bg-purple-100 */
-    border-radius: 9999px;
-    width: fit-content;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  }
-  .programIcon {
-    width: 2rem; /* w-8 */
-    height: 2rem; /* h-8 */
-    color: #7c3aed; /* text-purple-700 */
-  }
-  .programTitle {
-    font-size: 1.875rem; /* text-3xl */
+    align-items: center; 
+    justify-content: center;
+    transition: background-color 0.5s; /* Smooth theme transition */
+}
+@media (min-width: 1024px) {
+    .programImageContainer {
+        height: auto; 
+        padding: 2.5rem; 
+        border-radius: 1.5rem 0 0 1.5rem;
+    }
+    .programCard.reversed .programImageContainer {
+        border-radius: 0 1.5rem 1.5rem 0;
+    }
+}
+
+.programImage {
+    width: 100%;
+    height: 100%;
+    max-height: 400px; 
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease-in-out;
+    border-radius: 0.75rem; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+}
+.programCard:hover .programImage {
+    transform: scale(1.05); 
+}
+
+/* --- Animated Background Shapes (SLOWER ANIMATIONS) --- */
+
+@keyframes pulseFloat {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(8px, -8px) scale(1.08); opacity: 0.9; } /* Larger movement */
+    100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+}
+@keyframes diagonalMove {
+    0% { transform: translateX(-50%) translateY(0) rotate(10deg); }
+    100% { transform: translateX(50%) translateY(-50%) rotate(25deg); }
+}
+
+.programBgShape1, .programBgShape2 {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    transition: background-color 0.5s;
+}
+
+.programBgShape1 {
+    width: 180px; /* Larger shape */
+    height: 180px;
+    background-color: var(--card-secondary); /* Theme-dependent color */
+    bottom: -60px;
+    right: -60px;
+    animation: pulseFloat 7s infinite ease-in-out alternate; /* Slower 7s */
+    border-radius: 15px; 
+    transform: rotate(45deg);
+    opacity: 0.3;
+}
+
+.programBgShape2 {
+    width: 350px; /* Larger shape */
+    height: 120px;
+    background-color: var(--card-secondary-light); /* Theme-dependent lighter color */
+    top: -60px;
+    left: -120px;
+    animation: diagonalMove 20s infinite linear alternate; /* Slower 20s */
+    opacity: 0.15;
+    border-radius: 50%;
+}
+
+.programIconFloating {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.75rem;
+    background-color: var(--card-secondary); /* Icon color changes with theme */
+    border-radius: 50%;
+    box-shadow: var(--card-shadow-dark);
+    z-index: 5;
+    transition: background-color 0.5s;
+}
+.programIcon {
+    width: 2rem; 
+    height: 2rem;
+    color: white; 
+}
+
+/* --- Program Card - Content Side (Themed Elements) --- */
+
+.programHeader {
+    border-left: 5px solid var(--card-primary); /* Border color changes with theme */
+    padding-left: 1.5rem;
+    transition: border-left-color 0.5s;
+}
+
+.programTitle {
+    color: var(--color-text-dark); 
+}
+.programTagline {
+    color: var(--card-primary); /* Tagline color changes with theme */
     font-weight: 700;
-    color: #111827;
-  }
-  .programTagline {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 600;
-    color: #8b5cf6; /* text-purple-600 */
-  }
-  .programText {
-    color: #4b5563; /* text-gray-600 */
-    line-height: 1.6;
-  }
-  .programDetails {
+    transition: color 0.5s;
+}
+.programText {
+    color: var(--color-text-light); 
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.programDetails {
     display: flex;
-    gap: 1.5rem; /* space-x-6 */
-    font-size: 0.875rem; /* text-sm */
+    gap: 1rem;
+    font-size: 0.95rem; 
     font-weight: 500;
-    padding-top: 0.75rem;
-    color: #9ca3af; /* text-gray-400 */
-  }
-  .programDetailItem {
+    padding-top: 0.5rem;
+    border-top: 1px dashed #e0e0e0;
+    padding-top: 1rem;
+}
+.programDetailItem {
     display: flex;
     align-items: center;
-  }
-  .programDetailIcon {
-    width: 1rem; /* w-4 */
-    height: 1rem; /* h-4 */
-    margin-right: 0.25rem;
-    color: #8b5cf6; /* text-purple-500 */
-  }
-  
-  /* Program Card - Right Side */
-  .programLists {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem; /* space-y-8 */
-  }
-  @media (min-width: 768px) { /* md: */
-    .programDescription,
-    .programLists {
-      width: 50%;
+    color: var(--color-text-dark); 
+}
+.programDetailIcon {
+    color: var(--card-primary); /* Checkmark color changes with theme */
+    transition: color 0.5s;
+}
+
+/* --- List Section (Themed Elements) --- */
+
+.programListsContainer {
+    display: grid;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .programListsContainer {
+        grid-template-columns: 1fr 1fr;
     }
-  }
-  
-  /* --- List Section (Sub-component) --- */
-  .listSection {
+}
+
+.listSection {
     background-color: white;
-    padding: 1.5rem; /* p-6 */
-    border-radius: 1rem; /* rounded-2xl */
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    border: 1px solid #f3f4f6; /* border-gray-100 */
-  }
-  .listTitle {
-    font-size: 1.25rem; /* text-xl */
+    padding: 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f6;
+    transition: all 0.3s;
+}
+
+.listTitle {
+    font-size: 1.125rem; 
     font-weight: 700;
-    color: #1f2937; /* text-gray-800 */
-    margin-bottom: 1.25rem; /* mb-5 */
-    border-left: 4px solid #8b5cf6; /* border-l-4 border-purple-500 */
-    padding-left: 1rem; /* pl-4 */
-  }
-  .list {
+    color: var(--card-primary); /* List title color changes with theme */
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--card-secondary); /* Border color changes with theme */
+    padding-bottom: 0.5rem;
+    transition: color 0.5s, border-bottom-color 0.5s;
+}
+.list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem; /* space-y-3 */
-  }
-  .listItem {
+    gap: 0.5rem;
+}
+.listItem {
     display: flex;
     align-items: flex-start;
-    color: #4b5563; /* text-gray-600 */
-  }
-  .listIcon {
-    width: 1.25rem; /* w-5 */
-    height: 1.25rem; /* h-5 */
-    color: #8b5cf6; /* text-purple-500 */
+    color: var(--color-text-light); 
+    font-size: 0.95rem;
+}
+.listIcon {
+    width: 1rem; 
+    height: 1rem;
+    color: var(--card-secondary); /* List item icon color changes with theme */
     flex-shrink: 0;
-    margin-top: 0.25rem; /* mt-1 */
-    margin-right: 0.5rem; /* mr-2 */
-  }
-  @media (min-width: 768px) { /* md: */
-    .listSection {
-      padding: 2rem; /* md:p-8 */
-    }
-  }
-  
-  /* --- CTA Banner Section --- */
-  .ctaBanner {
-    margin-top: 5rem; /* mt-20 */
-    background-image: linear-gradient(to right, #7c3aed, #4f46e5); /* from-purple-600 to-indigo-700 */
-    padding: 3rem; /* p-12 */
-    border-radius: 1.5rem; /* rounded-3xl */
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); /* shadow-2xl */
-    text-align: center;
-  }
-  .ctaHeading {
-    font-size: 2.25rem; /* text-4xl */
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: white;
-  }
-  .ctaText {
-    font-size: 1.125rem; /* text-lg */
-    color: #e0e7ff; /* text-purple-100 */
-    margin-bottom: 2rem;
-    max-width: 48rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .ctaButton {
-    background-color: white;
-    color: #6d28d9; /* text-purple-700 */
-    font-weight: 700;
-    padding: 0.75rem 2rem; /* py-3 px-8 */
-    border: none;
-    border-radius: 9999px; /* rounded-full */
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .ctaButton:hover {
-    background-color: #f3f4f6; /* hover:bg-gray-100 */
-    transform: scale(1.05);
-  }
-  @media (min-width: 768px) { /* md: */
-    .ctaBanner {
-      padding: 4rem; /* md:p-16 */
-    }
-  }
+    margin-top: 0.2rem;
+    margin-right: 0.5rem;
+    transition: color 0.5s;
+}
+
