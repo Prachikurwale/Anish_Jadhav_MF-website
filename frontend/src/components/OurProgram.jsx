@@ -1,52 +1,74 @@
-import React from 'react';
-// Framer Motion
-import { motion } from 'framer-motion';
-// Icons
-import { CheckCircle, Code, Briefcase, GraduationCap, RefreshCw } from 'lucide-react';
-// CSS Module
-import styles from './OurPrograms.module.css';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { CheckCircle, Code, Briefcase, GraduationCap, RefreshCw, ChevronRight } from 'lucide-react'
+import styles from './OurPrograms.module.css'
 
-// --- Animation Variants (No change) ---
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
+// NOTE: Please replace these with actual image paths.
+import imgCode from '../assets/program_code.jpg'; 
+import imgBusiness from '../assets/program_business.jpg';
+import imgEducation from '../assets/program_education.jpg';
+import imgSecondChance from '../assets/program_second_chance.jpg';
+
+// --- Animation Variants (Optimized Slow Speed) ---
+const containerVariants = {
+  visible: { transition: { staggerChildren: 0.2 } } // Thoda tez kiya
+};
+
+const headerVariants = {
+  hidden: { opacity: 0, y: -40, scale: 0.9 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.6, ease: "easeOut" } 
+    scale: 1, 
+    transition: { 
+      type: "spring", 
+      stiffness: 50,    // Thoda tez kiya
+      damping: 17,
+      delay: 0.3,       // Delay kam kiya
+    } 
   }
 };
-const slideInLeft = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }
-};
-const slideInRight = {
-  hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }
-};
-const listVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-};
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 }
+
+// 3D Tilt/RotateY Animation for Cards (Optimized Slow Speed)
+const card3DTilt = {
+  hidden: { opacity: 0, y: 80, rotateY: 100, transformPerspective: 800 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    rotateY: 0, 
+    transformPerspective: 800,
+    transition: { 
+        type: "spring", 
+        stiffness: 45, // Optimized: Stiffness badhaya (tez shuru)
+        damping: 15,   // Optimized: Damping badhaya (smooth settle)
+        mass: 1.5,     // Optimized: Mass kam kiya (loading jaldi)
+    } 
+  }
 };
 
-// === Reusable component for List Sections ===
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } } 
+};
+
+// --- ListSection, ProgramCard, PROGRAMS_DATA, OurPrograms components remain unchanged ---
 const ListSection = (props) => {
   const { title, items, icon: Icon } = props;
 
   return (
-    <div className={styles.listSection}>
+    <motion.div 
+        className={styles.listSection}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+    >
       <h4 className={`${styles.fontHeading} ${styles.listTitle}`}>
         {title}
       </h4>
       <motion.ul 
         className={styles.list}
-        variants={listVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
       >
         {items.map((item, index) => (
           <motion.li 
@@ -59,48 +81,60 @@ const ListSection = (props) => {
           </motion.li>
         ))}
       </motion.ul>
-    </div>
+    </motion.div>
   );
 };
 
-// === Reusable component for the four individual School Cards ===
 const ProgramCard = (props) => {
-  const { icon: Icon, title, tagline, description, duration, residential, curriculum, outcomes } = props;
+  const { icon: Icon, title, tagline, description, duration, residential, curriculum, outcomes, image, isReversed, theme } = props;
   
   return (
-    <div className={styles.programCard}>
+    <motion.div 
+        className={`${styles.programCard} ${isReversed ? styles.reversed : ''} ${styles[theme]}`}
+        variants={card3DTilt}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+    >
       
-      {/* School Description (Left/Right) */}
-      <div className={styles.programDescription}>
-        <div className={styles.programIconWrapper}>
-          <Icon className={styles.programIcon} />
-        </div>
-        
-        <h3 className={`${styles.fontHeading} ${styles.programTitle}`}>{title}</h3>
-        <p className={`${styles.fontHeading} ${styles.programTagline}`}>{tagline}</p>
-        <p className={styles.programText}>{description}</p>
-        
-        <div className={styles.programDetails}>
-          <span className={styles.programDetailItem}>
-            <CheckCircle className={styles.programDetailIcon} /> {duration}
-          </span>
-          <span className={styles.programDetailItem}>
-            <CheckCircle className={styles.programDetailIcon} /> {residential}
-          </span>
-        </div>
+      <div className={styles.programImageContainer}>
+          <img src={image} alt={`${title} Visual`} className={styles.programImage} />
+          <div className={styles.programIconFloating}>
+             <Icon className={styles.programIcon} />
+          </div>
+          <div className={styles.programBgShape1} />
+          <div className={styles.programBgShape2} />
       </div>
       
-      {/* Curriculum & Outcomes (Right/Left) */}
-      <div className={styles.programLists}>
-        <ListSection title="Curriculum Highlights" items={curriculum} icon={CheckCircle} />
-        <ListSection title="Program Outcomes" items={outcomes} icon={CheckCircle} />
+      <div className={styles.programContent}>
+          
+          <div className={styles.programHeader}>
+            <h3 className={`${styles.fontHeading} ${styles.programTitle}`}>{title}</h3>
+            <p className={`${styles.fontHeading} ${styles.programTagline}`}>{tagline}</p>
+          </div>
+          
+          <p className={styles.programText}>{description}</p>
+          
+          <div className={styles.programDetails}>
+            <span className={styles.programDetailItem}>
+              <CheckCircle className={styles.programDetailIcon} /> **Duration:** {duration}
+            </span>
+            <span className={styles.programDetailItem}>
+              <CheckCircle className={styles.programDetailIcon} /> **Setup:** {residential}
+            </span>
+          </div>
+
+          <div className={styles.programListsContainer}>
+             <ListSection title="Curriculum Highlights" items={curriculum} icon={ChevronRight} />
+             <ListSection title="Program Outcomes" items={outcomes} icon={ChevronRight} />
+          </div>
+
       </div>
 
-    </div>
+    </motion.div>
   );
 };
 
-// --- Data (No change) ---
 const PROGRAMS_DATA = [
     {
       icon: Code,
@@ -109,6 +143,8 @@ const PROGRAMS_DATA = [
       description: "Our flagship program transforms complete beginners into skilled software developers ready for the tech industry. Learn in-demand programming languages and modern development practices through hands-on projects and mentorship.",
       duration: "12-18 months",
       residential: "Residential",
+      image: imgCode,
+      theme: 'themeGreen', 
       curriculum: [
         "JavaScript Fundamentals & ES6+", "React & Modern Frontend Development",  
         "Node.js & Backend Development",  "Git & Version Control", 
@@ -118,7 +154,6 @@ const PROGRAMS_DATA = [
         "Full-stack web development capabilities", "Portfolio of real-world projects", "Industry-recognized certifications", "Job placement assistance"
       ]
     },
-    // ... (baaki data waise hi rahega) ...
   {
     icon: Briefcase,
     title: "School of Business",
@@ -126,6 +161,8 @@ const PROGRAMS_DATA = [
     description: "Develop the business acumen and entrepreneurial mindset needed to create opportunities and drive innovation. Learn from industry experts and build practical business skills.",
     duration: "10-14 months",
     residential: "Residential",
+    image: imgBusiness,
+    theme: 'themeGold', 
     curriculum: [
       "Business Strategy & Planning",  "Marketing & Brand Development", 
       "Leadership & Team Building", "Digital Marketing & Social Media", 
@@ -142,6 +179,8 @@ const PROGRAMS_DATA = [
     description: "Transform lives by becoming an educator. Learn modern teaching methodologies, curriculum design, and educational technology to inspire and educate the next generation.",
     duration: "12 months",
     residential: "Residential",
+    image: imgEducation,
+    theme: 'themeGreen', 
     curriculum: [
       "Teaching Methods", "Curriculum Design & Development", 
       "Classroom Management", "Educational Technology", 
@@ -158,6 +197,8 @@ const PROGRAMS_DATA = [
     description: "A transformative program for those seeking to restart their career journey. SOSC offering 52-week courses to help young people from challenging background learn, grow, and build meaningful careers",
     duration: "Flexible (6-16 months)",
     residential: "Residential",
+    image: imgSecondChance,
+    theme: 'themeGold', 
     curriculum: [
       "Designing basics", "Textile skills", "Product making", "Financial acumen and marketing", 
       "Digital tools and industry learning"
@@ -168,64 +209,38 @@ const PROGRAMS_DATA = [
   }
 ];
 
-// === Main Component ===
 const OurPrograms = () => {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.container}>
         
-        {/* === Header Section === */}
         <motion.section 
           className={styles.headerSection}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          variants={sectionVariants}
+          variants={headerVariants}
         >
           <h1 className={`${styles.fontHeading} ${styles.headerHeading}`}>
-            Our Programs
+            Our Specialized Schools
           </h1>
           <p className={styles.headerSubtitle}>
-            Four specialized schools designed to unlock potential and create pathways to success. Each program combines rigorous academics with practical skills and comprehensive support.
+            Four specialized programs designed to unlock the full potential of every student. We combine **rigorous academics, hands-on skills, and comprehensive residential support** to guarantee career pathways.
           </p>
         </motion.section>
 
-        {/* === Programs Grid/List === */}
         <section className={styles.programList}>
           {PROGRAMS_DATA.map((program, index) => {
             const isReversed = index % 2 !== 0;
             return (
-              <motion.div
-                key={index}
-                variants={isReversed ? slideInRight : slideInLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                <ProgramCard {...program} />
-              </motion.div>
+                <ProgramCard 
+                    key={index} 
+                    {...program} 
+                    isReversed={isReversed} 
+                />
             );
           })}
         </section>
-
-        {/* === Call to Action Banner === */}
-        <motion.section 
-          className={styles.ctaBanner}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={sectionVariants}
-        >
-          <h2 className={`${styles.fontHeading} ${styles.ctaHeading}`}>
-            Ready to Transform Your Future?
-          </h2>
-          <p className={styles.ctaText}>
-            All programs are completely free for eligible students and include residential facilities, meals, and comprehensive support.
-          </p>
-          <button className={styles.ctaButton}>
-            Apply Now
-          </button>
-        </motion.section>
 
       </div>
     </div>
