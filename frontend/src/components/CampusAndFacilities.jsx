@@ -9,6 +9,9 @@ import {
 } from 'react-icons/fa';
 // CSS Module ko import karein
 import styles from './CampusAndFacilities.module.css';
+// Analytics
+import { trackSectionView, trackFacilityInteraction, trackGalleryInteraction, trackUserEngagement } from '../utils/analytics';
+import { usePageAnalytics, useScrollAnalytics } from '../utils/analyticsHooks';
 
 // === Image Imports ===
 import campusOverviewImg from '../assets/Foundation.png';
@@ -234,6 +237,9 @@ const GalleryItem = ({ item, index }) => (
         boxShadow: "0 20px 40px rgba(0, 0, 0, 0.15)",
         transition: { type: "spring", stiffness: 300, damping: 20 }
     }}
+    onViewportEnter={() => trackGalleryInteraction(item.text, 'view')}
+    onHoverStart={() => trackGalleryInteraction(item.text, 'hover')}
+    onClick={() => trackGalleryInteraction(item.text, 'click')}
   >
     {/* 🟢 Wipe Overlay for Initial Reveal (Video look) and Hover Cover */}
     <motion.div 
@@ -317,6 +323,9 @@ const GalleryItem = ({ item, index }) => (
 
 
 function CampusAndFacilities() {
+  // Analytics tracking
+  usePageAnalytics('Campus & Facilities');
+  useScrollAnalytics('Campus & Facilities');
 
   // Split the hero title into words for animation
   const heroTitle = "Campus & Facilities";
@@ -408,7 +417,8 @@ function CampusAndFacilities() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        variants={containerVariants} 
+        variants={containerVariants}
+        onViewportEnter={() => trackSectionView('Campus Gallery', 'Campus & Facilities')}
       >
         <div className={`${styles.container} ${styles.textCenter}`}>
           
@@ -435,6 +445,7 @@ function CampusAndFacilities() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
+        onViewportEnter={() => trackSectionView('World-Class Facilities', 'Campus & Facilities')}
       >
         <div className={`${styles.container} ${styles.textCenter}`}>
           <MotionDiv variants={fadeInUp}>
@@ -461,6 +472,9 @@ function CampusAndFacilities() {
                   y: -5,
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
+                onViewportEnter={() => trackFacilityInteraction(facility.title, 'view')}
+                onHoverStart={() => trackFacilityInteraction(facility.title, 'hover')}
+                onClick={() => trackFacilityInteraction(facility.title, 'click')}
               >
                 <FacilityIcon icon={facility.icon} />
                 <div>
@@ -516,6 +530,7 @@ function CampusAndFacilities() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
+        onViewportEnter={() => trackSectionView('Living & Learning', 'Campus & Facilities')}
       >
         {/* Banner (Dark BG) */}
         <div className={styles.banner}>
@@ -549,6 +564,8 @@ function CampusAndFacilities() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                   viewport={{ once: true }}
+                  onViewportEnter={() => trackUserEngagement('stat_view', { stat_type: stat.count })}
+                  onHoverStart={() => trackUserEngagement('stat_hover', { stat_type: stat.count })}
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -582,7 +599,10 @@ function CampusAndFacilities() {
         {/* Campus Life Section - Light Background Color */}
         <div className={styles.campusLifeSection}>
           <div className={`${styles.container} ${styles.textCenter}`}>
-            <MotionDiv variants={fadeInUp}>
+            <MotionDiv 
+              variants={fadeInUp}
+              onViewportEnter={() => trackSectionView('Campus Life', 'Campus & Facilities')}
+            >
               <h2 className={styles.sectionHeading}>
                 Campus Life
               </h2>
