@@ -1,97 +1,112 @@
 /* Variables for colors */
 :root {
-  --footer-bg: #2f3840; /* Dark background color */
-  --footer-text: #bdbfc1; /* Light gray text color */
+  --footer-bg: #343a40; /* Dark background color (Primary) */
+  --footer-text: #ebebeb; /* Light gray text color */
   --footer-heading: #ffffff; /* White heading color */
   --footer-link-hover: #f0c330; /* Example yellow/accent hover color */
-  --footer-bottom-bg: #272d33; /* Even darker bottom bar */
+  --footer-bottom-bg: #fbf9c0; /* Use the same color as main footer for the bottom bar for seamless blending */
 }
-
+body{
+  font-family: open-sans, sans-serif;
+}
 .footerWrapper {
   position: relative;
-  /* Dark color for the main footer background */
-  background-color: var(--footer-bg); 
-  /* The crucial part for the curved top-right corner */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  /* To simulate the top curve on the right (Optional: Requires more complex styling if you want the exact SFS curve) */
-  /* For simplicity, we are using a standard rectangular dark block with a subtle curve effect */
+  background-color: var(--footer-bg);
+  overflow: hidden;
+  border-top-right-radius: 30%;
 }
-
-/* Main Footer Section */
+.footerWrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  background-color: var(--sfs-dark-grey-strip);
+  z-index: 1;
+}
+.footerWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  background-color: var(--sfs-accent-color);
+  z-index: 2;
+}
 .footer {
-  padding: 40px 0;
+  padding: 60px 0 0 0;
   color: var(--footer-text);
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 3;
 }
-
-/* 3-Column Grid for main content */
 .footerGrid {
   display: grid;
-  /* 3-column layout: first column wider, others equal */
-  grid-template-columns: 2fr 1fr 1.5fr; 
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr;
   gap: 40px;
   padding-bottom: 20px;
 }
-
-/* --- Column 1: Logo and About --- */
-.logoAndLinksColumn {
-  display: flex;
-  flex-direction: column;
-}
-
-.logoSocialsGroup {
-  margin-bottom: 40px; /* Space between logo/socials and 'About' links */
+.logoSocialsColumn {
+  margin-bottom: 20px;
 }
 
 .logoSection {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 15px;
 }
 
 .mainFooterLogo {
-  /* Style your logo image to match the SFS logo size */
-  width: 50px; 
-  height: 50px;
+  width: 140px;
+  height: 140px;
   margin-right: 15px;
+  border-radius: 20px;
   object-fit: contain;
 }
-
 .schoolName {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
   color: var(--footer-heading);
   text-transform: uppercase;
-}
-
+} 
 .socialsContainer {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* space between icons */
+  padding: 20px 0;
+     
 }
 
 .socialLink {
-  color: var(--footer-text);
-  font-size: 1.2rem;
-  transition: color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #000; /* black circle */
+  border-radius: 50%;
+  color: #fff; /* white icon */
+  font-size: 24px;
+  transition: all 0.3s ease;
 }
 
+/* Hover effect */
 .socialLink:hover {
-  color: var(--footer-link-hover);
+  transform: translateY(-5px);
+  color: #000; /* change icon color */
+  background-color: #fff; /* white background on hover */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
-.linksBlock {
-  /* Separates the 'About' links group from the Logo/Socials if it needs vertical space */
-}
 
-
-/* --- Shared Styling for Headings and Links --- */
 .linksHeading {
   font-size: 1rem;
   color: var(--footer-heading);
@@ -122,18 +137,18 @@
   color: var(--footer-link-hover);
 }
 
-/* --- Column 3: Contact Info --- */
+/* Contact Info */
 .contactInfo p {
   margin: 0 0 8px 0;
   font-size: 0.95rem;
   line-height: 1.4;
 }
 
-/* --- Separator and Statement --- */
+/* Separator and Statement */
 .footerSeparator {
   border: 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.15); /* Light line */
+  background: rgba(255, 255, 255, 0.15);
   margin: 30px 0;
 }
 
@@ -142,71 +157,78 @@
 }
 
 .statementHeading {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--footer-heading);
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .statementText {
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--footer-text);
-  max-width: 80%; /* Match the narrow width in the SFS image */
+  max-width: 65%;
 }
 
-/* --- Bottom Bar (Copyright) --- */
-.footerBottomBar {
-  background-color: var(--footer-bottom-bg); /* Slightly darker color */
-  color: var(--footer-text);
-  font-size: 0.8rem;
-  padding: 20px 0;
-}
+ 
 
 .footerBottomContent {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
-.copyright,
-.poweredBy {
-  margin: 0;
+.copyright{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--footer-text);
 }
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 992px) {
   .footerGrid {
-    /* Stack columns on smaller screens */
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
   }
-  
-  .logoAndLinksColumn {
-      /* Stack logo/socials and links vertically on small screens */
-      flex-direction: row; 
-      justify-content: space-between;
-      gap: 30px;
+
+  .logoSocialsColumn {
+    grid-column: 1 / 2;
+    margin-bottom: 0;
+  }
+
+  .linksBlock:nth-child(1) {
+    grid-column: 1 / 2;
+  }
+
+  .linksBlock:nth-child(2) {
+    grid-column: 1 / 2;
+  }
+
+  .contactColumn {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+  }
+
+  .statementText {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .footerGrid {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr;
     gap: 30px;
   }
-  
-  .logoAndLinksColumn {
-    flex-direction: column; 
+
+  .contactColumn {
+    grid-row: auto;
   }
-  
-  .statementText {
-    max-width: 100%;
-  }
-  
+
   .footerBottomContent {
     flex-direction: column;
     text-align: center;

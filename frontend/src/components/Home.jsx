@@ -129,8 +129,10 @@ function Home() {
   const navigate = useNavigate();
   const heroTitle = "Anish Jadhav Memorial Foundation";
   const titleWords = heroTitle.split(" ");
+
   const marqueeRow1 = campusImages.slice(0, 3);
   const marqueeRow2 = campusImages.slice(3, 6);
+
 
   return (
     <div className={styles.pageContainer}>
