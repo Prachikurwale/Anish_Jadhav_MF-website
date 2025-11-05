@@ -4,7 +4,7 @@ import { FaChevronDown } from 'react-icons/fa';
 // CSS Module ko import karein
 import styles from './Navbar.module.css';
 // Logo import karein
-import ajmfLogo from '../assets/AJMF.png'; 
+import ajmfLogo from '../assets/AJMF.jpeg'; 
 
 function Navbar() {
   

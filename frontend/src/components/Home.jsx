@@ -38,7 +38,7 @@ function Home() {
   const heroTitle = "Anish Jadhav Memorial Foundation";
   const titleWords = heroTitle.split(" ");
   const campusImages = [campusImg1, campusImg2, campusImg3, campusImg4, campusImg5, campusImg6];
-
+   
   return (
     <div className={styles.pageContainer}>
       {/* 🌟 HERO SECTION */}

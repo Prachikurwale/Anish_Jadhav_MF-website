@@ -310,5 +310,32 @@
     opacity: 0.9;
 }
 
-/* Reusing heroButtonPrimary style for consistency */
-/* The style is applied inline in the component */
+/* ========================================= */
+/* MEDIA QUERIES */
+/* ========================================= */
+
+@media (max-width: 600px) {
+    .heroHeading {
+        font-size: 2rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+    
+    .heroButtonContainer {
+        flex-direction: column;
+    }
+    
+    .storyHeading, 
+    .timelineHeading, 
+    .partnershipHeading {
+        font-size: 1.8rem;
+    }
+
+    .partnershipSection {
+        padding: 40px 20px;
+        margin: 60px 0;
+    }
+}
+

@@ -9,7 +9,7 @@ const MotionDiv = motion.div;
 const MotionSection = motion.section;
 
 // Imports (Reuse the assets and variants from the AboutAnish component)
-import FoundationImage from '../assets/Foundation.png'; 
+import FoundationImage from '../assets/BrigadierKishorJadhav.png'; 
 
 // === Animation Variants (Reusing the existing variants) ===
 const containerVariants = {
