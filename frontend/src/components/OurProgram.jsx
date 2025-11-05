@@ -3,15 +3,13 @@ import { motion } from 'framer-motion'
 import { CheckCircle, Code, Briefcase, GraduationCap, RefreshCw, ChevronRight } from 'lucide-react'
 import styles from './OurPrograms.module.css'
 
-// NOTE: Please replace these with actual image paths.
 import imgCode from '../assets/program_code.jpg'; 
 import imgBusiness from '../assets/program_business.jpg';
 import imgEducation from '../assets/program_education.jpg';
 import imgSecondChance from '../assets/program_second_chance.jpg';
 
-// --- Animation Variants (Optimized Slow Speed) ---
 const containerVariants = {
-  visible: { transition: { staggerChildren: 0.2 } } // Thoda tez kiya
+  visible: { transition: { staggerChildren: 0.2 } }
 };
 
 const headerVariants = {
@@ -22,16 +20,16 @@ const headerVariants = {
     scale: 1, 
     transition: { 
       type: "spring", 
-      stiffness: 50,    // Thoda tez kiya
+      stiffness: 50,
       damping: 17,
-      delay: 0.3,       // Delay kam kiya
+      delay: 0.3,
     } 
   }
 };
 
-// 3D Tilt/RotateY Animation for Cards (Optimized Slow Speed)
+// 🌟 CHANGE: Animation ko thoda smooth kiya
 const card3DTilt = {
-  hidden: { opacity: 0, y: 80, rotateY: 100, transformPerspective: 800 },
+  hidden: { opacity: 0, y: 80, rotateY: 75, transformPerspective: 800 }, // 100 se 75 kiya
   visible: { 
     opacity: 1, 
     y: 0, 
@@ -39,9 +37,9 @@ const card3DTilt = {
     transformPerspective: 800,
     transition: { 
         type: "spring", 
-        stiffness: 45, // Optimized: Stiffness badhaya (tez shuru)
-        damping: 15,   // Optimized: Damping badhaya (smooth settle)
-        mass: 1.5,     // Optimized: Mass kam kiya (loading jaldi)
+        stiffness: 50,  // Thoda tight kiya
+        damping: 18,  // Bounce kam kiya
+        mass: 1.5,
     } 
   }
 };
@@ -51,7 +49,6 @@ const itemVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.4 } } 
 };
 
-// --- ListSection, ProgramCard, PROGRAMS_DATA, OurPrograms components remain unchanged ---
 const ListSection = (props) => {
   const { title, items, icon: Icon } = props;
 
@@ -116,11 +113,12 @@ const ProgramCard = (props) => {
           <p className={styles.programText}>{description}</p>
           
           <div className={styles.programDetails}>
+            {/* 🌟 CHANGE: Asterisks (**) ko <strong> se replace kiya */}
             <span className={styles.programDetailItem}>
-              <CheckCircle className={styles.programDetailIcon} /> **Duration:** {duration}
+              <CheckCircle className={styles.programDetailIcon} /> <strong>Duration:</strong> {duration}
             </span>
             <span className={styles.programDetailItem}>
-              <CheckCircle className={styles.programDetailIcon} /> **Setup:** {residential}
+              <CheckCircle className={styles.programDetailIcon} /> <strong>Setup:</strong> {residential}
             </span>
           </div>
 
@@ -225,7 +223,7 @@ const OurPrograms = () => {
             Our Specialized Schools
           </h1>
           <p className={styles.headerSubtitle}>
-            Four specialized programs designed to unlock the full potential of every student. We combine **rigorous academics, hands-on skills, and comprehensive residential support** to guarantee career pathways.
+            Four specialized programs designed to unlock the full potential of every student. We combine <strong>rigorous academics, hands-on skills, and comprehensive residential support</strong> to guarantee career pathways.
           </p>
         </motion.section>
 

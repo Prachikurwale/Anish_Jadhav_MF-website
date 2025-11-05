@@ -1,15 +1,49 @@
-import React from 'react';
-// Icons
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+// Icons (Lucide-React se badal diye gaye hain)
 import { 
-  FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaFacebookF, FaTwitter, 
-  FaInstagram, FaLinkedinIn, FaPaperPlane, FaMapPin 
-} from 'react-icons/fa';
-// CSS Module ko import karein
+  MapPin, Mail, Phone, Facebook, Twitter, 
+  Instagram, Linkedin, Send, Map, ChevronDown 
+} from 'lucide-react';
+// CSS Module
 import styles from './ContactUs.module.css';
 
-function ContactUs() {
+// --- Animation Variants ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+const itemSlideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+};
+const itemSlideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+};
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+};
+const faqAnswerVariant = {
+  hidden: { opacity: 0, height: 0, marginTop: 0, paddingTop: 0, borderTopWidth: 0 },
+  visible: { 
+    opacity: 1, 
+    height: 'auto', 
+    marginTop: '0.5rem', 
+    paddingTop: '1rem',
+    borderTopWidth: '1px',
+    transition: { duration: 0.3, ease: 'easeInOut' }
+  }
+};
 
-  // FAQ data (No change)
+function ContactUs() {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
   const faqs = [
     { 
       q: "How can I apply for admission?", 
@@ -30,10 +64,16 @@ function ContactUs() {
   ];
 
   return (
-    <div>
+    <div className={styles.pageWrapper}>
       
-      {/* ===== SECTION 1: CONTACT FORM & INFO ===== */}
-      <section className={`${styles.section} ${styles.sectionBgWhite}`}>
+      {/* ===== SECTION 1: HEADER ===== */}
+      <motion.section 
+        className={`${styles.section} ${styles.headerSection}`}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInUp}
+      >
         <div className={`${styles.container} ${styles.textCenter}`}>
           <h1 className={`${styles.fontHeading} ${styles.pageHeading}`}>
             Contact Us
@@ -44,17 +84,24 @@ function ContactUs() {
             Reach out and we'll respond as soon as possible.
           </p>
         </div>
-        
+      </motion.section>
+
+      {/* ===== SECTION 2: CONTACT FORM & INFO ===== */}
+      <section className={`${styles.section} ${styles.sectionBgWhite}`}>
         <div className={`${styles.container} ${styles.gridContainer}`}>
           
-          {/* Left Column: Get In Touch */}
-          <div className={`${styles.textLeft} ${styles.infoContainer}`}>
-            <h2 className={`${styles.fontHeading} ${styles.sectionHeading}`}>Get In Touch</h2>
+          <motion.div 
+            className={`${styles.textLeft} ${styles.infoContainer}`}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <motion.h2 variants={itemSlideInLeft} className={`${styles.fontHeading} ${styles.sectionHeading}`}>Get In Touch</motion.h2>
             
-            {/* Address Block */}
-            <div className={styles.infoBlock}>
+            <motion.div className={styles.infoBlock} variants={itemSlideInLeft}>
               <div className={styles.infoIconWrapper}>
-                <FaMapMarkerAlt className={styles.infoIcon} />
+                <MapPin className={styles.infoIcon} />
               </div>
               <div>
                 <h3 className={`${styles.fontBody} ${styles.infoTitle}`}>Our Address</h3>
@@ -64,63 +111,65 @@ function ContactUs() {
                   [Campus Address], India
                 </p>
               </div>
-            </div>
+            </motion.div>
             
-            {/* Email Block */}
-            <div className={styles.infoBlock}>
+            <motion.div className={styles.infoBlock} variants={itemSlideInLeft}>
               <div className={styles.infoIconWrapper}>
-                <FaEnvelope className={styles.infoIcon} />
+                <Mail className={styles.infoIcon} />
               </div>
               <div>
                 <h3 className={`${styles.fontBody} ${styles.infoTitle}`}>Email Us</h3>
                 <a href="mailto:info@ajmf.org" className={`${styles.fontBody} ${styles.infoLink}`}>info@ajmf.org</a><br />
                 <a href="mailto:admissions@ajmf.org" className={`${styles.fontBody} ${styles.infoLink}`}>admissions@ajmf.org</a>
               </div>
-            </div>
+            </motion.div>
             
-            {/* Call Block */}
-            <div className={styles.infoBlock}>
+            <motion.div className={styles.infoBlock} variants={itemSlideInLeft}>
               <div className={styles.infoIconWrapper}>
-                <FaPhoneAlt className={styles.infoIcon} />
+                <Phone className={styles.infoIcon} />
               </div>
               <div>
                 <h3 className={`${styles.fontBody} ${styles.infoTitle}`}>Call Us</h3>
                 <p className={`${styles.fontBody} ${styles.infoText}`}>+91 123 456 7890</p>
                 <p className={`${styles.fontBody} ${styles.infoSubtext}`}>Monday - Friday, 9:00 AM - 6:00 PM</p>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Follow Us Block */}
-            <div className={styles.socialsBox}>
+            <motion.div className={styles.socialsBox} variants={itemSlideInLeft}>
               <h3 className={`${styles.fontBody} ${styles.socialsBoxTitle}`}>Follow Us</h3>
               <div className={styles.socialsContainer}>
                 <a href="#" className={styles.socialLink} aria-label="Facebook">
-                  <FaFacebookF />
+                  <Facebook size={18} />
                 </a>
                 <a href="#" className={styles.socialLink} aria-label="Twitter">
-                  <FaTwitter />
+                  <Twitter size={18} />
                 </a>
                 <a href="#" className={styles.socialLink} aria-label="Instagram">
-                  <FaInstagram />
+                  <Instagram size={18} />
                 </a>
                 <a href="#" className={styles.socialLink} aria-label="LinkedIn">
-                  <FaLinkedinIn />
+                  <Linkedin size={18} />
                 </a>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Column: Form */}
-          <div className={styles.formContainer}>
+          <motion.div 
+            className={styles.formContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={itemSlideInRight}
+          >
             <h2 className={`${styles.fontHeading} ${styles.sectionHeading} ${styles.formHeading}`}>Send Us a Message</h2>
             <form className={styles.form}>
               <div>
                 <label className={`${styles.fontBody} ${styles.formLabel}`}>Full Name *</label>
-                <input type="text" placeholder="Your name" className={`${styles.fontBody} ${styles.formInput}`} />
+                <input type="text" placeholder="Your name" className={`${styles.fontBody} ${styles.formInput}`} required />
               </div>
               <div>
                 <label className={`${styles.fontBody} ${styles.formLabel}`}>Email Address *</label>
-                <input type="email" placeholder="your.email@example.com" className={`${styles.fontBody} ${styles.formInput}`} />
+                <input type="email" placeholder="your.email@example.com" className={`${styles.fontBody} ${styles.formInput}`} required />
               </div>
               <div>
                 <label className={`${styles.fontBody} ${styles.formLabel}`}>Phone Number</label>
@@ -128,50 +177,93 @@ function ContactUs() {
               </div>
               <div>
                 <label className={`${styles.fontBody} ${styles.formLabel}`}>Subject *</label>
-                <input type="text" placeholder="What is this regarding?" className={`${styles.fontBody} ${styles.formInput}`} />
+                <input type="text" placeholder="What is this regarding?" className={`${styles.fontBody} ${styles.formInput}`} required />
               </div>
               <div>
                 <label className={`${styles.fontBody} ${styles.formLabel}`}>Message *</label>
-                <textarea rows="5" placeholder="Tell us more..." className={`${styles.fontBody} ${styles.formInput}`}></textarea>
+                <textarea rows="5" placeholder="Tell us more..." className={`${styles.fontBody} ${styles.formInput}`} required></textarea>
               </div>
               <button type="submit" className={`${styles.fontBody} ${styles.submitButton}`}>
-                <FaPaperPlane className={styles.buttonIcon} />
+                <Send className={styles.buttonIcon} size={18} />
                 Send Message
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ===== SECTION 2: MAP ===== */}
-      <section className={`${styles.section} ${styles.sectionBgGray}`}>
+      {/* ===== SECTION 3: MAP ===== */}
+      <motion.section 
+        className={`${styles.section} ${styles.sectionBgGray}`}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
         <div className={`${styles.container} ${styles.textCenter}`}>
           <h2 className={`${styles.fontHeading} ${styles.sectionHeading}`}>Find Us On The Map</h2>
           <div className={styles.accentBarLong}></div>
-          <div className={`${styles.mapPlaceholder} ${styles.fontBody}`}>
-            {/* Yahan par aap Google Maps ka <iframe> code paste kar sakte hain */}
-            <FaMapPin className={styles.mapIcon} />
+          <div className={styles.mapPlaceholder}>
+            <Map className={styles.mapIcon} />
             <span className={styles.mapText}>Map Location Placeholder</span>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* ===== SECTION 3: FAQ ===== */}
-      <section className={`${styles.section} ${styles.sectionBgWhite}`}>
+      {/* ===== SECTION 4: FAQ (Accordion) ===== */}
+      <motion.section 
+        className={`${styles.section} ${styles.sectionBgWhite}`}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={fadeInUp}
+      >
         <div className={`${styles.container} ${styles.textCenter} ${styles.faqContainer}`}>
           <h2 className={`${styles.fontHeading} ${styles.sectionHeading}`}>Frequently Asked Questions</h2>
           <div className={styles.accentBarLong}></div>
           
           <div className={styles.faqList}>
-            {faqs.map((faq, index) => (
-              <div key={index} className={styles.faqItem}>
-                <h3 className={`${styles.fontBody} ${styles.faqQuestion}`}>{faq.q}</h3>
-                <p className={`${styles.fontBody} ${styles.faqAnswer}`}>{faq.a}</p>
-              </div>
-            ))}
+            <AnimatePresence>
+              {faqs.map((faq, index) => (
+                <motion.div 
+                  key={index} 
+                  className={styles.faqItem}
+                  variants={fadeInUp}
+                >
+                  <div 
+                    className={styles.faqQuestion} 
+                    onClick={() => toggleFaq(index)}
+                  >
+                    <h3 className={`${styles.fontBody}`}>{faq.q}</h3>
+                    <motion.div
+                      animate={{ rotate: openFaq === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ChevronDown className={styles.faqIcon} />
+                    </motion.div>
+                  </div>
+                  
+                  <AnimatePresence>
+                    {openFaq === index && (
+                      <motion.div
+                        key="answer"
+                        className={styles.faqAnswerContainer}
+                        variants={faqAnswerVariant}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                      >
+                        <p className={`${styles.fontBody} ${styles.faqAnswer}`}>{faq.a}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
-      </section>
+      </motion.section>
 
     </div>
   );
