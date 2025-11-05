@@ -1,352 +1,418 @@
-:root {
-  --color-primary-green: #124b33; /* Dark Green */
-  --color-primary-gold: #d1a33a; /* Gold/Amber */
-  --color-secondary-green: #1a6245; /* Lighter Green */
-  --color-secondary-gold: #f2c75a; /* Lighter Gold */
+/* 🌟 CHANGE: Scrollbar ko hide karne ke liye global styles */
+:global(body) {
+    /* Firefox */
+    scrollbar-width: none;
+  }
+  :global(body::-webkit-scrollbar) {
+    /* Webkit (Chrome, Safari, Edge) */
+    display: none;
+  }
   
-  --color-background-light: #f9fafb;
-  --color-text-dark: #111827;
-  --color-text-light: #4b5563;
-  --color-accent-light: #fcfcfc;
-  --card-shadow-dark: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.pageContainer {
-    font-family: 'YourBodyFont', sans-serif;
-    background-color: var(--color-background-light); 
-    overflow-x: hidden;
-    flex-grow: 1;
-}
-
-.fontHeading {
-  font-family: 'YourHeadingFont', sans-serif; 
-}
-
-/* --- Global Styles --- */
-.container {
-  max-width: 1400px; 
-  margin-left: auto;
-  margin-right: auto;
-  padding: 4rem 1.5rem; 
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
-/* --- Header Section --- */
-.headerSection {
-  text-align: center;
-  margin-bottom: 6rem; 
-  max-width: 60rem; 
-  margin-left: auto;
-  margin-right: auto;
-}
-.headerHeading {
-  font-size: 4rem; 
-  font-weight: 800; 
-  color: var(--color-primary-green); 
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
-.headerSubtitle {
-  font-size: 1.4rem; 
-  color: var(--color-text-light); 
-  max-width: 50rem; 
-  margin-left: auto;
-  margin-right: auto;
-  font-style: italic;
-  line-height: 1.7;
-}
-.headerSubtitle strong {
-    color: var(--color-primary-gold); 
-    font-weight: 700;
-}
-@media (min-width: 768px) {
-  .headerHeading {
-    font-size: 5rem;
-  }
-}
-
-/* --- Program Card (Base Styles) --- */
-.programCard {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; 
-    gap: 3rem; 
-    margin: 4rem 0; 
-    background-color: var(--color-accent-light); 
-    border-radius: 1.5rem;
-    box-shadow: var(--card-shadow-dark);
-    overflow: hidden;
-    border: 3px solid #eee; 
-    position: relative;
+  :root {
+      --color-primary-green: #124b33;
+      --color-primary-gold: #d1a33a;
+      --color-secondary-green: #1a6245;
+      --color-secondary-gold: #f2c75a;
+      
+      --color-background-light: #f9fafb;
+      --color-text-dark: #111827;
+      --color-text-light: #4b5563;
+      --color-accent-light: #fcfcfc;
+      --card-shadow-dark: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
     
-    /* Default theme properties (Green) */
-    --card-primary: var(--color-primary-green);
-    --card-secondary: var(--color-primary-gold);
-    --card-secondary-light: var(--color-secondary-gold);
-}
-
-/* Diagonal Effect - Remains Gold/Yellow for contrast */
-.programCard::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-primary-gold); /* Always Gold */
-    z-index: 1;
-    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-    transition: clip-path 0.5s ease-in-out;
-    opacity: 0.05; 
-}
-
-.programCard:hover::before {
-    opacity: 0.1;
-}
-
-/* --- Alternate Themes --- */
-
-.programCard.themeGreen {
-    /* No change needed as Green is the default */
-}
-
-.programCard.themeGold {
-    /* Swap Primary/Secondary colors for Gold Theme */
-    --card-primary: var(--color-primary-gold);
-    --card-secondary: var(--color-primary-green);
-    --card-secondary-light: var(--color-secondary-green);
-}
-
-/* --- Program Card - Layout & Shared Styles --- */
-
-@media (min-width: 1024px) { 
+    .pageContainer {
+        font-family: 'YourBodyFont', sans-serif;
+        background-color: var(--color-background-light); 
+        overflow-x: clip; /* 🌟 CHANGE: overflow-x: hidden se clip kiya (extra safety) */
+        flex-grow: 1;
+    }
+    
+    .fontHeading {
+      font-family: 'YourHeadingFont', sans-serif; 
+    }
+    
+    /* --- Global Styles --- */
+    .container {
+      max-width: 1400px; 
+      margin-left: auto;
+      margin-right: auto;
+      padding: 4rem 1.5rem; 
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+    }
+    
+    /* --- Header Section --- */
+    .headerSection {
+      text-align: center;
+      margin-bottom: 6rem; 
+      max-width: 60rem; 
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .headerHeading {
+      font-size: 4rem; 
+      font-weight: 800; 
+      color: var(--color-primary-green); 
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .headerSubtitle {
+      font-size: 1.5rem; /* 🌟 CHANGE: Font bada kiya (1.4 se 1.5) */
+      color: var(--color-text-light); 
+      max-width: 50rem; 
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+      line-height: 1.7;
+    }
+    .headerSubtitle strong {
+        color: var(--color-primary-gold); 
+        font-weight: 700;
+    }
+    @media (min-width: 768px) {
+      .headerHeading {
+        font-size: 5rem;
+      }
+    }
+    
+    /* --- Program Card (Base Styles) --- */
     .programCard {
-        flex-direction: row;
-        min-height: 450px; 
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; 
+        gap: 3rem; 
+        margin: 4rem 0; 
+        background-color: var(--color-accent-light); 
+        border-radius: 1.5rem;
+        box-shadow: var(--card-shadow-dark);
+        overflow: hidden;
+        border: 3px solid #eee; 
+        position: relative;
+        
+        --card-primary: var(--color-primary-green);
+        --card-secondary: var(--color-primary-gold);
+        --card-secondary-light: var(--color-secondary-gold);
     }
-    .programImageContainer {
-        width: 45%; 
-        flex-shrink: 0;
+    
+    .programCard::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-primary-gold);
+        z-index: 1;
+        clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+        transition: clip-path 0.5s ease-in-out;
+        opacity: 0.05; 
     }
-    .programContent {
-        width: 55%;
-        padding: 3rem 4rem 3rem 2rem;
+    
+    .programCard:hover::before {
+        opacity: 0.1;
     }
-}
-
-.programCard.reversed {
-    flex-direction: column-reverse; 
-}
-@media (min-width: 1024px) {
+    
+    .programCard.themeGreen {
+    }
+    
+    .programCard.themeGold {
+        --card-primary: var(--color-primary-gold);
+        --card-secondary: var(--color-primary-green);
+        --card-secondary-light: var(--color-secondary-green);
+    }
+    
+    /* --- Program Card - Layout & Shared Styles --- */
+    
+    @media (min-width: 1024px) { 
+        .programCard {
+            flex-direction: row;
+            min-height: 450px; 
+        }
+        .programImageContainer {
+            width: 40%; /* 🌟 CHANGE: Layout balance (45 se 40) */
+            flex-shrink: 0;
+        }
+        .programContent {
+            width: 60%; /* 🌟 CHANGE: Layout balance (55 se 60) */
+            padding: 3rem 4rem 3rem 2rem;
+        }
+    }
+    
     .programCard.reversed {
-        flex-direction: row-reverse;
+        flex-direction: column-reverse; 
     }
-    .programCard.reversed .programImageContainer {
-        border-radius: 0 1.5rem 1.5rem 0;
+    @media (min-width: 1024px) {
+        .programCard.reversed {
+            flex-direction: row-reverse;
+        }
+        .programCard.reversed .programImageContainer {
+            border-radius: 0 1.5rem 1.5rem 0;
+        }
+        .programCard.reversed::before {
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+            left: unset;
+            right: 0;
+        }
+        .programCard.reversed .programContent {
+            padding: 3rem 2rem 3rem 4rem;
+        }
     }
-    .programCard.reversed::before {
-        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-        left: unset;
-        right: 0;
-    }
-    .programCard.reversed .programContent {
-        padding: 3rem 2rem 3rem 4rem;
-    }
-}
-
-/* --- Program Card - Image Side (FIXED BACKGROUND COLOR) --- */
-.programImageContainer {
-    position: relative;
-    height: 300px; 
-    overflow: hidden;
-    background-color: var(--card-primary); /* Uses theme color (Green or Gold) */
-    border-radius: 1.5rem 1.5rem 0 0; 
-    z-index: 2;
-    padding: 1.5rem; 
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    transition: background-color 0.5s; /* Smooth theme transition */
-}
-@media (min-width: 1024px) {
+    
+    /* --- Program Card - Image Side --- */
     .programImageContainer {
-        height: auto; 
-        padding: 2.5rem; 
-        border-radius: 1.5rem 0 0 1.5rem;
+        position: relative;
+        height: 300px; 
+        overflow: hidden;
+        background-color: var(--card-primary);
+        border-radius: 1.5rem 1.5rem 0 0; 
+        z-index: 2;
+        padding: 1.5rem; 
+        display: flex;
+        align-items: center; 
+        justify-content: center;
+        transition: background-color 0.5s;
     }
-    .programCard.reversed .programImageContainer {
-        border-radius: 0 1.5rem 1.5rem 0;
+    @media (min-width: 1024px) {
+        .programImageContainer {
+            height: auto; 
+            padding: 2.5rem; 
+            border-radius: 1.5rem 0 0 1.5rem;
+        }
+        .programCard.reversed .programImageContainer {
+            border-radius: 0 1.5rem 1.5rem 0;
+        }
     }
-}
-
-.programImage {
-    width: 100%;
-    height: 100%;
-    max-height: 400px; 
-    object-fit: cover;
-    display: block;
-    transition: transform 0.8s ease-in-out;
-    border-radius: 0.75rem; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
-}
-.programCard:hover .programImage {
-    transform: scale(1.05); 
-}
-
-/* --- Animated Background Shapes (SLOWER ANIMATIONS) --- */
-
-@keyframes pulseFloat {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-    50% { transform: translate(8px, -8px) scale(1.08); opacity: 0.9; } /* Larger movement */
-    100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-}
-@keyframes diagonalMove {
-    0% { transform: translateX(-50%) translateY(0) rotate(10deg); }
-    100% { transform: translateX(50%) translateY(-50%) rotate(25deg); }
-}
-
-.programBgShape1, .programBgShape2 {
-    position: absolute;
-    z-index: 0;
-    pointer-events: none;
-    transition: background-color 0.5s;
-}
-
-.programBgShape1 {
-    width: 180px; /* Larger shape */
-    height: 180px;
-    background-color: var(--card-secondary); /* Theme-dependent color */
-    bottom: -60px;
-    right: -60px;
-    animation: pulseFloat 7s infinite ease-in-out alternate; /* Slower 7s */
-    border-radius: 15px; 
-    transform: rotate(45deg);
-    opacity: 0.3;
-}
-
-.programBgShape2 {
-    width: 350px; /* Larger shape */
-    height: 120px;
-    background-color: var(--card-secondary-light); /* Theme-dependent lighter color */
-    top: -60px;
-    left: -120px;
-    animation: diagonalMove 20s infinite linear alternate; /* Slower 20s */
-    opacity: 0.15;
-    border-radius: 50%;
-}
-
-.programIconFloating {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    padding: 0.75rem;
-    background-color: var(--card-secondary); /* Icon color changes with theme */
-    border-radius: 50%;
-    box-shadow: var(--card-shadow-dark);
-    z-index: 5;
-    transition: background-color 0.5s;
-}
-.programIcon {
-    width: 2rem; 
-    height: 2rem;
-    color: white; 
-}
-
-/* --- Program Card - Content Side (Themed Elements) --- */
-
-.programHeader {
-    border-left: 5px solid var(--card-primary); /* Border color changes with theme */
-    padding-left: 1.5rem;
-    transition: border-left-color 0.5s;
-}
-
-.programTitle {
-    color: var(--color-text-dark); 
-}
-.programTagline {
-    color: var(--card-primary); /* Tagline color changes with theme */
-    font-weight: 700;
-    transition: color 0.5s;
-}
-.programText {
-    color: var(--color-text-light); 
-    line-height: 1.7;
-    font-size: 1rem;
-}
-
-.programDetails {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.95rem; 
-    font-weight: 500;
-    padding-top: 0.5rem;
-    border-top: 1px dashed #e0e0e0;
-    padding-top: 1rem;
-}
-.programDetailItem {
-    display: flex;
-    align-items: center;
-    color: var(--color-text-dark); 
-}
-.programDetailIcon {
-    color: var(--card-primary); /* Checkmark color changes with theme */
-    transition: color 0.5s;
-}
-
-/* --- List Section (Themed Elements) --- */
-
-.programListsContainer {
-    display: grid;
-    gap: 1.5rem;
-}
-@media (min-width: 768px) {
+    
+    .programImage {
+        width: 100%;
+        height: 100%;
+        max-height: 400px; 
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s ease-in-out;
+        border-radius: 0.75rem; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+    }
+    .programCard:hover .programImage {
+        transform: scale(1.05); 
+    }
+    
+    /* --- Animated Background Shapes --- */
+    
+    @keyframes pulseFloat {
+        0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+        50% { transform: translate(8px, -8px) scale(1.08); opacity: 0.9; }
+        100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    }
+    @keyframes diagonalMove {
+        0% { transform: translateX(-50%) translateY(0) rotate(10deg); }
+        100% { transform: translateX(50%) translateY(-50%) rotate(25deg); }
+    }
+    
+    .programBgShape1, .programBgShape2 {
+        position: absolute;
+        z-index: 0;
+        pointer-events: none;
+        transition: background-color 0.5s;
+    }
+    
+    .programBgShape1 {
+        width: 180px;
+        height: 180px;
+        background-color: var(--card-secondary);
+        bottom: -60px;
+        right: -60px;
+        animation: pulseFloat 7s infinite ease-in-out alternate;
+        border-radius: 15px; 
+        transform: rotate(45deg);
+        opacity: 0.3;
+    }
+    
+    .programBgShape2 {
+        width: 350px;
+        height: 120px;
+        background-color: var(--card-secondary-light);
+        top: -60px;
+        left: -120px;
+        animation: diagonalMove 20s infinite linear alternate;
+        opacity: 0.15;
+        border-radius: 50%;
+    }
+    
+    .programIconFloating {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        padding: 0.75rem;
+        background-color: var(--card-secondary);
+        border-radius: 50%;
+        box-shadow: var(--card-shadow-dark);
+        z-index: 5;
+        transition: background-color 0.5s;
+    }
+    .programIcon {
+        width: 2rem; 
+        height: 2rem;
+        color: white; 
+    }
+    
+    /* --- Program Card - Content Side --- */
+    
+    .programContent {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; 
+        padding: 2rem 1.5rem; 
+        position: relative;
+        z-index: 5;
+        background-color: white !important;
+    }
+    
+    .programHeader {
+        border-left: 5px solid var(--card-primary);
+        padding-left: 1.5rem;
+        transition: border-left-color 0.5s;
+    }
+    
+    .programTitle {
+        color: var(--color-text-dark); 
+    }
+    .programTagline {
+        color: var(--card-primary);
+        font-weight: 700;
+        transition: color 0.5s;
+    }
+    .programText {
+        color: var(--color-text-light); 
+        line-height: 1.7;
+        font-size: 1.1rem; /* 🌟 CHANGE: Font bada kiya (1 se 1.1) */
+    }
+    
+    .programDetails {
+        display: flex;
+        gap: 1.5rem; /* 🌟 CHANGE: Thoda gap badhaya */
+        font-size: 1rem; /* 🌟 CHANGE: Font bada kiya (0.95 se 1) */
+        font-weight: 500;
+        padding-top: 0.5rem;
+        border-top: 1px dashed #e0e0e0;
+        padding-top: 1rem;
+        flex-wrap: wrap; /* Added for responsiveness */
+    }
+    .programDetailItem {
+        display: flex;
+        align-items: center;
+        color: var(--color-text-dark); 
+    }
+    .programDetailItem strong {
+        margin-right: 0.25rem; /* 🌟 CHANGE: Added margin */
+        color: var(--color-text-dark);
+    }
+    .programDetailIcon {
+        color: var(--card-primary);
+        transition: color 0.5s;
+        margin-right: 0.5rem; /* 🌟 CHANGE: Added margin */
+    }
+    
+    /* --- List Section --- */
+    
     .programListsContainer {
-        grid-template-columns: 1fr 1fr;
+        display: grid;
+        gap: 1.5rem;
     }
-}
-
-.listSection {
-    background-color: white;
-    padding: 1.25rem;
-    border-radius: 1rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f3f4f6;
-    transition: all 0.3s;
-}
-
-.listTitle {
-    font-size: 1.125rem; 
-    font-weight: 700;
-    color: var(--card-primary); /* List title color changes with theme */
-    margin-bottom: 1rem;
-    border-bottom: 2px solid var(--card-secondary); /* Border color changes with theme */
-    padding-bottom: 0.5rem;
-    transition: color 0.5s, border-bottom-color 0.5s;
-}
-.list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-.listItem {
-    display: flex;
-    align-items: flex-start;
-    color: var(--color-text-light); 
-    font-size: 0.95rem;
-}
-.listIcon {
-    width: 1rem; 
-    height: 1rem;
-    color: var(--card-secondary); /* List item icon color changes with theme */
-    flex-shrink: 0;
-    margin-top: 0.2rem;
-    margin-right: 0.5rem;
-    transition: color 0.5s;
-}
-
+    @media (min-width: 768px) {
+        .programListsContainer {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    
+    .listSection {
+        background-color: white !important;
+        padding: 1.25rem;
+        border-radius: 1rem;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f3f4f6;
+        transition: all 0.3s;
+    }
+    
+    .listTitle {
+        font-size: 1.2rem; /* 🌟 CHANGE: Font bada kiya (1.125 se 1.2) */
+        font-weight: 700;
+        color: var(--card-primary);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--card-secondary);
+        padding-bottom: 0.5rem;
+        transition: color 0.5s, border-bottom-color 0.5s;
+    }
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .listItem {
+        display: flex;
+        align-items: flex-start;
+        color: var(--color-text-light); 
+        font-size: 1rem; /* 🌟 CHANGE: Font bada kiya (0.95 se 1) */
+    }
+    .listIcon {
+        width: 1rem; 
+        height: 1rem;
+        color: var(--card-secondary);
+        flex-shrink: 0;
+        margin-top: 0.2rem;
+        margin-right: 0.5rem;
+        transition: color 0.5s;
+    }
+    
+    /* --- CTA Banner Section --- */
+    .ctaBanner {
+      margin-top: 5rem;
+      background-image: linear-gradient(to right, var(--color-primary-green), var(--color-secondary-green)); 
+      padding: 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); 
+      text-align: center;
+    }
+    .ctaHeading {
+      font-size: 2.5rem; 
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .ctaText {
+      font-size: 1.25rem; 
+      color: #e0e7ff; 
+      margin-bottom: 2rem;
+      max-width: 50rem;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .ctaButton {
+      background-color: var(--color-primary-gold);
+      color: white; 
+      font-weight: 700;
+      padding: 0.75rem 2.5rem; 
+      border: none;
+      border-radius: 9999px; 
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      transition: all 0.3s;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+    .ctaButton:hover {
+      background-color: #b08d32;
+      transform: scale(1.05);
+    }
+    @media (min-width: 768px) {
+      .ctaBanner {
+        padding: 4rem;
+      }
+    }
