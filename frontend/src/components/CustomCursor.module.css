@@ -1,3 +1,15 @@
+  /* .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 9999px;
+    pointer-events: none;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 9999;
+  } */
+
   .cursor {
     position: fixed;
     top: 0;

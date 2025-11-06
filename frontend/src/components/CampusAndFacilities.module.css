@@ -1,13 +1,15 @@
-/* --- New Color Variables (Same as other pages) --- */
+/* --- Updated Color Variables (Matching About Anish page) --- */
 :root {
   --color-primary: #124b33; /* Dark Forest Green */
-  --color-secondary: #d97706; /* Gold/Orange */
-  --color-accent-light: #52b144; /* Brighter Green Accent */
-  --color-background-light: #fcfcfc; /* Near White Background */
-  --color-light-section-bg: #f5f5f5; /* 💡 NEW: Very Light Gray for section breaks */
+  --color-secondary: #d1a33a; /* Golden Yellow (matching About Anish) */
+  --color-accent-light: #1a6245; /* Darker Green Accent (matching About Anish) */
+  --color-background-light: #fffefe; /* Light Gray Background (matching About Anish) */
+  --color-background-dark: #f8f9fa; /* Very Light Background for cards */
+  --color-light-section-bg: #f5f5f5; /* Section breaks */
   --color-text-dark: #333333; /* Dark Text */
   --color-text-light: #555555; /* Lighter Text */
   --color-border: #e0e0e0; /* Light border */
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Card shadow */
 }
 
 /* --- ⚠️ IMPORTANT: Font families --- */
@@ -31,16 +33,36 @@
     /* Default is transparent/white, which relies on pageContainer */
   }
 
-  /* 💡 NEW CLASS: For sections that need a light color contrast */
+  /* 💡 NEW CLASS: For sections that need a card-like appearance */
   .lightBg {
-    background-color: var(--color-light-section-bg);
+    background-color: var(--color-background-dark);
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--color-border);
+    margin: 3rem 0;
+    position: relative; /* Added for animations inside this section */
+    overflow: hidden; /* Important for containing animations */
+  }
+
+  .relativePosition {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Content should be above the animations */
+  .contentAboveBackground {
+    position: relative;
+    z-index: 10; 
   }
 
   .heroSection {
     padding: 6rem 1.5rem;
-    background-color: white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+    background-color: var(--color-background-dark); 
+    box-shadow: var(--card-shadow); 
     margin-bottom: 4rem;
+    border-radius: 1.5rem; 
+    position: relative; 
+    overflow: hidden; 
   }
   .container {
     max-width: 1280px;
@@ -101,23 +123,23 @@
     margin: 0 auto 4rem auto;
   }
   
-  /* --- Gallery Section --- */
+  /* --- Gallery Section (Kept as is) --- */
   .galleryGrid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem; /* gap-8 */
   }
   .galleryItem {
-    background-color: white; 
+    background-color: var(--color-background-dark); /* Matching About Anish */
     border: 1px solid var(--color-border);
-    border-radius: 1rem;
+    border-radius: 1.5rem; /* Increased border radius for modern look */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 16 / 9; /* UI: Video ke jaisa rectangular ratio */
+    aspect-ratio: 16 / 9;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--card-shadow); /* Using About Anish shadow */
     transition: all 0.3s ease;
     overflow: hidden; 
     position: relative; 
@@ -199,7 +221,7 @@
       pointer-events: none;
   }
   
-  /* --- Facilities Section --- */
+  /* --- Facilities Section (Kept as is) --- */
   .facilitiesGrid {
     display: grid;
     grid-template-columns: 1fr;
@@ -207,29 +229,31 @@
     text-align: left;
   }
   .facilityCard {
-    background-color: white;
+    background-color: var(--color-background-dark); /* Matching About Anish */
     border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    padding: 2rem;
+    border-radius: 1.5rem; /* Increased border radius */
+    box-shadow: var(--card-shadow); /* Using About Anish shadow */
+    padding: 2.5rem; /* Slightly more padding */
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative; /* Important for hover animation on facility cards */
+    z-index: 15; /* Above flowing dots background */
   }
   /* Helper Component: FacilityIcon */
   .facilityIconWrapper {
     flex-shrink: 0;
     width: 4rem; 
     height: 4rem; 
-    border-radius: 9999px;
+    border-radius: 50%; /* Full circle like About Anish */
     background-color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--color-accent-light);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid var(--color-secondary); /* Golden border instead of green */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
   }
   .facilityIcon {
     color: white;
@@ -263,26 +287,34 @@
     margin-right: 0.75rem; 
   }
   
-  /* --- Living & Learning Section --- */
+  /* --- Living & Learning Section (Kept as is) --- */
   .banner {
+    position: relative; /* Added for bubble positioning */
     background-color: var(--color-primary);
     color: white;
     padding: 4rem 1.5rem; 
     text-align: center;
     margin: 4rem 0;
+    overflow: hidden; /* Added to contain bubbles */
   }
   .bannerTitle {
+    position: relative; /* Added for z-index */
+    z-index: 10; /* Above bubbles */
     font-size: 2.25rem; 
     font-weight: 700;
     margin-bottom: 1rem;
   }
   .bannerText {
+    position: relative; /* Added for z-index */
+    z-index: 10; /* Above bubbles */
     font-size: 1.125rem; 
     max-width: 48rem; 
     margin: 0 auto 2.5rem auto; 
     line-height: 1.6;
   }
   .statsGrid {
+    position: relative; /* Added for z-index */
+    z-index: 10; /* Above bubbles */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2.5rem;
@@ -338,10 +370,16 @@
     letter-spacing: 0.5px;
   }
   
-  /* Campus Life Cards */
+  /* Campus Life Cards (Kept as is) */
   .campusLifeSection {
     padding: 5rem 1.5rem; 
-    background-color: var(--color-light-section-bg); /* 💡 Light BG for contrast */
+    background-color: var(--color-background-dark); /* Matching About Anish card style */
+    border-radius: 1.5rem; /* Adding border radius */
+    box-shadow: var(--card-shadow); /* Adding shadow */
+    border: 1px solid var(--color-border); /* Adding border */
+    margin: 3rem 0; /* Adding margins like About Anish sections */
+    position: relative; /* Added for animations inside this section */
+    overflow: hidden; /* Important for containing animations */
   }
   .campusLifeGrid {
     display: grid;
@@ -350,12 +388,12 @@
     text-align: left;
   }
   .campusLifeCard {
-    background-color: white;
+    background-color: var(--color-background-dark); /* Matching About Anish */
     border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    padding: 2rem;
-    border-top: 4px solid var(--color-primary);
+    border-radius: 1.5rem; /* Increased border radius */
+    box-shadow: var(--card-shadow); /* Using About Anish shadow */
+    padding: 2.5rem; /* More padding */
+    border-top: 4px solid var(--color-secondary); /* Golden top border */
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -380,7 +418,7 @@
   }
   .scheduleTime {
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-secondary); /* Golden color instead of green */
     width: 6rem;
     flex-shrink: 0;
   }
@@ -397,14 +435,112 @@
   .supportItemTitle {
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-secondary); /* Golden color instead of green */
     margin-bottom: 0.25rem;
   }
   .supportItemDesc {
     color: var(--color-text-light);
   }
 
-  /* --- Media Queries for Responsiveness --- */
+  /* ========================================================= */
+  /* === NEW Background Animation Styles === */
+  /* ========================================================= */
+
+  .backgroundAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Below content (z-index: 10) */
+    pointer-events: none;
+    opacity: 0.2; /* Light opacity */
+  }
+
+  /* --- 1. Wavy Background (For Hero Section) --- */
+  @keyframes wave {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(100px, 50px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .wavyBackground {
+    overflow: hidden;
+  }
+  .waveLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--color-secondary) 10%, transparent 70%);
+    border-radius: 40% 60% 70% 30% / 30% 70% 50% 50%;
+    animation: wave 25s infinite alternate linear;
+  }
+  .waveLayer:nth-child(2) {
+    background: radial-gradient(circle at 30% 70%, var(--color-primary) 10%, transparent 70%);
+    animation: wave 30s infinite alternate-reverse linear;
+    opacity: 0.15;
+    transform: scale(0.8) translate(50px, -50px);
+  }
+  .waveLayer:nth-child(3) {
+    background: radial-gradient(circle at 80% 20%, var(--color-accent-light) 10%, transparent 70%);
+    animation: wave 20s infinite alternate linear;
+    opacity: 0.1;
+    transform: scale(1.2) translate(-30px, 30px);
+  }
+
+
+  /* --- 2. Flowing Dots Background (For Facilities Section) --- */
+  @keyframes flow {
+    0% { transform: translate(0, 0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate(100vw, -100vh); opacity: 0; }
+  }
+
+  .dotsBackground {
+    background: transparent;
+    overflow: hidden;
+  }
+  .dotFlow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    opacity: 0;
+    animation: flow 30s infinite linear;
+  }
+
+  .dotFlow:nth-child(1) {
+    top: 10%;
+    left: 5%;
+    animation-duration: 25s;
+    background-color: var(--color-primary);
+  }
+  .dotFlow:nth-child(2) {
+    top: 50%;
+    left: 40%;
+    animation-duration: 35s;
+    animation-delay: 5s;
+    width: 8px;
+    height: 8px;
+  }
+  .dotFlow:nth-child(3) {
+    top: 80%;
+    left: 70%;
+    animation-duration: 40s;
+    animation-delay: 10s;
+    background-color: var(--color-accent-light);
+    width: 12px;
+    height: 12px;
+  }
+  /* You can add more dotFlow children here with different positions/speeds/colors */
+  
+
+  /* ========================================================= */
+  /* --- Media Queries for Responsiveness (Kept as is) --- */
+  /* ========================================================= */
   @media (min-width: 640px) { /* sm breakpoint */
     .galleryGrid {
       grid-template-columns: repeat(2, 1fr);
