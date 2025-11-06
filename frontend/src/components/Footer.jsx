@@ -37,7 +37,7 @@ function Footer() {
               <ul className={styles.linksList}>
                 <li><a href="/about" className={styles.link}>About Anish</a></li>
                 <li><a href="/campus" className={styles.link}>Campus & Facilities</a></li>
-                <li><a href="/careers" className={styles.link}>Careers</a></li>
+                
                 <li><a href="/contact" className={styles.link}>Contact Us</a></li>
               </ul>
             </div>
@@ -48,8 +48,7 @@ function Footer() {
               <ul className={styles.linksList}>
                 <li><a href="/donate" className={styles.link}>Donate</a></li>
                 <li><a href="/volunteer" className={styles.link}>Volunteer</a></li>
-                <li><a href="/blog" className={styles.link}>Blog / News</a></li> 
-                <li><a href="/faq" className={styles.link}>FAQs</a></li>
+                <li><a href="/faq" className={styles.link}>FAQs</a></li>
               </ul>
             </div>
 
@@ -65,10 +64,9 @@ function Footer() {
             </div>
           </div>
           
-          {/* Horizontal Rule */}
-          <hr className={styles.footerSeparator} />
+          
 
-          {/* Non-Discrimination Statement Section */}
+       
           
         </div>
       </footer>
