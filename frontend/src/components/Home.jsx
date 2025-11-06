@@ -90,8 +90,17 @@ const Marquee = ({ images, direction = 'left' }) => {
 // --- Main Home Component ---
 function Home() {
   const navigate = useNavigate();
+<<<<<<< HEAD
   const marqueeRow1 = allCampusImages.slice(0, 3);
   const marqueeRow2 = allCampusImages.slice(3, 6);
+=======
+  const heroTitle = "Anish Jadhav Memorial Foundation";
+  const titleWords = heroTitle.split(" ");
+
+  const marqueeRow1 = campusImages.slice(0, 3);
+  const marqueeRow2 = campusImages.slice(3, 6);
+>>>>>>> origin/main
+
 
   return (
     <div className={styles.pageContainer}>
