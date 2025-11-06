@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { FaEye, FaHeart, FaHandsHelping, FaTimes } from 'react-icons/fa'; 
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -90,16 +90,9 @@ const Marquee = ({ images, direction = 'left' }) => {
 // --- Main Home Component ---
 function Home() {
   const navigate = useNavigate();
-<<<<<<< HEAD
   const marqueeRow1 = allCampusImages.slice(0, 3);
   const marqueeRow2 = allCampusImages.slice(3, 6);
-=======
-  const heroTitle = "Anish Jadhav Memorial Foundation";
-  const titleWords = heroTitle.split(" ");
 
-  const marqueeRow1 = campusImages.slice(0, 3);
-  const marqueeRow2 = campusImages.slice(3, 6);
->>>>>>> origin/main
 
 
   return (
