@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Icons (Lucide-React se badal diye gaye hain)
 import { 
   MapPin, Mail, Phone, Facebook, Twitter, 
   Instagram, Linkedin, Send, Map, ChevronDown 
 } from 'lucide-react';
-// CSS Module
 import styles from './ContactUs.module.css';
 
 // --- Animation Variants ---
@@ -80,7 +78,7 @@ function ContactUs() {
           </h1>
           <div className={styles.accentBar}></div>
           <p className={`${styles.fontBody} ${styles.pageSubtitle}`}>
-            Have questions or want to get involved? We'd love to hear from you. 
+            Have <strong>questions</strong> or want to <strong>get involved</strong>? We'd love to hear from you. 
             Reach out and we'll respond as soon as possible.
           </p>
         </div>
@@ -203,9 +201,18 @@ function ContactUs() {
         <div className={`${styles.container} ${styles.textCenter}`}>
           <h2 className={`${styles.fontHeading} ${styles.sectionHeading}`}>Find Us On The Map</h2>
           <div className={styles.accentBarLong}></div>
+          
+          {/* 🌟 CHANGE: Placeholder ko aapke <iframe> se replace kar diya hai */}
           <div className={styles.mapPlaceholder}>
-            <Map className={styles.mapIcon} />
-            <span className={styles.mapText}>Map Location Placeholder</span>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.36338856939!2d73.93373277598678!3d18.602718166658224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c5e94895b787%3A0x1f5e8bbeb5cbb3c1!2sAnish%20Jadhav%20Memorial%20Foundation!5e0!3m2!1sen!2sin!4v1762403691094!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </motion.section>
