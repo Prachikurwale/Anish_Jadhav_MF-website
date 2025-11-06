@@ -224,7 +224,9 @@ const VisionAndLegacySection = () => {
                     </div>
 
                     <MotionDiv className={styles.visionLegacyBox} variants={boxAnimate}>
-                        <Heart className={styles.legacyHeartIcon} />
+                        <motion.div variants={heartBeat} animate="beat">
+                            <Heart className={styles.legacyHeartIcon} />
+                        </motion.div>
                         <h3 className={styles.legacyBoxTitle}>His Legacy Lives On</h3>
                         <p className={styles.legacyBoxText}>
                             Every student we educate, every life we transform, every dream we help realize is a tribute to Anish Jadhav. His spirit lives on in the determination of our students.

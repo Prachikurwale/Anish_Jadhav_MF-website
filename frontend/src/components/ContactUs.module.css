@@ -17,7 +17,7 @@
 }
 
 .pageWrapper {
-  overflow-x: hidden;
+  overflow-x: clip; 
 }
 .container {
   max-width: 1280px;
@@ -47,11 +47,17 @@
   background-color: var(--color-background-gray);
 }
 .pageHeading {
-  font-size: 3.5rem;
+  font-size: 4rem; 
   font-weight: 800;
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
+@media (min-width: 768px) {
+  .pageHeading {
+    font-size: 5rem; 
+  }
+}
+
 .accentBar {
   width: 6rem;
   height: 0.25rem;
@@ -64,13 +70,22 @@
   background-color: var(--color-secondary);
   margin: 0 auto 3rem auto;
 }
+
 .pageSubtitle {
-  font-size: 1.125rem;
+  font-size: 1.5rem; 
   color: var(--color-text-light);
   max-width: 48rem;
   margin: 0 auto;
   line-height: 1.7;
+  font-style: italic; 
 }
+
+.pageSubtitle strong {
+  color: var(--color-secondary); 
+  font-weight: 700; 
+  font-style: normal; 
+}
+
 .sectionHeading {
   font-size: 2.5rem;
   font-weight: 700;
@@ -228,7 +243,6 @@
   box-shadow: 0 0 0 3px rgba(18, 75, 51, 0.1);
 }
 
-/* --- 🌟 NEW BUTTON STYLE --- */
 .submitButton {
   width: 100%;
   background-color: var(--color-secondary);
@@ -244,7 +258,6 @@
   font-size: 1.125rem;
   cursor: pointer;
   
-  /* Uiverse styles added */
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -252,12 +265,12 @@
 }
 
 .submitButton:hover {
-  color: #fff; /* Text color on hover */
+  color: #fff;
 }
 
 .submitButton:after {
   content: "";
-  background: var(--color-primary); /* Panel color (Dark Green) */
+  background: var(--color-primary);
   position: absolute;
   z-index: -1;
   left: -20%;
@@ -272,38 +285,28 @@
   transform: skewX(-45deg) scale(1, 1);
   transition: all 0.5s;
 }
-/* --- 🌟 END NEW BUTTON STYLE --- */
 
 .buttonIcon {
   margin-right: 0.75rem;
 }
 
-@keyframes bouncePin {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-15px) scale(1.05); }
-}
+/* 🌟 CHANGE: mapPlaceholder se flex properties hata di hain */
 .mapPlaceholder {
   margin-top: 3rem;
-  background-color: #e6e6e6;
+  background-color: #e6e6e6; /* Fallback color */
   border-radius: 0.75rem;
   box-shadow: var(--card-shadow);
   height: 24rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--color-text-light);
-  overflow: hidden;
+  overflow: hidden; /* iframe corners ko round rakhega */
 }
+
+/* Ab inki zaroorat nahi hai */
 .mapIcon {
-  color: var(--color-primary);
-  font-size: 3rem;
-  width: 3rem;
-  height: 3rem;
-  animation: bouncePin 2s infinite ease-in-out;
+  display: none;
 }
 .mapText {
-  margin-left: 1rem;
-  font-size: 1.25rem;
+  display: none;
 }
 
 .faqContainer {
