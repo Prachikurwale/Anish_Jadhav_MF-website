@@ -1,19 +1,17 @@
 :root {
-  --color-primary: #124b33; /* Dark Green */
-  --color-secondary: #d1a33a; /* Gold */
+  --color-primary: #124b33; 
+  --color-secondary: #d1a33a; 
   --color-accent-green: #1a6245; 
-  --color-background-light: #f8f9fa; /* Light BG */
+  --color-background-light: #f8f9fa; 
   --color-text-dark: #333333;
   --color-text-light: #555555;
   --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
 
-  /* GetInvolved ke colours */
-  --primary-color: #36454f; /* Charcoal/Slate Blue */
-  --secondary-color-getinvolved: #f7a233; /* Orange/Yellow Accent */
+  --primary-color: #36454f; 
+  --secondary-color-getinvolved: #f7a233; 
   --dark-purple: #1e003c;
 }
 
-/* Base Styles */
 .fontHeading { font-family: 'YourHeadingFont', sans-serif; }
 .fontBody { font-family: 'YourBodyFont', sans-serif; }
 
@@ -27,7 +25,6 @@
   padding: 0 1.5rem;
 }
 
-/* --- HERO SECTION --- */
 .heroSection {
     position: relative;
     padding: 8rem 0 6rem;
@@ -139,7 +136,6 @@
 }
 
 
-/* --- MISSION SECTION --- */
 .section {
   padding: 6rem 1.5rem;
   position: relative;
@@ -324,93 +320,151 @@
 .decoLine1 { background-color: var(--color-secondary); bottom: 10px; right: 10px; --rotate: 45deg; }
 .decoLine2 { background-color: var(--color-primary); top: 10px; left: 10px; --rotate: 135deg; }
 
+.visionLegacySection {
+    position: relative;
+    padding: 3.5rem 0;
+    margin: 6rem 1.5rem;
+    overflow: hidden;
+    background-color: var(--color-primary); 
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
 
-/* --- CAMPUS SECTION --- */
-.campusSection {
-  background-color: var(--color-background-light);
-  text-align: center;
-  padding-bottom: 6rem;
-}
-.sectionSubtitle {
-  font-size: 1.125rem;
-  color: var(--color-text-light);
-  margin-bottom: 3rem;
-}
-.marqueeWrapper {
-  margin-top: 3rem;
-  margin-bottom: 4rem;
-  overflow: hidden;
-  pointer-events: none;
-}
-.marqueeContainer {
-  width: 100%;
-  /* 🌟 CHANGE: display:flex hata diya */
-  margin: 1rem 0;
-}
-.marquee {
-  display: flex;
-  white-space: nowrap;
-  will-change: transform;
-}
-.marqueeImageWrapper {
-  flex-shrink: 0;
-  width: 350px; /* 🌟 CHANGE: Size bada kiya */
-  height: 220px; /* 🌟 CHANGE: Size bada kiya */
-  margin-right: 20px;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  border: 3px solid #fff;
-}
-/* 🌟 CHANGE: 'img' tag ko direct target kiya */
-.marqueeImageWrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.campusButton {
-  background-color: var(--color-primary);
-  color: #fff;
-  border: 2px solid var(--color-primary);
-  font-weight: 600;
-  font-size: 1.125rem;
-  padding: 0.75rem 2.5rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-}
-.campusButton:hover {
-  background-color: var(--color-accent-green);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(18, 75, 51, 0.3);
-}
-.buttonIcon {
-  margin-left: 0.5rem;
-  width: 18px;
-  height: 18px;
-}
-.decoCircle3 {
+.visionBackgroundShape {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background-color: var(--color-secondary);
-    border-radius: 50%;
-    opacity: 0.1;
-    z-index: 1;
-    bottom: -150px;
-    left: -150px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 55%;
+    background-color: var(--color-accent-green); 
+    border-top-right-radius: 300px;
+    border-bottom-right-radius: 300px;
+    z-index: 5;
+    opacity: 0.8;
 }
-.decoLine3 {
-    position: absolute;
-    height: 5px;
-    width: 200px;
-    background-color: var(--color-primary);
-    opacity: 0.2;
-    z-index: 1;
-    top: 50px;
-    right: 50px;
-    border-radius: 2px;
-    transform: rotate(30deg);
+
+.visionLegacyGrid {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (min-width: 992px) {
+    .visionLegacyGrid {
+        grid-template-columns: 1.5fr 1fr; 
+        gap: 5rem;
+    }
+}
+
+.visionImageContainerRight { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.visionImageWrapper {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    margin-bottom: 2rem;
+}
+
+.visionImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.visionLegacyBox {
+    position: relative;
+    background-color: var(--color-secondary); 
+    color: var(--color-text-dark);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin-top: -5rem; 
+    z-index: 15;
+    text-align: center;
+}
+
+.legacyHeartIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+    fill: white;
+    margin-bottom: 0.5rem;
+}
+
+.legacyBoxTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.legacyBoxText {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-dark);
+}
+
+.visionContentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: #e0e0e0; 
+    padding-top: 1rem;
+}
+
+.visionHeading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
+    border-bottom: 3px solid var(--color-secondary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.visionParagraph {
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.visionParagraph strong {
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+
+.visionPartnershipCTA {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left: 5px solid var(--color-secondary);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.partnershipIcon {
+    min-width: 2rem;
+    height: 2rem;
+    color: var(--color-secondary);
+}
+
+.visionPartnershipCTA p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 500;
 }

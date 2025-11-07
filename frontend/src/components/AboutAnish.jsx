@@ -6,12 +6,12 @@ const MotionDiv = motion.div;
 const MotionSection = motion.section;
 
 import AnishImage from '../assets/Anish.png'; 
-import FoundationImage from '../assets/Foundation.png'; 
+import FoundationImage from '../assets/Anish.png'; 
 import { Heart, Quote, Star } from 'lucide-react'; 
 
-import campusImg1 from '../assets/campus1.jpg';
-import campusImg2 from '../assets/campus2.jpg';
-import BrigadierJadhav from '../assets/BrigadierKishorJadhav.png'; 
+import campusImg1 from '../assets/Anish.png';
+import campusImg2 from '../assets/Anish.png';
+import BrigadierJadhav from '../assets/campus.png'; 
 
 const containerVariants = {
   visible: { transition: { staggerChildren: 0.1 } } 
@@ -71,9 +71,10 @@ const QuoteSection = () => {
     const author = "Brigadier Kishor Jadhav";
     const designation = "Father and Founder of Anish Jadhav Foundation";
 
+    // 🌟 CHANGE: Rotate animation hata diya
     const imageAnimate = {
-        hidden: { opacity: 0, scale: 0.5, rotate: -90 },
-        visible: { opacity: 1, scale: 1, rotate: 0, transition: { duration: 1, ease: "easeOut", delay: 0.4 } }
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut", delay: 0.4 } }
     };
     
     const cardHover = {
@@ -158,7 +159,6 @@ const VisionAndLegacySection = () => {
     
     const backgroundShapeAnimate = {
         hidden: { x: "-100%", opacity: 0 },
-        // Increased duration to 2.5s for slow animation
         visible: { x: 0, opacity: 1, transition: { duration: 2.5, ease: "easeOut", delay: 0.1 } } 
     };
 
@@ -170,8 +170,8 @@ const VisionAndLegacySection = () => {
           rotateY: 0, 
           transition: { 
               type: "spring", 
-              stiffness: 40,    // <--- Stiffness kam karein
-              damping: 18,      // <--- Damping thoda badha sakte hain
+              stiffness: 40,
+              damping: 18,
               delay: 0.5 
           } 
       }
@@ -197,17 +197,16 @@ const VisionAndLegacySection = () => {
 
             <div className={styles.visionLegacyGrid}>
                 
-                {/* 1. Left Side: Partnership Content */}
                 <MotionDiv variants={itemVariants} className={styles.visionContentContainer}>
                     <h2 className={styles.visionHeading}>
-                        Our Vision in Partnership
+                        About Anish Jadhav
                     </h2>
 
                     <p className={styles.visionParagraph}>
-                        In partnership with **NavGurukul**, a pioneering organization committed to providing residential education to underprivileged youth, the foundation has created a comprehensive ecosystem of learning and growth. The partnership ensures that students receive not just education, but a complete transformation.
+                    The Anish Jadhav Memorial Foundation was born from a profound love and an unwavering commitment to honor the memory of Anish Jadhav. Established by his father, Brigadier Kishor Jadhav, this foundation represents the transformation of personal grief into a powerful force for positive change.
                     </p>
                     <p className={styles.visionParagraph}>
-                        This includes residential facilities, nutritious meals, world-class instruction, and career placement support. Today, the foundation stands as a beacon of hope, offering four specialized schools that provide pathways to success in **programming, business, education, and second-chance opportunities**.
+                    Anish was a young man of exceptional character, compassion, and potential. His life, though tragically cut short, left an indelible mark on everyone he encountered. His dreams, his kindness, and his belief in the power of education and opportunity became the cornerstone of what would become this foundation.
                     </p>
 
                     <div className={styles.visionPartnershipCTA}>
@@ -216,7 +215,6 @@ const VisionAndLegacySection = () => {
                     </div>
                 </MotionDiv>
 
-                {/* 2. Right Side: Image and Legacy Text (Changed order for R-H side image) */}
                 <MotionDiv variants={itemVariants} className={styles.visionImageContainerRight}> 
                     
                     <div className={styles.visionImageWrapper}>
