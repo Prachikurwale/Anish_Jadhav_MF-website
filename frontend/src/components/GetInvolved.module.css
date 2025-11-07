@@ -1,9 +1,7 @@
-/* ========================================= */
-/* GLOBAL UTILITIES & VARS */
-/* ========================================= */
+
 
 :root {
-    --primary-color: #36454f; /* Charcoal/Slate Blue */
+    --primary-color: #686b6d; /* Charcoal/Slate Blue */
     --secondary-color: #f7a233; /* Orange/Yellow Accent (from APPLY button) */
     --dark-purple: #1e003c;
     --light-gray: #f9f9f9;

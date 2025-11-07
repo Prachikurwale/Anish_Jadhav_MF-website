@@ -1,18 +1,16 @@
-/* --- Updated Color Variables (Matching About Anish page) --- */
 :root {
-  --color-primary: #124b33; /* Dark Forest Green */
-  --color-secondary: #d1a33a; /* Golden Yellow (matching About Anish) */
-  --color-accent-light: #1a6245; /* Darker Green Accent (matching About Anish) */
-  --color-background-light: #fffefe; /* Light Gray Background (matching About Anish) */
-  --color-background-dark: #f8f9fa; /* Very Light Background for cards */
-  --color-light-section-bg: #f5f5f5; /* Section breaks */
-  --color-text-dark: #333333; /* Dark Text */
-  --color-text-light: #555555; /* Lighter Text */
-  --color-border: #e0e0e0; /* Light border */
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Card shadow */
+  --color-primary: #124b33;
+  --color-secondary: #d1a33a;
+  --color-accent-light: #1a6245;
+  --color-background-light: #fffefe;
+  --color-background-dark: #f8f9fa;
+  --color-light-section-bg: #f5f5f5;
+  --color-text-dark: #333333;
+  --color-text-light: #555555;
+  --color-border: #e0e0e0;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* --- ⚠️ IMPORTANT: Font families --- */
 .fontHeading {
     font-family: 'YourHeadingFont', sans-serif; 
   }
@@ -20,28 +18,24 @@
     font-family: 'YourBodyFont', sans-serif;
   }
   
-  /* --- Main Page Container --- */
   .pageContainer {
     flex-grow: 1;
-    background-color: var(--color-background-light); /* Base background is near white */
+    background-color: var(--color-background-light);
     color: var(--color-text-dark);
   }
   
-  /* --- Global Styles --- */
   .section {
-    padding: 5rem 1.5rem; /* py-20 px-6 */
-    /* Default is transparent/white, which relies on pageContainer */
+    padding: 5rem 1.5rem;
   }
 
-  /* 💡 NEW CLASS: For sections that need a card-like appearance */
   .lightBg {
     background-color: var(--color-background-dark);
     border-radius: 1.5rem;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--color-border);
     margin: 3rem 0;
-    position: relative; /* Added for animations inside this section */
-    overflow: hidden; /* Important for containing animations */
+    position: relative;
+    overflow: hidden;
   }
 
   .relativePosition {
@@ -49,21 +43,11 @@
     overflow: hidden;
   }
 
-  /* Content should be above the animations */
   .contentAboveBackground {
     position: relative;
     z-index: 10; 
   }
 
-  .heroSection {
-    padding: 6rem 1.5rem;
-    background-color: var(--color-background-dark); 
-    box-shadow: var(--card-shadow); 
-    margin-bottom: 4rem;
-    border-radius: 1.5rem; 
-    position: relative; 
-    overflow: hidden; 
-  }
   .container {
     max-width: 1280px;
     margin-left: auto;
@@ -76,45 +60,23 @@
     text-align: left;
   }
   
-  /* --- Headers & Accents (Kept as is) --- */
-  .pageHeading {
-    font-size: 3rem; /* text-5xl */
-    font-weight: 800;
-    color: var(--color-text-dark);
-    margin-bottom: 1rem;
-    line-height: 1.1;
-  }
-  .heroHeadingSpan {
-    display: inline-block;
-    margin-right: 0.3em;
-    color: var(--color-text-dark);
-  }
-  .heroHeadingSpan:nth-last-child(-n+1) {
-    color: var(--color-primary); /* "Facilities" in green */
-  }
   .sectionHeading {
-    font-size: 2.25rem; /* text-4xl */
+    font-size: 2.25rem;
     font-weight: 700;
     color: var(--color-text-dark);
     margin-bottom: 1rem;
   }
   .accentBar {
-    width: 6rem; /* w-24 */
-    height: 0.25rem; /* h-1 */
+    width: 6rem;
+    height: 0.25rem;
     background-color: var(--color-secondary);
-    margin: 0 auto 2rem auto; /* mx-auto mb-8 */
+    margin: 0 auto 2rem auto;
   }
   .accentBarMedium {
     width: 6rem;
     height: 0.25rem;
     background-color: var(--color-secondary);
-    margin: 0 auto 3rem auto; /* mb-12 */
-  }
-  .pageSubtitle {
-    font-size: 1.125rem; /* text-lg */
-    color: var(--color-text-light);
-    max-width: 48rem; /* max-w-3xl */
-    margin: 0 auto 4rem auto; /* mx-auto mb-16 */
+    margin: 0 auto 3rem auto;
   }
   .sectionSubtitle {
     font-size: 1.125rem;
@@ -123,105 +85,69 @@
     margin: 0 auto 4rem auto;
   }
   
-  /* --- Gallery Section (Kept as is) --- */
-  .galleryGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem; /* gap-8 */
-  }
-  .galleryItem {
-    background-color: var(--color-background-dark); /* Matching About Anish */
-    border: 1px solid var(--color-border);
-    border-radius: 1.5rem; /* Increased border radius for modern look */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 16 / 9;
-    cursor: pointer;
-    box-shadow: var(--card-shadow); /* Using About Anish shadow */
-    transition: all 0.3s ease;
-    overflow: hidden; 
-    position: relative; 
-  }
-  
-  /* 🟢 The Wipe Overlay for the animation (covers content and image) */
-  .galleryWipeOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* 💡 Video me shade dark green/blackish hai, maine primary color rakha hai */
-    background-color: var(--color-primary); 
-    z-index: 20; 
-    transform-origin: top; /* Animation top-down hoga (default reveal) */
-    /* NOTE: Framer Motion overrides this transition for the whileInView/whileHover effect */
-  }
-
-  /* Image background */
-  .galleryImage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.5s ease;
-  }
-  
-  .galleryItem:hover .galleryImage {
-      transform: scale(1.1);
-  }
-  
-  /* Content Overlay */
-  .galleryContentOverlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* Lighter gradient for better visibility */
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      z-index: 10; 
-  }
-  
-  /* Icon and text */
-  .galleryIcon {
-    color: white; 
-    font-size: 3.5rem; 
-    margin-bottom: 1rem;
-    transition: all 0.3s ease;
-  }
-  
-  .galleryText {
-    font-size: 1.5rem; 
-    font-weight: 700;
-    color: white; 
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+  .campusSection {
+    background-color: var(--color-background-light);
     text-align: center;
+    padding-bottom: 6rem;
+    padding-top: 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .marqueeWrapper {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .marqueeContainer {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  .marquee {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+  }
+  .marqueeImageWrapper {
+    flex-shrink: 0;
+    width: 350px;
+    height: 220px;
+    margin-right: 20px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 3px solid #fff;
+  }
+  .marqueeImageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  /* Text that appears over the green hover wipe */
-  .galleryHoverText {
+  .decoCircle3 {
       position: absolute;
-      font-size: 1.75rem; 
-      font-weight: 700;
-      color: white;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      z-index: 25; /* Higher than the wipe overlay (20) */
-      pointer-events: none;
+      width: 300px;
+      height: 300px;
+      background-color: var(--color-secondary);
+      border-radius: 50%;
+      opacity: 0.1;
+      z-index: 1;
+      bottom: -150px;
+      left: -150px;
   }
-  
-  /* --- Facilities Section (Kept as is) --- */
+  .decoLine3 {
+      position: absolute;
+      height: 5px;
+      width: 200px;
+      background-color: var(--color-primary);
+      opacity: 0.2;
+      z-index: 1;
+      top: 50px;
+      right: 50px;
+      border-radius: 2px;
+      transform: rotate(30deg);
+  }
+
   .facilitiesGrid {
     display: grid;
     grid-template-columns: 1fr;
@@ -229,37 +155,35 @@
     text-align: left;
   }
   .facilityCard {
-    background-color: var(--color-background-dark); /* Matching About Anish */
+    background-color: var(--color-background-dark);
     border: 1px solid var(--color-border);
-    border-radius: 1.5rem; /* Increased border radius */
-    box-shadow: var(--card-shadow); /* Using About Anish shadow */
-    padding: 2.5rem; /* Slightly more padding */
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative; /* Important for hover animation on facility cards */
-    z-index: 15; /* Above flowing dots background */
+    position: relative;
+    z-index: 15;
   }
-  /* Helper Component: FacilityIcon */
   .facilityIconWrapper {
     flex-shrink: 0;
     width: 4rem; 
     height: 4rem; 
-    border-radius: 50%; /* Full circle like About Anish */
+    border-radius: 50%;
     background-color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid var(--color-secondary); /* Golden border instead of green */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    border: 3px solid var(--color-secondary);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   }
   .facilityIcon {
     color: white;
     font-size: 1.875rem; 
   }
-  /* Card Content */
   .facilityTitle {
     font-size: 1.5rem; 
     font-weight: 600;
@@ -287,34 +211,33 @@
     margin-right: 0.75rem; 
   }
   
-  /* --- Living & Learning Section (Kept as is) --- */
   .banner {
-    position: relative; /* Added for bubble positioning */
+    position: relative;
     background-color: var(--color-primary);
     color: white;
     padding: 4rem 1.5rem; 
     text-align: center;
     margin: 4rem 0;
-    overflow: hidden; /* Added to contain bubbles */
+    overflow: hidden;
   }
   .bannerTitle {
-    position: relative; /* Added for z-index */
-    z-index: 10; /* Above bubbles */
+    position: relative;
+    z-index: 10;
     font-size: 2.25rem; 
     font-weight: 700;
     margin-bottom: 1rem;
   }
   .bannerText {
-    position: relative; /* Added for z-index */
-    z-index: 10; /* Above bubbles */
+    position: relative;
+    z-index: 10;
     font-size: 1.125rem; 
     max-width: 48rem; 
     margin: 0 auto 2.5rem auto; 
     line-height: 1.6;
   }
   .statsGrid {
-    position: relative; /* Added for z-index */
-    z-index: 10; /* Above bubbles */
+    position: relative;
+    z-index: 10;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2.5rem;
@@ -322,7 +245,6 @@
   }
   
   .statBox {
-    /* Kept Stat box styling */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
     padding: 2.5rem 2rem;
     border-radius: 16px;
@@ -363,23 +285,22 @@
   
   .statText {
     font-size: 1.125rem;
-    color: var(--color-text-dark); /* Fixed color variable */
+    color: var(--color-text-dark);
     font-weight: 600;
     opacity: 0.85;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
   
-  /* Campus Life Cards (Kept as is) */
   .campusLifeSection {
     padding: 5rem 1.5rem; 
-    background-color: var(--color-background-dark); /* Matching About Anish card style */
-    border-radius: 1.5rem; /* Adding border radius */
-    box-shadow: var(--card-shadow); /* Adding shadow */
-    border: 1px solid var(--color-border); /* Adding border */
-    margin: 3rem 0; /* Adding margins like About Anish sections */
-    position: relative; /* Added for animations inside this section */
-    overflow: hidden; /* Important for containing animations */
+    background-color: var(--color-background-dark);
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--color-border);
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
   }
   .campusLifeGrid {
     display: grid;
@@ -388,12 +309,12 @@
     text-align: left;
   }
   .campusLifeCard {
-    background-color: var(--color-background-dark); /* Matching About Anish */
+    background-color: var(--color-background-dark);
     border: 1px solid var(--color-border);
-    border-radius: 1.5rem; /* Increased border radius */
-    box-shadow: var(--card-shadow); /* Using About Anish shadow */
-    padding: 2.5rem; /* More padding */
-    border-top: 4px solid var(--color-secondary); /* Golden top border */
+    border-radius: 1.5rem;
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
+    border-top: 4px solid var(--color-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -404,7 +325,6 @@
     margin-bottom: 1.5rem; 
   }
   
-  /* Schedule Card */
   .scheduleList {
     display: flex;
     flex-direction: column;
@@ -418,7 +338,7 @@
   }
   .scheduleTime {
     font-weight: 600;
-    color: var(--color-secondary); /* Golden color instead of green */
+    color: var(--color-secondary);
     width: 6rem;
     flex-shrink: 0;
   }
@@ -426,7 +346,6 @@
     color: var(--color-text-dark);
   }
   
-  /* Support Card */
   .supportList {
     display: flex;
     flex-direction: column;
@@ -435,16 +354,12 @@
   .supportItemTitle {
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--color-secondary); /* Golden color instead of green */
+    color: var(--color-secondary);
     margin-bottom: 0.25rem;
   }
   .supportItemDesc {
     color: var(--color-text-light);
   }
-
-  /* ========================================================= */
-  /* === NEW Background Animation Styles === */
-  /* ========================================================= */
 
   .backgroundAnimation {
     position: absolute;
@@ -452,46 +367,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Below content (z-index: 10) */
+    z-index: 1;
     pointer-events: none;
-    opacity: 0.2; /* Light opacity */
+    opacity: 0.2;
   }
 
-  /* --- 1. Wavy Background (For Hero Section) --- */
-  @keyframes wave {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(100px, 50px); }
-    100% { transform: translate(0, 0); }
-  }
-
-  .wavyBackground {
-    overflow: hidden;
-  }
-  .waveLayer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 50% 50%, var(--color-secondary) 10%, transparent 70%);
-    border-radius: 40% 60% 70% 30% / 30% 70% 50% 50%;
-    animation: wave 25s infinite alternate linear;
-  }
-  .waveLayer:nth-child(2) {
-    background: radial-gradient(circle at 30% 70%, var(--color-primary) 10%, transparent 70%);
-    animation: wave 30s infinite alternate-reverse linear;
-    opacity: 0.15;
-    transform: scale(0.8) translate(50px, -50px);
-  }
-  .waveLayer:nth-child(3) {
-    background: radial-gradient(circle at 80% 20%, var(--color-accent-light) 10%, transparent 70%);
-    animation: wave 20s infinite alternate linear;
-    opacity: 0.1;
-    transform: scale(1.2) translate(-30px, 30px);
-  }
-
-
-  /* --- 2. Flowing Dots Background (For Facilities Section) --- */
   @keyframes flow {
     0% { transform: translate(0, 0); opacity: 0; }
     50% { opacity: 1; }
@@ -535,18 +415,10 @@
     width: 12px;
     height: 12px;
   }
-  /* You can add more dotFlow children here with different positions/speeds/colors */
   
-
-  /* ========================================================= */
-  /* --- Media Queries for Responsiveness (Kept as is) --- */
-  /* ========================================================= */
-  @media (min-width: 640px) { /* sm breakpoint */
-    .galleryGrid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  @media (min-width: 640px) {
   }
-  @media (min-width: 768px) { /* md breakpoint */
+  @media (min-width: 768px) {
     .facilitiesGrid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -555,13 +427,7 @@
       gap: 3rem;
     }
   }
-  @media (min-width: 1024px) { /* lg breakpoint */
-    .galleryGrid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .pageHeading {
-      font-size: 4rem;
-    }
+  @media (min-width: 1024px) {
     .sectionHeading {
       font-size: 3rem;
     }

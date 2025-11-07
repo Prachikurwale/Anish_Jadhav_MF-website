@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import { trackPageView } from './utils/analytics';
+import ScrollToTop from './components/ScrollToTop';
 
 import AboutAnish from './components/AboutAnish';
 import OurPrograms from './components/OurProgram';
@@ -37,6 +38,7 @@ function App() {
     <div className="App flex flex-col min-h-screen bg-gray-900">
       <CustomCursor />
       <Navbar />
+      <ScrollToTop />
 
       <main className="flex-grow">
         <Routes>

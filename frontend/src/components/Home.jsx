@@ -1,19 +1,13 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
-import { FaEye, FaHeart, FaHandsHelping, FaTimes } from 'react-icons/fa'; 
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { FaEye, FaHeart, FaHandsHelping } from 'react-icons/fa'; 
+import { ChevronDown, ArrowRight, Heart, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 
-// Images
-import campusImg1 from '../assets/campus1.jpg';
-import campusImg2 from '../assets/campus2.jpg';
-import campusImg3 from '../assets/campus3.jpg';
-import campusImg4 from '../assets/campus4.jpg'; // Hero Background
-import campusImg5 from '../assets/campus5.jpg';
-import campusImg6 from '../assets/campus6.jpg';
+import campusImg4 from '../assets/campus4.jpg';
+import FoundationImage from '../assets/Foundation.png'; 
 
-// --- Animation Variants (No Change) ---
 const sectionSlideInUp = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -45,9 +39,9 @@ const bounce = {
   transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
 };
 
-const allCampusImages = [campusImg1, campusImg2, campusImg3, campusImg4, campusImg5, campusImg6];
+const MotionDiv = motion.div;
+const MotionSection = motion.section;
 
-// --- Bubble Background (Mission - No Change) ---
 const BubbleBackground = () => (
   <div className={styles.bubbleContainer} aria-hidden="true">
     <div className={styles.bubble}></div>
@@ -58,47 +52,145 @@ const BubbleBackground = () => (
   </div>
 );
 
-// --- Marquee (Campus Life - UPDATED) ---
-const Marquee = ({ images, direction = 'left' }) => {
-  const marqueeVariants = {
-    animate: {
-      // 🌟 BUG FIX: -100% ko -50% kar diya hai
-      x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%'],
-      transition: {
-        x: { repeat: Infinity, repeatType: "loop", duration: 40, ease: "linear" },
-      },
-    },
-  };
-
-  return (
-    <div className={styles.marqueeContainer}>
-      <motion.div
-        className={styles.marquee}
-        variants={marqueeVariants}
-        animate="animate"
-      >
-        {[...images, ...images].map((imageSrc, i) => (
-          <div key={i} className={styles.marqueeImageWrapper}>
-            <img src={imageSrc} alt={`Campus Life ${i + 1}`} />
-          </div>
-        ))}
-      </motion.div>
+const VisionBubbleBackground = () => (
+    <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-50">
+        <style dangerouslySetInnerHTML={{__html: `
+            @keyframes float {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+            }
+            .bubble {
+                position: absolute;
+                bottom: -150px;
+                width: 40px;
+                height: 40px;
+                background-color: rgba(209, 163, 58, 0.3); 
+                border-radius: 50%;
+                animation: float 25s infinite linear;
+            }
+            .bubble:nth-child(1) { left: 10%; animation-duration: 25s; width: 60px; height: 60px; opacity: 0.4; }
+            .bubble:nth-child(2) { left: 40%; animation-duration: 35s; width: 80px; height: 80px; opacity: 0.3; }
+            .bubble:nth-child(3) { left: 70%; animation-duration: 30s; opacity: 0.5; }
+            .bubble:nth-child(4) { left: 20%; animation-duration: 40s; width: 50px; height: 50px; opacity: 0.2; }
+            .bubble:nth-child(5) { left: 85%; animation-duration: 20s; opacity: 0.35; }
+        `}} />
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
     </div>
-  );
+);
+
+const containerVariants = {
+  visible: { transition: { staggerChildren: 0.1 } } 
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+const heartBeat = {
+  beat: {
+    scale: [1, 1.2, 1, 1.1, 1], 
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+      times: [0, 0.2, 0.5, 0.7, 1]
+    }
+  }
 };
 
-// --- Main Home Component ---
+const VisionAndLegacySection = () => {
+    
+    const backgroundShapeAnimate = {
+        hidden: { x: "-100%", opacity: 0 },
+        visible: { x: 0, opacity: 1, transition: { duration: 2.5, ease: "easeOut", delay: 0.1 } } 
+    };
+
+    const boxAnimate = {
+      hidden: { opacity: 0, scale: 0.8, rotateY: 90 },
+      visible: { 
+          opacity: 1, 
+          scale: 1, 
+          rotateY: 0, 
+          transition: { 
+              type: "spring", 
+              stiffness: 40,
+              damping: 18,
+              delay: 0.5 
+          } 
+      }
+  };
+
+    return (
+        <MotionSection 
+            className={styles.visionLegacySection}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
+        >
+            <MotionDiv 
+                className={styles.visionBackgroundShape}
+                variants={backgroundShapeAnimate}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+            />
+            
+            <VisionBubbleBackground />
+
+            <div className={styles.visionLegacyGrid}>
+                
+                <MotionDiv variants={itemVariants} className={styles.visionContentContainer}>
+                    <h2 className={styles.visionHeading}>
+                        Our Vision in Partnership
+                    </h2>
+
+                    <p className={styles.visionParagraph}>
+                        In partnership with <strong>NavGurukul</strong>, a pioneering organization committed to providing residential education to underprivileged youth, the foundation has created a comprehensive ecosystem of learning and growth. The partnership ensures that students receive not just education, but a complete transformation.
+                    </p>
+                    <p className={styles.visionParagraph}>
+                        This includes residential facilities, nutritious meals, world-class instruction, and career placement support. Today, the foundation stands as a beacon of hope, offering four specialized schools that provide pathways to success in <strong>programming, business, education, and second-chance opportunities</strong>.
+                    </p>
+
+                    <div className={styles.visionPartnershipCTA}>
+                        <Star className={styles.partnershipIcon} />
+                        <p>Join us in carrying forward Anish's dreams and empowering the next generation of leaders.</p>
+                    </div>
+                </MotionDiv>
+
+                <MotionDiv variants={itemVariants} className={styles.visionImageContainerRight}> 
+                    
+                    <div className={styles.visionImageWrapper}>
+                        <img src={FoundationImage} alt="Foundation Vision" className={styles.visionImage} />
+                    </div>
+
+                    <MotionDiv className={styles.visionLegacyBox} variants={boxAnimate}>
+                        <motion.div variants={heartBeat} animate="beat">
+                            <Heart className={styles.legacyHeartIcon} />
+                        </motion.div>
+                        <h3 className={styles.legacyBoxTitle}>His Legacy Lives On</h3>
+                        <p className={styles.legacyBoxText}>
+                            Every student we educate, every life we transform, every dream we help realize is a tribute to Anish Jadhav. His spirit lives on in the determination of our students.
+                        </p>
+                    </MotionDiv>
+
+                </MotionDiv>
+
+            </div>
+        </MotionSection>
+    );
+};
+
+
 function Home() {
   const navigate = useNavigate();
-  const marqueeRow1 = allCampusImages.slice(0, 3);
-  const marqueeRow2 = allCampusImages.slice(3, 6);
-
-
 
   return (
     <div className={styles.pageContainer}>
       
-      {/* --- HERO SECTION (No Change) --- */}
       <section 
         className={styles.heroSection} 
         style={{ 
@@ -147,7 +239,6 @@ function Home() {
         </motion.div>
       </section>
 
-      {/* --- MISSION SECTION (No Change) --- */}
       <motion.section
         className={`${styles.section} ${styles.missionSection}`}
         initial="hidden"
@@ -230,36 +321,8 @@ function Home() {
           </motion.div>
         </div>
       </motion.section>
-
-      {/* --- CAMPUS SECTION (No Change) --- */}
-      <section className={`${styles.section} ${styles.campusSection}`}>
-        <div className={`${styles.decoCircle} ${styles.decoCircle3}`}></div>
-        <div className={`${styles.decoLine} ${styles.decoLine3}`}></div>
-        <div className={styles.sectionContainer} style={{ maxWidth: '100%', padding: 0 }}>
-          <div style={{ padding: '0 1.5rem', maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
-            <h2 className={`${styles.fontHeading} ${styles.sectionHeading}`}>A Glimpse of Campus Life</h2>
-            <div className={styles.sectionAccent}></div>
-            <p className={`${styles.fontBody} ${styles.sectionSubtitle}`}>
-              A nurturing residential environment where students learn, grow, and thrive together.
-            </p>
-          </div>
-          <div className={styles.marqueeWrapper}>
-            <Marquee images={marqueeRow1} direction="left" />
-            <Marquee images={marqueeRow2} direction="right" />
-          </div>
-          <motion.button
-            className={`${styles.fontBody} ${styles.campusButton}`}
-            variants={sectionSlideInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            onClick={() => navigate('/campus')}
-          >
-            Explore Our Campus
-            <ArrowRight className={styles.buttonIcon} />
-          </motion.button>
-        </div>
-      </section>
+      
+      <VisionAndLegacySection />
       
     </div>
   );
