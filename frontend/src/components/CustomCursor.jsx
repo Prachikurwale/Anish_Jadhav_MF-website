@@ -10,6 +10,7 @@ const MotionCursor = motion.div;
 const TRAIL_LENGTH = 12; // Number of dots in the trail
 const INITIAL_SIZE = 12; // Size of the first dot (main cursor)
 const BASE_COLOR = '#191817ff'; // Your preferred dark green color
+ 
 
 // --- Hook to manage the mouse trail logic (SIMPLIFIED) ---
 // Hover effect logic removed to keep cursor style constant

@@ -12,7 +12,8 @@ import Home from './components/Home';
 import CampusAndFacilities from './components/CampusAndFacilities';
 import GetInvolved from './components/GetInvolved';
 import ContactUs from './components/ContactUs';
-import SuccessStoriesSection from './components/SuccessStory'; 
+import StudentLedCampus from './components/StudentLedCampus';
+import SuccessStories from './components/SuccessStories';
 
 function App() {
   const location = useLocation();
@@ -26,7 +27,9 @@ function App() {
         '/involved': 'Get Involved',
         '/about': 'About Anish',
         '/programs': 'Our Programs',
-        '/contact': 'Contact Us'
+        '/contact': 'Contact Us',
+        '/success-stories': 'Success Stories',
+        '/student-campus': 'Student Led Campus'
       };
       return routes[pathname] || 'Unknown Page';
     };
@@ -54,7 +57,12 @@ function App() {
           <Route path="/about" element={<AboutAnish />} />
           <Route path="/programs" element={<OurPrograms />} />
 
-          {/* Placeholder R
+          {/* Student Led Campus Route */}
+          <Route path="/student-campus" element={<StudentLedCampus />} />
+
+          {/* Success Stories Route */}
+          <Route path="/success-stories" element={<SuccessStories />} />
+
           {/* YAHAN BADLAAV KIYA GAYA HAI */}
           <Route path="/contact" element={<ContactUs />} /> 
     

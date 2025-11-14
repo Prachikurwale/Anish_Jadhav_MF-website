@@ -1,258 +1,179 @@
-/* --- Global Styles and Utility Classes --- */
-
-/* Page container for overall padding and centering */
+ /* Page Container */
 .pageContainer {
-    padding: 20px 0;
-    background-color: #f7f7f7; /* Light background for the whole page */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
 }
 
-/* Main content wrapper with max-width */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+  width: 90%;
+  max-width: 1100px;
 }
 
-/* Heading Typography */
-.fontHeading {
-    font-family: 'Arial', sans-serif; /* Use a common, clear font */
-    font-weight: 700;
-    margin: 0;
-}
-
-/* Program List Section */
-.programList {
-    display: flex;
-    flex-direction: column;
-    gap: 40px; /* Space between the program cards */
-}
-
-/* --- Program Card Styling --- */
-
+/* Program Card */
 .programCard {
-    display: flex;
-    align-items: stretch; /* Stretch content and image to match height */
-    background-color: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    min-height: 300px; /* Ensure cards have a minimum height */
-    position: relative;
+  display: flex;
+  align-items: stretch;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 40px 0;
+  gap: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-left: 6px solid #dcdcdc;
 }
 
-/* Reversing the layout for alternating cards */
-.programCard.reversed {
-    flex-direction: row-reverse;
+.reversed {
+  flex-direction: row-reverse;
 }
 
-/* --- Content Area (Title, Description, Button) --- */
+/* Theme Colors (same soft pastel as screenshot) */
+.themeGreen {
+  background: #e8f7e8;
+  border-left-color: #a3d89c;
+}
 
+.themeBlue {
+  background: #e8f2ff;
+  border-left-color: #8db8ff;
+}
+
+.themeOrange {
+  background: #fff1e6;
+  border-left-color: #ffb178;
+}
+
+.themePurple {
+  background: #f2e8ff;
+  border-left-color: #c5a8ff;
+}
+
+.themePink {
+  background: #ffe8f2;
+  border-left-color: #ff9fc8;
+}
+
+/* Content Section */
 .programContent {
-    flex: 1;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center content */
-    position: relative; /* For z-index stacking if needed */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* The colored header block that holds the Title and Description */
+/* Header (Title + Description + Button) */
 .programHeader {
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    /* Important: The color for this block is set in the theme classes below */
+  margin-bottom: 10px;
 }
 
 .programTitle {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333; /* Default text color, will be overridden by theme for better contrast */
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #1a1a1a;
 }
 
 .programText {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
 }
 
-
-/* --- Apply Button Styling (Matching Screenshot) --- */
-
+/* Apply Button */
 .applyButton {
-    background-color: #ff8c42; /* Orange color from screenshot */
-    color: white;
-    font-weight: bold;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    width: fit-content;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(255, 140, 66, 0.4);
+  margin-top: 12px;
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
 }
 
 .applyButton:hover {
-    background-color: #ff6e26;
+  background: #005fcc;
 }
 
-/* --- Image and Visual Elements --- */
+/* List Sections (Curriculum & Outcomes) */
+.programListsContainer {
+  margin-top: 18px;
+}
 
+.listSection {
+  margin-bottom: 18px;
+}
+
+.listTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.listText {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* Image Section */
 .programImageContainer {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    min-height: 250px;
+  position: relative;
+  width: 280px;
+  min-width: 280px;
 }
 
 .programImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures image covers the container */
-    display: block;
+  width: 100%;
+  height: 240px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Red Pin Styling (Matching Screenshot) */
+/* Red Pin Circle */
 .redPin {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 25px;
-    height: 25px;
-    background-color: #e50914; /* Red color */
-    border-radius: 50%;
-    z-index: 10;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  width: 16px;
+  height: 16px;
+  background: red;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 10;
 }
 
-.redPin::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 50%;
-}
-
-/* Adjust pin position for reversed layout */
-.reversed .redPin {
-    right: auto;
-    left: 20px;
-}
-
-
-/* Floating Icon/Illustration for Programming section */
+/* Floating Icon */
 .programIconFloating {
-    position: absolute;
-    top: -20px; /* Position above the card slightly */
-    right: 50px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    transform: rotate(10deg); /* Tilt it slightly */
-}
-
-.reversed .programIconFloating {
-    right: auto;
-    left: 50px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  z-index: 12;
 }
 
 .iconImage {
-    color: #008000; /* Green for the code icon */
+  color: #007bff;
 }
 
+/* Responsive */
+@media (max-width: 768px) {
+  .programCard {
+    flex-direction: column;
+  }
 
-/* --- Theme/Color Classes (Matching Screenshot Colors) --- */
+  .programImageContainer {
+    width: 100%;
+  }
 
-/* School of Programming (Green/Light Green) */
-.themeGreen .programHeader {
-    background-color: #e6ffe6; /* Very light green background */
-    border-left: 5px solid #008000;
-}
-.themeGreen .programTitle {
-    color: #008000; /* Darker green title */
-}
-
-/* School of Business (Blue/Light Blue) */
-.themeBlue .programHeader {
-    background-color: #e6f7ff; /* Very light blue background */
-    border-left: 5px solid #0066cc;
-}
-.themeBlue .programTitle {
-    color: #0066cc; /* Darker blue title */
-}
-
-/* School of Second Chance (Orange/Light Orange) */
-.themeOrange .programHeader {
-    background-color: #fff4e6; /* Very light orange/peach background */
-    border-left: 5px solid #ff8c42;
-}
-.themeOrange .programTitle {
-    color: #ff8c42; /* Darker orange title */
-}
-
-/* Fictional 4th Program (Purple/Light Purple) */
-.themePurple .programHeader {
-    background-color: #f3e6ff; /* Very light purple background */
-    border-left: 5px solid #8a2be2;
-}
-.themePurple .programTitle {
-    color: #8a2be2; /* Darker purple title */
-}
-
-
-/* --- Responsiveness (Optional but recommended) --- */
-
-@media (max-width: 900px) {
-    .programCard {
-        flex-direction: column !important; /* Stack columns on small screens */
-    }
-    .programContent {
-        padding: 30px 20px;
-    }
-    .programImageContainer {
-        min-height: 200px;
-    }
-    .programIconFloating {
-        right: 20px;
-        top: -15px;
-    }
-    .reversed .programIconFloating {
-        left: 20px;
-    }
-}
-
-/* --- Apply Button Styling (Matching Screenshot) --- */
-
-.applyButton {
-    /* Existing Styles */
-    background-color: #ff8c42; 
-    color: white;
-    font-weight: bold;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    width: fit-content;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(255, 140, 66, 0.4);
-    
-    /* ADD THIS for Link Tag */
-    text-decoration: none; /* Link underline hatane ke liye */
-    display: inline-block; /* Padding aur width sahi se apply karne ke liye */
-    text-align: center; /* Text center karne ke liye */
-}
-
-.applyButton:hover {
-    background-color: #ff6e26;
+  .programImage {
+    height: 180px;
+  }
 }

@@ -1,10 +1,10 @@
 /* Variables for colors */
 :root {
-  --footer-bg: #343236; /* Dark background color (Primary) */
+  --footer-bg: #424454; /* Dark background color (Primary) */
   --footer-text: #ebebeb; /* Light gray text color */
   --footer-heading: #ffffff; /* White heading color */
   --footer-link-hover: #f0c330; /* Example yellow/accent hover color */
-  --footer-bottom-bg: #262431; /* Use the same color as main footer for the bottom bar for seamless blending */
+  --footer-bottom-bg: #3c394a; /* Use the same color as main footer for the bottom bar for seamless blending */
 }
 body{
   font-family: open-sans, sans-serif;

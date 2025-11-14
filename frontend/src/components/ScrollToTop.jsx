@@ -5,11 +5,11 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Jab bhi pathname (URL) badle, top par scroll karo
+    
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return null; // Yeh component kuch bhi render nahi karta, bas kaam karta hai
+  return null; 
 }
 
 export default ScrollToTop;

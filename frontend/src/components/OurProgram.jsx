@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion' 
+import { motion } from 'framer-motion' // eslint-disable-line no-unused-vars 
 import { CheckCircle, Code, Briefcase, GraduationCap, RefreshCw, ChevronRight } from 'lucide-react'
 import styles from './OurPrograms.module.css'
 
@@ -214,24 +214,22 @@ const PROGRAMS_DATA = [
     }
 ];
 const OurPrograms = () => {
-  return (
-    <div className={styles.pageContainer}>
-      <div className={styles.container}>
-        <section className={styles.programList}>
-          {PROGRAMS_DATA.map((program, index) => {
-            const isReversed = index % 2 !== 0; 
-            return (
-                <ProgramCard 
-                    key={index} 
-                    {...program} 
-                    isReversed={isReversed} 
-                />
-            );
-          })}
-        </section>
-      </div>
-    </div>
-  );
-};
-
-export default OurPrograms;
+  return (
+    <div className={styles.pageContainer}>
+      <div className={styles.container}>
+        <section className={styles.programList}>
+          {PROGRAMS_DATA.map((program, index) => {
+            const isReversed = index % 2 !== 0; 
+            return (
+              <ProgramCard 
+                key={index} 
+                {...program} 
+                isReversed={isReversed} 
+              />
+            );
+          })}
+        </section>
+      </div>
+    </div>
+  );
+};export default OurPrograms;
