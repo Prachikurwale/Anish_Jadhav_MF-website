@@ -7,9 +7,9 @@ import styles from './CustomCursor.module.css';
 const MotionCursor = motion.div;
 
 // --- CONFIGURATION ---
-const TRAIL_LENGTH = 12; // Number of dots in the trail
-const INITIAL_SIZE = 12; // Size of the first dot (main cursor)
-const BASE_COLOR = '#ff872bff'; // Your preferred dark green color
+const TRAIL_LENGTH = 14; // Number of dots in the trail
+const INITIAL_SIZE = 14; // Size of the first dot (main cursor)
+const BASE_COLOR = '#0c0b09ff'; // Your preferred dark green color
 
 // --- Hook to manage the mouse trail logic (SIMPLIFIED) ---
 // Hover effect logic removed to keep cursor style constant
