@@ -12,6 +12,7 @@ import Home from './components/Home';
 import CampusAndFacilities from './components/CampusAndFacilities';
 import GetInvolved from './components/GetInvolved';
 import ContactUs from './components/ContactUs';
+import SuccessStoriesSection from './components/SuccessStory'; 
 
 function App() {
   const location = useLocation();
