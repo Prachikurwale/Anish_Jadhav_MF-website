@@ -1,0 +1,398 @@
+:root {
+  --color-primary: #124b33;
+  --color-secondary: #d1a33a;
+  --color-accent-light: #1a6245;
+  --color-background-light: #fffefe;
+  --color-background-dark: #f8f9fa;
+  --color-light-section-bg: #f5f5f5;
+  --color-text-dark: #333333;
+  --color-text-light: #555555;
+  --color-border: #e0e0e0;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.pageContainer {
+  flex-grow: 1;
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
+}
+
+.section {
+  padding: 5rem 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section Headers */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.sectionSubtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Philosophy Section */
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.philosophyCard {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+}
+
+.philosophyCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.philosophyIcon {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.philosophyCard h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.philosophyCard p {
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+/* Councils Grid */
+.councilsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.councilCard {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.councilCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+.councilHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-background-dark);
+}
+
+.councilIcon {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent-light));
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.councilTitle h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.councilSubtitle {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.councilOverview {
+  margin-bottom: 2rem;
+}
+
+.councilOverview h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.councilOverview p {
+  color: var(--color-text-light);
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.responsibilitiesSection {
+  margin-bottom: 1rem;
+}
+
+.responsibilitiesSection h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.responsibilitiesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.responsibilityItem {
+  background: var(--color-background-dark);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--color-secondary);
+  transition: all 0.3s ease;
+}
+
+.responsibilityItem:hover {
+  background: rgba(209, 163, 58, 0.05);
+  transform: translateX(5px);
+}
+
+.responsibilityHeader {
+  margin-bottom: 0.75rem;
+}
+
+.responsibilityHeader strong {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.responsibilityItem p {
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.expandBtn {
+  background: transparent;
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.expandBtn:hover {
+  background: var(--color-secondary);
+  color: white;
+}
+
+/* Call to Action */
+.ctaSection {
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-background-dark), white);
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.ctaText {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent-light));
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(18, 75, 51, 0.3);
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(18, 75, 51, 0.4);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ctaSecondary:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bannerTitle {
+    font-size: 2rem;
+  }
+  
+  .bannerText {
+    font-size: 1rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .philosophyGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .councilsGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .councilCard {
+    padding: 2rem;
+  }
+  
+  .councilHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ctaPrimary,
+  .ctaSecondary {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+  
+  .banner {
+    padding: 3rem 1rem;
+  }
+  
+  .bannerTitle {
+    font-size: 1.75rem;
+  }
+  
+  .councilCard {
+    padding: 1.5rem;
+  }
+  
+  .philosophyCard {
+    padding: 2rem 1.5rem;
+  }
+  
+  .ctaSection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .responsibilityItem {
+    padding: 1rem;
+  }
+}

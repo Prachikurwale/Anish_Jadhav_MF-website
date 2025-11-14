@@ -37,6 +37,10 @@ function Navbar() {
             About Anish
           </NavLink>
 
+          <NavLink to="/student-campus" className={getNavLinkClass}>
+            Student Led Campus
+          </NavLink>
+
           <NavLink
             to="/campus"
             className={getNavLinkClass}
@@ -58,17 +62,18 @@ function Navbar() {
 
         <div className={styles.ctaContainer}>
           <NavLink
-            to="/success-stories"
-            className={`${styles.ctaButtonSecondary} ${styles.ctaNavLink}`}
-          >
-            Success Stories
-          </NavLink>
-          <NavLink
             to="/involved" 
             className={`${styles.ctaButtonPrimary} ${styles.ctaNavLink}`} 
           >
             Get Involved
           </NavLink>
+          <NavLink
+            to="/success-stories"
+            className={`${styles.ctaButtonSecondary} ${styles.ctaNavLink}`}
+          >
+            Success Stories
+          </NavLink>
+          
         </div>
 
       </div>
