@@ -37,10 +37,6 @@ function Navbar() {
             About Anish
           </NavLink>
 
-          <NavLink to="/student-campus" className={getNavLinkClass}>
-            Student Led Campus
-          </NavLink>
-
           <NavLink
             to="/campus"
             className={getNavLinkClass}
@@ -53,6 +49,10 @@ function Navbar() {
             className={getNavLinkClass}
           >
             Our Programs
+          </NavLink>
+
+          <NavLink to="/student-campus" className={getNavLinkClass}>
+            Student Led Campus
           </NavLink>
 
           <NavLink to="/contact" className={getNavLinkClass}>
