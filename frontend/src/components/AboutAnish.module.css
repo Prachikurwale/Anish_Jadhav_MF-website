@@ -1,5 +1,5 @@
 :root {
-    --color-primary: #124b33;
+    --color-primary: #298b62;
     --color-secondary: #d1a33a;
     --color-background-gray: #e6e6e6;
     --color-background-dark: #f8f9fa;
@@ -7,7 +7,7 @@
     --color-text-light: #555555;
     --color-border: #e0e0e0;
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --color-accent-green: #1a6245; 
+    --color-accent-green: #2e7f61; 
   }
     
   .pageContainer {
@@ -38,7 +38,7 @@
       top: 0;
       right: 0;
       bottom: 0;
-      width: 65%;
+      width: 55%;
       background-color: var(--color-secondary);
       border-top-left-radius: 300px;
       border-bottom-left-radius: 300px;
