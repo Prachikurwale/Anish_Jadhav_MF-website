@@ -177,3 +177,106 @@
     height: 180px;
   }
 }
+
+
+
+
+
+
+
+
+
+/* --- Daily Schedule Section --- */
+.dailyScheduleSection {
+    padding: 60px 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    background-color: #f8f8f8; /* Light background to separate it */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.scheduleTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* --- Schedule Grid Layout --- */
+.scheduleGrid {
+    display: grid;
+    /* Two columns: one narrow for time, one flexible for activity */
+    grid-template-columns: 1fr;
+    gap: 15px; /* Vertical spacing between items */
+}
+
+/* --- Individual Schedule Item Styling --- */
+.scheduleItem {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    border-left: 5px solid var(--theme-purple, #6a1b9a); /* Use a program theme color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.scheduleItem:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scheduleTime {
+    /* Fixed width or strong emphasis for time slot */
+    min-width: 160px;
+    font-weight: 700;
+    color: #555;
+    font-size: 1.1rem;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+}
+
+.scheduleActivity {
+    flex-grow: 1;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* --- Media Query for Larger Screens --- */
+@media (min-width: 768px) {
+    .scheduleGrid {
+        /* On desktop, use two columns for the schedule items */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 40px;
+    }
+    
+    .scheduleItem {
+        /* Reset to standard flex within the new 2-column grid */
+        flex-direction: row;
+        border-left-width: 6px;
+    }
+
+    /* Override to ensure time is left-aligned in the item */
+    .scheduleTime {
+        text-align: left;
+    }
+}
+
+/* --- Media Query for smaller screens (adjust item stacking) --- */
+@media (max-width: 600px) {
+    .scheduleItem {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .scheduleTime {
+        margin-right: 0;
+        margin-bottom: 5px;
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px dashed #eee;
+        width: 100%;
+    }
+}

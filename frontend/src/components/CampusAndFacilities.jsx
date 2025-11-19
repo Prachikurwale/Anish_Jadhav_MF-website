@@ -1,11 +1,8 @@
-
-
-
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { 
   FaBuilding, FaChalkboardTeacher, FaUtensils, FaDumbbell, 
-  FaHeartbeat, FaWifi 
+  FaHeartbeat, FaWifi, FaBookOpen,FaLaptop, FaSolarPanel
 } from 'react-icons/fa';
 import styles from './CampusAndFacilities.module.css';
 import { trackSectionView, trackFacilityInteraction } from '../utils/analytics';
@@ -13,66 +10,19 @@ import { usePageAnalytics, useScrollAnalytics } from '../utils/analyticsHooks';
 
 import campusVideo from '../assets/Anish Jadhav Memorial Foundation Skilling Institue.mp4'; 
 
+ 
+import independenceDayVideo from '../assets/Independence Day Celebrations 2024.mp4';
+import womansDayImage from '../assets/womans-Day.jpg';
+import healthcareCampVideo from '../assets/Health Camp 30 July 24.mp4';
+import infosysVisitVideo from '../assets/Infosys Visit  video 1.mp4';
+import exercisePhoto from '../assets/Excercise 5.jpg';
+ import hackathonsPhoto from '../assets/Programming Hackathon.jpeg';
+import sisterLucyVideo from '../assets/Visit Sister Lucy Founder Maher.mp4';
+import mitStudentsVideo from '../assets/VID_20240125_124807798.mp4';
+
+
 const MotionDiv = motion.div;
 const MotionSection = motion.section;
-
-const CountingStats = ({ target, text }) => {
-    const [count, setCount] = useState(0);
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.5 });
-    const controls = useAnimation();
-    
-    let numericTarget = 0;
-    let suffix = text;
-    
-    if (target === "100%") {
-        numericTarget = 100;
-        suffix = "%";
-    } else {
-        numericTarget = null;
-    }
-
-    useEffect(() => {
-        if (isInView && numericTarget !== null) {
-            controls.start({
-                opacity: 1,
-                transition: { duration: 1.5, ease: "easeOut" }
-            });
-
-            const duration = 2000;
-            const startTime = performance.now();
-
-            const step = (currentTime) => {
-                const elapsedTime = currentTime - startTime;
-                const progress = Math.min(1, elapsedTime / duration);
-                const currentValue = Math.floor(progress * numericTarget);
-
-                setCount(currentValue);
-
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                }
-            };
-
-            requestAnimationFrame(step);
-        } else if (isInView && numericTarget === null) {
-            controls.start({ opacity: 1, transition: { duration: 0.8 } });
-        }
-    }, [isInView, numericTarget, controls]);
-
-    const displayValue = numericTarget !== null ? `${count}${suffix}` : target;
-
-    return (
-        <motion.h3 
-            ref={ref}
-            className={styles.statCount}
-            initial={{ opacity: 0 }}
-            animate={controls}
-        >
-            {displayValue}
-        </motion.h3>
-    );
-};
 
 const containerVariants = {
   visible: { transition: { staggerChildren: 0.1 } } 
@@ -103,6 +53,20 @@ const facilityCardVariants = {
       stiffness: 100, 
       damping: 15,
       duration: 0.6 
+    } 
+  }
+};
+const cardSlideIn = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      type: "spring", 
+      stiffness: 50,
+      damping: 18,
+      mass: 1.2,
     } 
   }
 };
@@ -145,17 +109,107 @@ const FacilityIcon = ({ icon }) => (
     </motion.div>
 );
 
+// 🌟 Naya 'Activity Row' component
+const ActivityRow = ({ title, description, mediaType, mediaSrc, isReversed }) => {
+  return (
+    <motion.div
+      className={`${styles.activityRow} ${isReversed ? styles.reversed : ''}`}
+      variants={cardSlideIn}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      <div className={styles.activityMediaContainer}>
+        {mediaType === 'video' ? (
+          <video
+            className={styles.activityMedia}
+            src={mediaSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <img
+            src={mediaSrc}
+            alt={title}
+            className={styles.activityMedia}
+          />
+        )}
+      </div>
+      <div className={styles.activityContentContainer}>
+        <h3 className={styles.activityTitle}>{title}</h3>
+        <p className={styles.activityDescription}>{description}</p>
+      </div>
+    </motion.div>
+  );
+};
+
+
 function CampusAndFacilities() {
   usePageAnalytics('Campus & Facilities');
   useScrollAnalytics('Campus & Facilities');
   
   const facilities = [
-    { icon: <FaBuilding />, title: "Residential Facilities", description: "Comfortable, safe dormitories with modern amenities. Students live on campus in a supportive community environment.", items: ["Shared and private rooms", "Climate-controlled spaces", "24/7 security", "Housekeeping services"] },
-    { icon: <FaChalkboardTeacher />, title: "Modern Classrooms", description: "State-of-the-art learning spaces equipped with the latest technology and designed for collaborative learning.", items: ["Smart boards", "Comfortable seating", "Natural lighting", "Audio-visual equipment"] },
-    { icon: <FaUtensils />, title: "Dining Hall", description: "Nutritious, balanced meals served three times daily in a spacious dining facility that accommodates all students.", items: ["Healthy meals", "Vegetarian options", "Clean environment", "Community dining"] },
-    { icon: <FaDumbbell />, title: "Recreation & Sports", description: "Sports facilities and recreational areas for physical fitness and leisure activities to maintain work-life balance.", items: ["Indoor games", "Outdoor sports", "Fitness equipment", "Recreation room"] },
-    { icon: <FaHeartbeat />, title: "Health & Wellness", description: "On-campus health facilities and counseling services to ensure student well-being and mental health support.", items: ["Medical care", "Counseling services", "Wellness programs", "First-aid"] },
-    { icon: <FaWifi />, title: "High-Speed Internet", description: "Campus-wide high-speed WiFi connectivity enabling students to access learning resources anytime, anywhere.", items: ["24/7 connectivity", "Multiple access points", "Secure network", "Technical support"] },
+    { icon: <FaChalkboardTeacher />, title: "Training & Conference", description: "8 state-of-the-art training rooms, plus a mini auditorium and conference hall for events." },
+    { icon: <FaBuilding />, title: "Student Accommodation", description: "Comfortable and secure dormitories for 150 students and accommodation for 10 instructors." },
+    { icon: <FaUtensils />, title: "Kitchen & Dining", description: "A fully functional kitchen and a spacious dining hall serving nutritious meals." },
+    { icon: <FaBookOpen />, title: "Admin & Learning", description: "Includes reception, administrative office, staff room, and a well-stocked library." },
+    { icon: <FaSolarPanel />, title: "Eco-Friendly Campus", description: "Sustainable features like STP, Solar Power, Rainwater Harvesting, and energy-efficient windows." },
+    { icon: <FaLaptop />, title: "Digital Access", description: "Provision of laptops, high-speed internet, mentorship, English classes, and mental health counselling." },
+    { icon: <FaDumbbell />, title: "Sports & Recreation", description: "A large playground for outdoor activities and promoting a healthy, active lifestyle." },
+  ];
+  
+  // 🌟 Naya data array
+  const eventsAndActivitiesData = [
+    {
+      title: "Independence Day Celebration",
+      description: "Honoring the nation's spirit with flag hoisting, cultural programs, and patriotic fervor displayed by our students and staff.",
+      mediaType: 'video',
+      mediaSrc: independenceDayVideo
+    },
+    {
+      title: "Infosys Campus Visit",
+      description: "Our students gained invaluable industry exposure during an insightful visit to the Infosys campus, interacting with professionals.",
+      mediaType: 'video',
+      mediaSrc: infosysVisitVideo
+    },
+    {
+      title: "Meetup with MIT USA Students",
+      description: "A collaborative session where our students exchanged ideas, culture, and technical knowledge with peers from MIT, USA.",
+      mediaType: 'video',
+      mediaSrc: mitStudentsVideo
+    },
+    {
+      title: "Women's Day",
+      description: "Celebrating the strength and achievements of women within our community and beyond with special workshops and talks.",
+      mediaType: 'images',
+      mediaSrc: womansDayImage
+    },
+    {
+      title: "Community Healthcare Camp",
+      description: "Our commitment to wellness in action. A free healthcare camp providing essential check-ups and medical advice.",
+      mediaType: 'video',
+      mediaSrc: healthcareCampVideo
+    },
+    {
+      title: "Visit from Sister Lucy",
+      description: "A blessed and inspiring day as students and staff interact with Sister Lucy, sharing moments of joy and wisdom.",
+      mediaType: 'video',
+      mediaSrc: sisterLucyVideo
+    },
+    {
+      title: "Daily Exercise & Wellness",
+      description: "Physical well-being is core to our philosophy. Students engaging in daily exercise routines to stay fit and focused.",
+      mediaType: 'photo',
+      mediaSrc: exercisePhoto
+    },
+    {
+      title: "Intensive Hackathons",
+      description: "Fueling innovation and teamwork. Students deep in concentration during one of our weekend-long hackathons.",
+      mediaType: 'photo',
+      mediaSrc: hackathonsPhoto
+    },
   ];
 
   return (
@@ -222,8 +276,6 @@ function CampusAndFacilities() {
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
                 onViewportEnter={() => trackFacilityInteraction(facility.title, 'view')}
-                onHoverStart={() => trackFacilityInteraction(facility.title, 'hover')}
-                onClick={() => trackFacilityInteraction(facility.title, 'click')}
               >
                 <FacilityIcon icon={facility.icon} />
                 <div>
@@ -245,29 +297,45 @@ function CampusAndFacilities() {
                   >
                     {facility.description}
                   </motion.p>
-                  <motion.ul 
-                    className={styles.facilityList}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    viewport={{ once: true }}
-                  >
-                    {facility.items.map((item, i) => (
-                      <motion.li 
-                        key={i} 
-                        className={styles.facilityListItem}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: 0.4 + (i * 0.1) }}
-                        viewport={{ once: true }}
-                      >
-                        <span className={styles.facilityListBullet}>◆</span>
-                        {item}
-                      </motion.li>
-                    ))}
-                  </motion.ul>
                 </div>
               </MotionDiv>
+            ))}
+          </MotionDiv>
+        </div>
+      </MotionSection>
+
+      <MotionSection 
+        className={`${styles.section} ${styles.relativePosition} ${styles.lightBg}`}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={containerVariants}
+        onViewportEnter={() => trackSectionView('Events & Activities', 'Campus & Facilities')}
+      >
+        <div className={`${styles.container} ${styles.textCenter} ${styles.contentAboveBackground}`}>
+          <MotionDiv variants={fadeInUp}>
+            <h2 className={styles.sectionHeading}>
+              Events & Activities
+            </h2>
+            <div className={styles.accentBar}></div>
+            <p className={styles.sectionSubtitle}>
+              Learning beyond classrooms. We focus on holistic development through events, sports, and community activities.
+            </p>
+          </MotionDiv>
+
+          <MotionDiv 
+            className={styles.activityGrid}
+            variants={cardStaggerContainer}
+          >
+            {eventsAndActivitiesData.map((activity, index) => (
+              <ActivityRow 
+                key={index} 
+                title={activity.title}
+                description={activity.description}
+                mediaType={activity.mediaType}
+                mediaSrc={activity.mediaSrc}
+                isReversed={index % 2 !== 0}
+              />
             ))}
           </MotionDiv>
         </div>

@@ -1,470 +1,608 @@
+ 
 :root {
-  --color-primary: #124b33; 
-  --color-secondary: #d1a33a; 
-  --color-accent-green: #1a6245; 
-  --color-background-light: #f8f9fa; 
-  --color-text-dark: #333333;
-  --color-text-light: #555555;
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-
-  --primary-color: #36454f; 
-  --secondary-color-getinvolved: #f7a233; 
-  --dark-purple: #1e003c;
+    --white-bg: #fcf8f2;
+    --text-dark: #333333;
+    --title-gold: #ff9100; 
+    --subtitle-blue: #004d99; 
+    --accent-orange: #ff9100; 
+    --author-color: #001c4f;
+    --author-title-color: #034d1f;
 }
 
-.fontHeading { font-family: 'YourHeadingFont', sans-serif; }
-.fontBody { font-family: 'YourBodyFont', sans-serif; }
 
-.pageContainer {
-  background-color: var(--color-background-light);
-  overflow-x: hidden; 
-}
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.heroSection {
-    position: relative;
-    padding: 8rem 0 6rem;
-    min-height: 500px;
-    color: #fff;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-}
-
-.heroOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.modernHeroSection {
     width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-image: linear-gradient(90deg, rgba(30, 0, 60, 0.8) 0%, rgba(51, 18, 75, 0.7) 40%, rgba(51, 18, 75, 0.4) 100%);
-    mix-blend-mode: multiply; 
-}
-
-.heroContentWrapper {
-    position: relative;
-    z-index: 2;
-}
-
-.heroTextContainer {
-  max-width: 700px; 
-}
-
-.heroHeading {
-    font-size: 4rem; 
-    font-weight: 800;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    color: #fff;
-}
-@media (min-width: 768px) {
-  .heroHeading {
-    font-size: 5rem; 
-  }
-}
-
-.heroHeadingSpan {
-    color: var(--color-secondary); 
-    display: block; 
-    font-size: 4.5rem; 
-}
-
-.heroSubtitle {
-    font-size: 1.5rem; 
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.heroAccentLine {
-    width: 80px;
-    height: 4px;
-    background-color: var(--color-secondary);
-    margin-bottom: 1.5rem;
-}
-
-.heroButtonContainer {
+    min-height: 85vh; 
     display: flex;
-    flex-wrap: wrap; 
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.heroButton {
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.heroButtonPrimary {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    border: 2px solid var(--color-secondary);
-}
-.heroButtonPrimary:hover {
-    background-color: transparent;
-    color: var(--color-secondary);
-    transform: translateY(-2px);
-}
-
-.heroButtonSecondary {
-    background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
-}
-.heroButtonSecondary:hover {
-    background-color: #fff;
-    color: var(--color-primary);
-    transform: translateY(-2px);
-}
-
-.scrollDownIcon {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  z-index: 3;
-}
-
-
-.section {
-  padding: 6rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.sectionContainer {
-  max-width: 1280px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-.sectionHeading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-}
-.sectionAccent {
-  width: 80px;
-  height: 4px;
-  background-color: var(--color-secondary);
-  margin: 0 auto 3rem;
-  border-radius: 2px;
-}
-.missionSection {
-  background-color: #ffffff;
-  border-top-left-radius: 5rem;
-  border-top-right-radius: 5rem;
-  margin-top: -3rem; 
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-}
-
-@keyframes float-bubble { 
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
-}
-.bubbleContainer {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 1;
-}
-.bubble {
-  position: absolute;
-  bottom: -150px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  animation: float-bubble 25s infinite linear; 
-}
-.bubble:nth-child(1) { 
-  left: 10%; 
-  animation-duration: 25s; 
-  width: 60px; height: 60px; 
-  background-color: rgba(209, 163, 58, 0.2); 
-}
-.bubble:nth-child(2) { 
-  left: 40%; 
-  animation-duration: 35s; 
-  width: 80px; height: 80px; 
-  background-color: rgba(18, 75, 51, 0.15); 
-}
-.bubble:nth-child(3) { 
-  left: 70%; 
-  animation-duration: 30s; 
-  background-color: rgba(209, 163, 58, 0.2); 
-}
-.bubble:nth-child(4) { 
-  left: 20%; 
-  animation-duration: 40s; 
-  width: 50px; height: 50px; 
-  background-color: rgba(18, 75, 51, 0.1); 
-}
-.bubble:nth-child(5) { 
-  left: 85%; 
-  animation-duration: 20s; 
-  background-color: rgba(209, 163, 58, 0.15); 
-}
-
-.cardGrid3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  text-align: left;
-}
-
-@keyframes float-card {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
-
-.card {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: var(--card-shadow);
-  border: 1px solid rgba(0,0,0,0.05);
-  position: relative;
-  overflow: hidden;
-  z-index: 2;
-  animation: float-card 6s infinite ease-in-out;
-  animation-delay: var(--stagger-delay, 0s);
-}
-.missionIconWrapper {
-  background-color: var(--color-secondary);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-.missionIconWrapper .icon {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-}
-.cardHeading {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.75rem;
-}
-.cardText {
-  color: var(--color-text-light);
-}
-.missionInfoBox {
-  margin-top: 4rem;
-  background-color: var(--color-primary);
-  padding: 2rem;
-  border-radius: 0.75rem;
-  color: #fff;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-.missionInfoText { 
-  color: #fff; 
-  line-height: 1.7; 
-  text-align: left; 
-  font-size: 1.1rem;
-}
-.missionInfoText strong {
-  color: var(--color-secondary);
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes pulseLine {
-  0% { transform: scaleY(0.5) rotate(var(--rotate, 0deg)); opacity: 0.5; }
-  50% { transform: scaleY(1) rotate(var(--rotate, 0deg)); opacity: 1; }
-  100% { transform: scaleY(0.5) rotate(var(--rotate, 0deg)); opacity: 0.5; }
-}
-.decoCircle1, .decoCircle2 {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    opacity: 0.1;
-    z-index: 0;
-    animation: spin 25s infinite linear;
-}
-.decoCircle1 { border: 2px dashed var(--color-primary); top: -50px; right: -50px; }
-.decoCircle2 { border: 2px dashed var(--color-secondary); bottom: -70px; left: -70px; }
-.decoLine1, .decoLine2 {
-    position: absolute;
-    height: 3px;
-    width: 100px;
-    opacity: 0.2;
-    z-index: 0;
-    border-radius: 2px;
-    animation: pulseLine 4s infinite ease-in-out;
-}
-.decoLine1 { background-color: var(--color-secondary); bottom: 10px; right: 10px; --rotate: 45deg; }
-.decoLine2 { background-color: var(--color-primary); top: 10px; left: 10px; --rotate: 135deg; }
-
-.visionLegacySection {
-    position: relative;
-    padding: 3.5rem 0;
-    margin: 6rem 1.5rem;
+    align-items: center; 
     overflow: hidden;
-    background-color: var(--color-primary); 
-    border-radius: 1.5rem;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-}
-
-.visionBackgroundShape {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 55%;
-    background-color: var(--color-accent-green); 
-    border-top-right-radius: 300px;
-    border-bottom-right-radius: 300px;
-    z-index: 5;
-    opacity: 0.8;
-}
-
-.visionLegacyGrid {
     position: relative;
-    z-index: 10;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    background-color: var(--white-bg);
+    color: var(--text-dark);
+    padding: 0;
 }
 
-@media (min-width: 992px) {
-    .visionLegacyGrid {
-        grid-template-columns: 1.5fr 1fr; 
-        gap: 5rem;
+.heroContent {
+    
+    flex: 0 0 42%; 
+    max-width: 42%; 
+    padding: 60px 40px 60px 60px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modernTitle {
+   
+    font-family: 'Playfair Display', Georgia, serif; 
+    font-size: clamp(3rem, 6vw, 4.5rem); 
+    font-weight: 700;
+   
+    line-height:1.7rem ; 
+    color: var(--title-gold);
+    margin-bottom: 0; 
+    padding-bottom: 0;
+}
+
+
+.modernSubtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem); 
+    font-weight: 700;
+    color: black;
+    text-transform: uppercase;
+   
+    margin: 30px 0; 
+}
+
+
+.modernAuthorInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+}
+
+.modernAuthorImage {
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 3px solid rgb(1, 93, 1); 
+    box-shadow: 0 0 0 1px #ddd; 
+}
+
+.modernAuthorName {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--author-color);
+    line-height: 1.2rem;
+}
+
+.modernAuthorTitle {
+    font-size: 1rem;
+    color: var(--author-title-color); 
+    font-weight: 400;
+}
+ 
+.learnMoreButton {
+    background-color: var(--accent-orange); 
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 250px;
+    margin-top: 25px; 
+    
+}
+
+ 
+.modernHeroImageContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    
+ 
+    width: 55%; 
+    height: 100%; 
+    overflow: hidden;
+    
+    
+    background-color: white; 
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1); 
+}
+
+.modernHeroImage {
+    width: calc(100% - 10px); 
+    height: calc(100% - 0px);
+    object-fit: cover; 
+    position: absolute;
+      
+
+    
+}
+
+.modernTitleBlue {
+     
+    color: var(--subtitle-blue); 
+    font-family: 'Playfair Display', Georgia, serif; 
+    font-size: clamp(3rem, 6vw, 4.5rem); 
+    font-weight: 700;
+    line-height: 1.05; 
+    margin-bottom: 0; 
+    padding-bottom: 0;
+}
+
+
+:root {
+ 
+    --v-m-background-light: #f4f8ff; 
+    --v-m-text-dark: #333333;
+    --v-m-header-blue: #003674; 
+}
+
+
+.missionVisionSection {
+    width: 100%;
+    max-width: 1400px;
+    margin: 60px auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+
+.topTextBlock {
+    width: 100%;
+    background-color: var(--v-m-background-light); 
+    padding: 30px 50px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.topTextBlock p {
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--v-m-text-dark);
+}
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+}
+
+
+.missionVisionCard {
+    background-color: var(--v-m-background-light); 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.cardTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--v-m-header-blue);
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.cardText {
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--v-m-text-dark);
+}
+
+
+@media (max-width: 900px) {
+    .missionVisionSection {
+        padding: 0 20px;
+    }
+    .cardsContainer {
+        
+        grid-template-columns: 1fr;
+    }
+} 
+
+
+
+
+
+/* --- NEW: Mission/Vision Colors --- */
+:root {
+    /* ... (Keep existing colors) ... */
+    --v-m-background-light: #f4f8ff; /* Very light blue/off-white background */
+    --v-m-text-dark: #333333;
+    --v-m-header-blue: #112B68; /* The deep blue for VISION/MISSION headers */
+}
+
+/* --- Mission/Vision Layout Section --- */
+.missionVisionSection {
+    width: 100%;
+    max-width: 1400px;
+    /* Reduced margin to bring it close to the hero section */
+    margin: 40px auto 60px auto; 
+    padding: 0 0px;
+    box-sizing: border-box;
+}
+
+/* --- Top Paragraph Block --- */
+.topTextBlock {
+    width: 100%;
+    /* Use the light blue background shown in the screenshot */
+    background-color: var(--v-m-background-light); 
+    /* padding: 30px 50px; */
+    border-radius: 8px;
+    margin-bottom: 30px; /* Reduced margin */
+}
+
+.topTextBlock p {
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--v-m-text-dark);
+}
+
+/* --- Cards Container (Two Columns) --- */
+.cardsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 30px;
+}
+
+ 
+.missionVisionCard {
+   
+    background-color: #f4f8ff;
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);  
+    height: 100%;
+    box-sizing: border-box;
+ 
+}
+.missionVisionCard ,.cardTitle{
+padding: 0;
+}
+.cardTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: #112B68;
+    
+    padding: 30px 20px;
+    letter-spacing: 1px;
+    background-color: #e7f1fd;
+    margin-top: 0;
+    
+
+}
+
+.cardText {
+  padding: 20px  30px 0;
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--v-m-text-dark);
+}
+ 
+@media (max-width: 900px) {
+    .missionVisionSection {
+        padding: 0 20px;
+    }
+    .cardsContainer {
+        /* Stack cards vertically on smaller screens */
+        grid-template-columns: 1fr;
+    }
+    .topTextBlock {
+        padding: 20px 30px;
     }
 }
 
-.visionImageContainerRight { 
+
+
+
+
+/* --- Founder Section Layout --- */
+.founderSection {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 0px;
+    box-sizing: border-box;
+    background-color: #F4F8FF;
+}
+
+.founderContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    gap: 40px;
+    align-items: flex-start; /* Aligns content to the top */
+    margin-bottom: 30px;
 }
 
-.visionImageWrapper {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 1rem;
+/* --- Left Side: Image Styling --- */
+.founderImageContainer {
+    flex-shrink: 0; /* Prevents image area from shrinking */
+    width: 250px; /* Fixed width for the image container */
+    height: 250px; /* Fixed height for the circular crop */
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-    margin-bottom: 2rem;
+    position: relative;
+    
+    /* Creates the black circular image frame/crop */
+    border-radius: 0%; 
+    border: 5px solid black; 
+    
+    /* Use a clip-path for a smoother look or keep border-radius: 50% for simple circle */
+    /* If the image needs an asymmetrical crop like the screenshot, use clip-path: */
+    clip-path: circle(100% at 50% 50%); /* Simple circle */
 }
 
-.visionImage {
+.founderImage {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-.visionLegacyBox {
-    position: relative;
-    background-color: var(--color-secondary); 
-    color: var(--color-text-dark);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    margin-top: -5rem; 
-    z-index: 15;
-    text-align: center;
+/* --- Right Side: Text Styling --- */
+.founderInfo {
+    flex-grow: 1;
+    padding-top: 10px; /* Slight offset to align text with image top */
 }
 
-.legacyHeartIcon {
-    width: 2.5rem;
-    height: 2.5rem;
-    color: white;
-    fill: white;
-    margin-bottom: 0.5rem;
-}
-
-.legacyBoxTitle {
-    font-size: 1.5rem;
+.founderNameTitle {
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
+    color: #112b68;
+    margin-bottom: 5px;
 }
 
-.legacyBoxText {
+.founderRole {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #7d3900;
+    margin-bottom: 25px;
+}
+
+.founderDescription {
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--color-text-dark);
+    color: #333;
 }
 
-.visionContentContainer {
+/* --- Bottom Full-Width Text --- */
+.founderBottomText {
+    margin-top: 40px;
+    padding-left: 290px; /* Aligns text under the right column, matching image width + gap */
+}
+
+.founderBottomText p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .founderContainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    .founderImageContainer {
+        width: 180px;
+        height: 180px;
+    }
+    .founderBottomText {
+        padding-left: 0;
+        text-align: center;
+    }
+    .founderNameTitle {
+        font-size: 1.5rem;
+    }
+}
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+/* --- NEW: Vision in Partnership Section Styles --- */
+:root {
+    /* ... existing colors ... */
+    --green-bg-dark:  #11338114; /* Dark green for the section background */
+    --gold-highlight: #ffc107; /* Gold for "NavGurukul" and Legacy Card background */
+    --star-icon-color: #ffcc00; /* Yellow for the star icon */
+    --legacy-heart-color: #f8f8f8; /* Light color for the heart icon */
+}
+
+.visionPartnershipSection {
+    background-color: var(--green-bg-dark); /* Dark green background */
+    padding: 80px 0;
+    color: #112b68;
+    position: relative;
+    overflow: hidden; /* Ensures rounded corners are visible */
+    border-radius: 12px; /* Slight overall rounded corners for the section */
+    max-width: 1400px; /* Optional: Constrain max width for entire section */
+    margin: 60px auto; /* Centering the whole section */
+}
+
+.visionPartnershipContent {
+    display: flex;
+    max-width: 1200px; /* Inner content width */
+    margin: 0 auto;
+    padding: 0 40px;
+    gap: 60px;
+}
+
+.visionPartnershipLeft {
+    flex: 2; /* Takes more space */
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    color: #e0e0e0; 
-    padding-top: 1rem;
+    justify-content: center; /* Vertically center content */
 }
 
-.visionHeading {
-    font-size: 3rem;
-    font-weight: 800;
-    color: white;
-    line-height: 1.1;
-    border-bottom: 3px solid var(--color-secondary);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.visionParagraph {
-    font-size: 1.15rem;
-    line-height: 1.7;
-}
-
-.visionParagraph strong {
-    font-weight: 700;
-    color: var(--color-secondary);
-}
-
-.visionPartnershipCTA {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-left: 5px solid var(--color-secondary);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
+.visionPartnershipRight {
+    flex: 1; /* Takes less space */
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     align-items: center;
-    margin-top: 1.5rem;
+    gap: 30px;
+    padding-top: 20px; /* Align image/card slightly lower */
 }
 
-.partnershipIcon {
-    min-width: 2rem;
-    height: 2rem;
-    color: var(--color-secondary);
+.visionPartnershipTitle {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    color: #112b68; /* Title is white */
 }
 
-.visionPartnershipCTA p {
-    margin: 0;
+.visionPartnershipText {
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.navgurukulHighlight {
+    color: var(--gold-highlight); /* Gold color for NavGurukul */
+    font-weight: 600;
+}
+
+.highlightGreen {
+    color: var(--gold-highlight); /* Gold color for emphasized text in the second paragraph */
+    font-weight: 600;
+}
+ 
+
+.starIcon {
+    color: var(--star-icon-color); /* Yellow star icon */
+    flex-shrink: 0;
+}
+
+/* --- Right Column Styles (Image and Legacy Card) --- */
+.visionPartnershipImageContainer {
+    width: 130%;
+    border-radius: 8px; /* Rounded corners for the image container */
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.visionPartnershipImage {
+    width: 130%;
+    height: 100%;
+    display: block;
+}
+
+ 
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .visionPartnershipContent {
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 30px;
+    }
+    .visionPartnershipRight {
+        align-items: center;
+        width: 80%; /* Constrain width for a better look on smaller screens */
+        margin: 0 auto;
+        padding-top: 0;
+    }
+    .visionPartnershipImageContainer,
+    .legacyCard {
+        width: 100%; /* Take full width within its parent */
+    }
+    .visionPartnershipTitle {
+        text-align: center;
+    }
+    .visionPartnershipLeft {
+        align-items: center;
+        text-align: center;
+    }
+    .visionPartnershipText {
+        text-align: center;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .visionPartnershipSection {
+        padding: 60px 0;
+        margin: 40px auto;
+    }
+    .visionPartnershipContent {
+        padding: 0 20px;
+    }
+    .visionPartnershipRight {
+        width: 95%;
+    }
+    
+    .starIcon {
+        margin-bottom: 5px;
+    }
+}
+
+
+
+
+
+
+
+ 
+
+.pedagogySection {
+    width: 100%;
+    max-width: 1400px;
+    margin: 40px auto;
+    /* padding: 25px 40px 40px 40px;  */
+    box-sizing: border-box;
+     
+    background-color:  #f4f8ff; 
+    border-radius: 10px;
+    border: 1px solid var(--about-border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+.pedagogyTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    text-align: center;
+    background-color: #e7f1fd;
+    color:  #112B68;
+    /* margin-bottom: 25px; */
+    
+    padding: 40px; 
+      
+}
+.pedagogyText {
+  padding: 40px;
     font-size: 1.1rem;
-    font-style: italic;
-    font-weight: 500;
+    line-height: 1.7;
+    color:  #112B68;
+    margin-bottom: 20px; 
+    white-space: normal; 
+}
+@media (max-width: 768px) {
+    .pedagogySection {
+        padding: 20px;
+        margin: 30px auto;
+    }
+    .pedagogyTitle {
+        font-size: 1.5rem;
+    }
+    .pedagogyText {
+        font-size: 1rem;
+    }
 }

@@ -1,331 +1,334 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEye, FaHeart, FaHandsHelping } from 'react-icons/fa'; 
+import { FaEye, FaHeart, FaHandsHelping } from 'react-icons/fa'; 
 import { ChevronDown, ArrowRight, Heart, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 
-import campusImg4 from '../assets/campus4.jpg';
-import FoundationImage from '../assets/Foundation.png'; 
+// Using your provided imports
+import campusImg25  from '../assets/campus25.jpeg';
+import campusImg4 from '../assets/campus10.jpeg'; // We'll use this for the main hero image
+import FoundationImage from '../assets/AJMF_0324.jpg'; // We'll use this as the Author image placeholder
 
-const sectionSlideInUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
-const cardStaggerContainer = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.2 } }
-};
-const heroContainerVariants = {
-  visible: { transition: { staggerChildren: 0.1 } } 
-};
-const heroItemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
-const cardFlipIn = {
-  hidden: { opacity: 0, y: 30, rotateY: -100, transformOrigin: 'left' },
-  visible: { 
-    opacity: 1, y: 0, rotateY: 0, 
-    transition: { type: "spring", stiffness: 60, damping: 15, mass: 0.8 } 
-  }
-};
-const cardHover = {
-  hover: { y: -10, scale: 1.03, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" },
-  transition: { type: "spring", stiffness: 300 }
-};
-const bounce = {
-  y: ["0%", "-10%", "0%"],
-  transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+// --- Animation Variants ---
+const baseVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
 };
 
-const MotionDiv = motion.div;
-const MotionSection = motion.section;
-
-const BubbleBackground = () => (
-  <div className={styles.bubbleContainer} aria-hidden="true">
-    <div className={styles.bubble}></div>
-    <div className={styles.bubble}></div>
-    <div className={styles.bubble}></div>
-    <div className={styles.bubble}></div>
-    <div className={styles.bubble}></div>
-  </div>
-);
-
-const VisionBubbleBackground = () => (
-    <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-50">
-        <style dangerouslySetInnerHTML={{__html: `
-            @keyframes float {
-                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-                100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
-            }
-            .bubble {
-                position: absolute;
-                bottom: -150px;
-                width: 40px;
-                height: 40px;
-                background-color: rgba(209, 163, 58, 0.3); 
-                border-radius: 50%;
-                animation: float 25s infinite linear;
-            }
-            .bubble:nth-child(1) { left: 10%; animation-duration: 25s; width: 60px; height: 60px; opacity: 0.4; }
-            .bubble:nth-child(2) { left: 40%; animation-duration: 35s; width: 80px; height: 80px; opacity: 0.3; }
-            .bubble:nth-child(3) { left: 70%; animation-duration: 30s; opacity: 0.5; }
-            .bubble:nth-child(4) { left: 20%; animation-duration: 40s; width: 50px; height: 50px; opacity: 0.2; }
-            .bubble:nth-child(5) { left: 85%; animation-duration: 20s; opacity: 0.35; }
-        `}} />
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-    </div>
-);
-
-const containerVariants = {
-  visible: { transition: { staggerChildren: 0.1 } } 
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
-const heartBeat = {
-  beat: {
-    scale: [1, 1.2, 1, 1.1, 1], 
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut",
-      times: [0, 0.2, 0.5, 0.7, 1]
-    }
-  }
+const cardVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
 };
 
-const VisionAndLegacySection = () => {
-    
-    const backgroundShapeAnimate = {
-        hidden: { x: "-100%", opacity: 0 },
-        visible: { x: 0, opacity: 1, transition: { duration: 2.5, ease: "easeOut", delay: 0.1 } } 
-    };
+const buttonVariants = {
+    hidden: { scale: 0.9, opacity: 0 },
+    visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 100, delay: 1.5 } }
+};
 
-    const boxAnimate = {
-      hidden: { opacity: 0, scale: 0.8, rotateY: 90 },
-      visible: { 
-          opacity: 1, 
-          scale: 1, 
-          rotateY: 0, 
-          transition: { 
-              type: "spring", 
-              stiffness: 40,
-              damping: 18,
-              delay: 0.5 
-          } 
-      }
-  };
 
-    return (
-        <MotionSection 
-            className={styles.visionLegacySection}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={containerVariants}
-        >
-            <MotionDiv 
-                className={styles.visionBackgroundShape}
-                variants={backgroundShapeAnimate}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-            />
+// --- Hero Section Component (UNCHANGED) ---
+const HeroSection = () => {
+    const navigate = useNavigate();
+
+    return (
+        <motion.section 
+            className={styles.modernHeroSection} 
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+        >
+            <div className={styles.heroContent}>
+                
+                <motion.p 
+                    className={styles.studioText}
+                    variants={baseVariants}
+                >
+                  
+                </motion.p> 
+
+               <motion.h1 
+                    className={styles.modernTitle} 
+                    variants={baseVariants}
+                >
+                    Anish Jadhav
+                </motion.h1>
+                <motion.h1 
+                    className={styles.modernTitleBlue}
+                    variants={baseVariants}
+                    transition={{ delay: 0.15 }}
+                >
+                    Memorial
+                </motion.h1>
+                <motion.h1 
+                    className={styles.modernTitle}
+                    variants={baseVariants}
+                    transition={{ delay: 0.3 }}
+                >
+                    Foundation
+                </motion.h1>
+                
+                {/* === NEW: Subtitle (TORCH BEARER) === */}
+                <motion.p 
+                    className={styles.modernSubtitle} // Deep Blue Styling
+                    variants={baseVariants}
+                    transition={{ delay: 0.45 }}
+                >
+                    TORCH BEARER FOR THE NEEDY
+                </motion.p>
+                
+
+                <motion.div 
+                    className={styles.modernAuthorInfo} // Founder Info Styling
+                    variants={baseVariants}
+                    transition={{ delay: 0.6 }}
+                >
+                    <img 
+                        src={FoundationImage}
+                        alt="Brigadier (Dr) Kishor Jadhav" 
+                        className={styles.modernAuthorImage}
+                    />
+                    <div className={styles.modernAuthorText}>
+                        <p className={styles.modernAuthorName}>Brigadier (Dr) Kishor Jadhav, Ph D</p>
+                        <p className={styles.modernAuthorTitle}>Founder of Anish Jadhav Memorial Foundation</p>
+                    </div>
+                </motion.div>
+                
+                {/* === NEW: Learn More Button === */}
+                <motion.button
+                    className={styles.learnMoreButton} 
+                    variants={buttonVariants}
+                    transition={{ delay: 0.8 }}
+                    onClick={() => navigate('/about')}
+                >
+                    Learn more
+                </motion.button>
+            </div>
+            
+            <div className={styles.modernHeroImageContainer}>
+                <img 
+                    src={campusImg4} 
+                    alt="Anish Jadhav Memorial Foundation Team" 
+                    className={styles.modernHeroImage}
+                />
+            </div>
+        </motion.section>
+    );
+};
+
+
+const MissionVisionSection = () => {
+    return (
+        <section className={styles.missionVisionSection}>
+            
+            {/* The Top Text Block (motion.div) has been removed here */}
+
+            {/* Vison and Mission Cards Container */}
+            <div className={styles.cardsContainer}>
+                
+                {/* Vision Card */}
+                <motion.div 
+                    className={styles.missionVisionCard}
+                    initial="hidden"
+                    whileInView="visible"
+                    variants={cardVariants}
+                    transition={{ delay: 0.1 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                >
+                    <h2 className={styles.cardTitle}>VISION</h2>
+                    <p className={styles.cardText}>
+                        To enable a dignified life for
+underprivileged communities by
+focusing on skill development ,
+capacity building, and
+sustainable growth.
+                    </p>
+                </motion.div>
+                
+                {/* Mission Card */}
+                <motion.div 
+                    className={styles.missionVisionCard}
+                    initial="hidden"
+                    whileInView="visible"
+                    variants={cardVariants}
+                    transition={{ delay: 0.3 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                >
+                    <h2 className={styles.cardTitle}>MISSION</h2>
+                    <p className={styles.cardText}>
+                        AJMF aims to enhance
+ employment opportunities
+ and entrepreneurship through
+ various social and educational
+ programs that promote skill
+ development.
+                    </p>
+                </motion.div>
+            </div>
+        </section>
+    );
+};
+
+// --- Main Home Component (Updated to include MissionVisionSection) ---
+const Home = () => {
+    return (
+        <div className={styles.pageContainer}>
+            <HeroSection /> 
+            {/* === ADDED: Mission and Vision Section === */}
+            <MissionVisionSection />
+            <FounderSection />
+           <PedagogySection /> 
             
-            <VisionBubbleBackground />
+            <VisionInPartnershipSection />
+        </div>
+    );
+};
 
-            <div className={styles.visionLegacyGrid}>
+// --- NEW: Founder Information Component ---
+const FounderImage = FoundationImage; // Assuming this import holds the image of Brigadier Jadhav
+
+const FounderSection = () => {
+    return (
+        <section className={styles.founderSection}>
+            <div className={styles.founderContainer}>
                 
-                <MotionDiv variants={itemVariants} className={styles.visionContentContainer}>
-                    <h2 className={styles.visionHeading}>
-                        Our Vision in Partnership
-                    </h2>
-
-                    <p className={styles.visionParagraph}>
-                        In partnership with <strong>NavGurukul</strong>, a pioneering organization committed to providing residential education to underprivileged youth, the foundation has created a comprehensive ecosystem of learning and growth. The partnership ensures that students receive not just education, but a complete transformation.
-                    </p>
-                    <p className={styles.visionParagraph}>
-                        This includes residential facilities, nutritious meals, world-class instruction, and career placement support. Today, the foundation stands as a beacon of hope, offering four specialized schools that provide pathways to success in <strong>programming, business, education, and second-chance opportunities</strong>.
-                    </p>
-
-                    <div className={styles.visionPartnershipCTA}>
-                        <Star className={styles.partnershipIcon} />
-                        <p>Join us in carrying forward Anish's dreams and empowering the next generation of leaders.</p>
-                    </div>
-                </MotionDiv>
-
-                <MotionDiv variants={itemVariants} className={styles.visionImageContainerRight}> 
+                {/* Left Side: Image */}
+                <div className={styles.founderImageContainer}>
+                    <img 
+                        src={FounderImage} 
+                        alt="Brigadier (Dr) Kishor Jadhav" 
+                        className={styles.founderImage}
+                    />
+                </div>
+                
+                {/* Right Side: Header and Short Info */}
+                <div className={styles.founderInfo}>
+                    <h2 className={styles.founderNameTitle}>Brigadier (Dr) Kishor Jadhav</h2>
+                    <p className={styles.founderRole}>Founder of Anish Jadhav Memorial Foundation</p>
                     
-                    <div className={styles.visionImageWrapper}>
-                        <img src={FoundationImage} alt="Foundation Vision" className={styles.visionImage} />
-                    </div>
-
-                    <MotionDiv className={styles.visionLegacyBox} variants={boxAnimate}>
-                        <motion.div variants={heartBeat} animate="beat">
-                            <Heart className={styles.legacyHeartIcon} />
-                        </motion.div>
-                        <h3 className={styles.legacyBoxTitle}>His Legacy Lives On</h3>
-                        <p className={styles.legacyBoxText}>
-                            Every student we educate, every life we transform, every dream we help realize is a tribute to Anish Jadhav. His spirit lives on in the determination of our students.
-                        </p>
-                    </MotionDiv>
-
-                </MotionDiv>
-
+                    {/* Main Description */}
+                    <p className={styles.founderDescription}>
+                       The Anish Jadhav Memorial Foundation was established by Brigadier Kishor Jadhav in loving memory of his son, Anish. In partnership with NavGurukul, we provide comprehensive residential education programs that equip underprivileged youth with the skills, knowledge, and opportunities they need to build successful careers and meaningful lives.
+                    </p>
+                </div>
             </div>
-        </MotionSection>
+            
+            
+             
+        </section>
+ 
     );
 };
 
 
-function Home() {
-  const navigate = useNavigate();
 
-  return (
-    <div className={styles.pageContainer}>
-      
-      <section 
-        className={styles.heroSection} 
-        style={{ 
-          backgroundImage: `url(${campusImg4})`, 
-        }}
-      >
-        <div className={styles.heroOverlay}></div>
-        
-        <div className={`${styles.container} ${styles.heroContentWrapper}`}>
-          <motion.div 
-            className={styles.heroTextContainer}
-            variants={heroContainerVariants}
+
+
+
+const PedagogySection = () => {
+
+    return (
+
+        <motion.section 
+
+            className={styles.pedagogySection}
+
             initial="hidden"
-            animate="visible"
-          >
-            <motion.div variants={heroItemVariants} className={styles.heroAccentLine}></motion.div>
 
-            <motion.h1 variants={heroItemVariants} className={styles.heroHeading}>
-              Anish Jadhav 
-              <span className={styles.heroHeadingSpan}>Memorial Foundation</span>
-            </motion.h1>
-            
-            <motion.p variants={heroItemVariants} className={styles.heroSubtitle}>
-              TORCH BEARER FOR THE NEEDY
+            whileInView="visible"
+
+            variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+
+            viewport={{ once: true, amount: 0.1 }}
+
+        >
+
+            <motion.h2 className={styles.pedagogyTitle} variants={baseVariants}>
+
+                RESIDENTIAL COURSES - PEDAGOGY
+
+            </motion.h2>
+
+            <motion.p className={styles.pedagogyText} variants={baseVariants} transition={{ delay: 0.2 }}>
+
+                At our campus, we follow a unique, innovative, and effective learning approach that goes beyond traditional education.
+
+                Students not only gain new skills but also learn how to learn—an essential ability in a rapidly evolving world driven by
+
+                AI. Instead of full-time teachers, we emphasize self-learning, guided by a structured system of peer mentorship,
+
+                industry mentors, and facilitators who act as learning coaches to support and enhance the process.
+
+                Learning at Anish Jadhav Memorial Foundation is not limited to academics. Our student-driven campus provide
+
+                opportunities for real-world leadership and collaboration through the Student Council System, where learners actively
+
+                manage campus responsibilities. This experience helps them develop essential life skills such as communication,
+
+                negotiation, problem-solving, and teamwork, ensuring they are not just job-ready but also equipped to navigate life
+
+                with confidence and independence.
+
             </motion.p>
 
-            <motion.div variants={heroItemVariants} className={styles.heroButtonContainer}> 
-              <button
-                className={`${styles.heroButton} ${styles.heroButtonPrimary}`}
-                onClick={() => navigate('/about')}
-              >
-                Learn More
-              </button>
-              <button
-                className={`${styles.heroButton} ${styles.heroButtonSecondary}`}
-                onClick={() => navigate('/involved')}
-              >
-                Get Involved
-              </button>
-            </motion.div>
-          </motion.div>
-        </div>
-        
-        <motion.div className={styles.scrollDownIcon} animate={bounce}>
-          <ChevronDown size={30} />
-        </motion.div>
-      </section>
+        </motion.section>
 
-      <motion.section
-        className={`${styles.section} ${styles.missionSection}`}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={sectionSlideInUp}
-      >
-        <BubbleBackground />
-        <div className={styles.sectionContainer}>
-          <h2 className={`${styles.fontHeading} ${styles.sectionHeading}`}>Our Mission</h2>
-          <div className={styles.sectionAccent}></div>
+    );
 
-          <motion.div
-            className={styles.cardGrid3}
-            variants={cardStaggerContainer}
+};
+
+
+
+
+
+
+
+// --- NEW: Vision in Partnership Section Component ---
+const VisionInPartnershipSection = () => {
+    return (
+        <motion.section 
+            className={styles.visionPartnershipSection}
             initial="hidden"
             whileInView="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
             viewport={{ once: true, amount: 0.1 }}
-          >
-            <motion.div 
-              className={styles.card}
-              variants={cardFlipIn}
-              {...cardHover}
-              style={{ "--stagger-delay": "0s" }}
-            >
-              <div className={`${styles.decoCircle} ${styles.decoCircle1}`}></div>
-              <div className={styles.missionIconWrapper}>
-                <FaEye className={styles.icon} />
-              </div>
-              <h3 className={`${styles.fontHeading} ${styles.cardHeading}`}>Our Vision</h3>
-              <p className={`${styles.fontBody} ${styles.cardText}`}>
-                To empower underprivileged youth with education and skills to transform their lives and communities.
-              </p>
-              <div className={`${styles.decoLine} ${styles.decoLine1}`}></div>
-            </motion.div>
+        >
+            <div className={styles.visionPartnershipContent}>
+                {/* Left Column */}
+                <div className={styles.visionPartnershipLeft}>
+                    <motion.h2 className={styles.visionPartnershipTitle} variants={baseVariants}>
+                        Our Vision in Partnership
+                    </motion.h2>
 
-            <motion.div 
-              className={styles.card}
-              variants={cardFlipIn}
-              {...cardHover}
-              style={{ "--stagger-delay": "0.15s" }}
-            >
-              <div className={styles.missionIconWrapper}>
-                <FaHeart className={styles.icon} />
-              </div>
-              <h3 className={`${styles.fontHeading} ${styles.cardHeading}`}>Our Values</h3>
-              <p className={`${styles.fontBody} ${styles.cardText}`}>
-                Built on compassion, excellence, and the enduring memory of Anish Jadhav's spirit and dreams.
-              </p>
-              <div className={`${styles.decoCircle} ${styles.decoCircle2}`}></div>
-            </motion.div>
+                    <motion.p className={styles.visionPartnershipText} variants={baseVariants} transition={{ delay: 0.1 }}>
+                        In partnership with <span className={styles.navgurukulHighlight}>NavGurukul</span>, a pioneering organization committed to providing residential
+                        education to underprivileged youth, the foundation has created a comprehensive ecosystem of
+                        learning and growth. The partnership ensures that students receive not just education, but a
+                        complete transformation.
+                    </motion.p>
 
-            <motion.div 
-              className={styles.card}
-              variants={cardFlipIn}
-              {...cardHover}
-              style={{ "--stagger-delay": "0.3s" }}
-            >
-              <div className={styles.missionIconWrapper}>
-                <FaHandsHelping className={styles.icon} />
-              </div>
-              <h3 className={`${styles.fontHeading} ${styles.cardHeading}`}>Our Impact</h3>
-              <p className={`${styles.fontBody} ${styles.cardText}`}>
-                Creating lasting change through partnerships with NavGurukul and dedication to educational excellence.
-              </p>
-              <div className={`${styles.decoLine} ${styles.decoLine2}`}></div>
-            </motion.div>
-          </motion.div>
+                    <motion.p className={styles.visionPartnershipText} variants={baseVariants} transition={{ delay: 0.2 }}>
+                        This includes residential facilities, nutritious meals, world-class instruction, and career placement
+                        support. Today, the foundation stands as a beacon of hope, offering four specialized schools that
+                        provide pathways to success in <span className={styles.highlightGreen}>programming, business, education, and second-chance
+                        opportunities.</span>
+                    </motion.p>
 
-          <motion.div
-            className={styles.missionInfoBox}
-            variants={sectionSlideInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <p className={`${styles.fontBody} ${styles.missionInfoText}`}>
-              The Anish Jadhav Memorial Foundation was established by <strong>Brigadier Kishor Jadhav</strong> in loving memory of his son, Anish. In partnership with NavGurukul, we provide comprehensive residential education programs that equip underprivileged youth with the skills, knowledge, and opportunities they need to build successful careers and meaningful lives.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-      
-      <VisionAndLegacySection />
-      
-    </div>
-  );
-}
+                    
+                </div>
+
+                {/* Right Column */}
+                <div className={styles.visionPartnershipRight}>
+                    {/* Image Block */}
+                    <motion.div className={styles.visionPartnershipImageContainer} variants={baseVariants} transition={{ delay: 0.4 }}>
+                        <img src={campusImg25} alt="NavGurukul Students" className={styles.visionPartnershipImage} />
+                    </motion.div>
+
+                     
+                </div>
+            </div>
+        </motion.section>
+    );
+};
 
 export default Home;

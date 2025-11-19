@@ -47,6 +47,7 @@ const BubbleBackground = () => (
             .bubble {
                 position: absolute;
                 bottom: -150px;
+
                 width: 40px;
                 height: 40px;
                 background-color: rgba(209, 163, 58, 0.3); 
@@ -84,7 +85,7 @@ to 150 underprivileged girls at Anish Jadhav Memorial Foundation Skilling Instit
         hover: {
             scale: 1.05,
             y: -10,
-            boxShadow: "0 30px 60px rgba(0, 0, 0, 0.35)",
+            boxShadow: "0 30px 60px rgba(241, 241, 241, 0.35)",
             transition: { type: "spring", stiffness: 300, damping: 20 }
         }
     };
