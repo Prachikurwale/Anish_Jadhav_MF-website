@@ -543,7 +543,7 @@ import workoutImg from '../assets/WorkoutC.jpeg';
 import facilityImg from '../assets/FM.jpeg';
 import outreachImg from '../assets/Outreach.jpeg';
 import itImg from '../assets/IT.jpeg';
-import onboardingImg from '../assets/campus11.jpeg';
+import onboardingImg from '../assets/Onboarding.jpeg';
 import englishImg from '../assets/EnglishC.jpeg';
 import placementImg from '../assets/PlacementC.jpeg';
 import culturalImg from '../assets/CultureC.jpeg';
