@@ -5,12 +5,12 @@ import styles from './AboutAnish.module.css';
 const MotionDiv = motion.div;
 const MotionSection = motion.section;
 
-import AnishImage from '../assets/Anish.png';
-import FoundationImage from '../assets/Anish.png';
+import AnishImage from '../assets/Anish2.png';
+import FoundationImage from '../assets/Anish2.png';
 import { Heart, Quote, Star } from 'lucide-react';
 
-import campusImg1 from '../assets/Anish.png';
-import campusImg2 from '../assets/Anish.png';
+import campusImg1 from '../assets/Anish2.png';
+import campusImg2 from '../assets/Anish2.png';
 import BrigadierJadhav from '../assets/campus.png';
 
 const containerVariants = {
