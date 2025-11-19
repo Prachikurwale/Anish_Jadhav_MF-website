@@ -13,7 +13,6 @@ import CampusAndFacilities from './components/CampusAndFacilities';
 import GetInvolved from './components/GetInvolved';
 import ContactUs from './components/ContactUs';
 import StudentLedCampus from './components/StudentLedCampus';
-import SuccessStories from './components/SuccessStories';
 
 function App() {
   const location = useLocation();
