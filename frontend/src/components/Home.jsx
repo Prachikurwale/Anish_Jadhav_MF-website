@@ -220,7 +220,7 @@ const FounderSection = () => {
     );
 };
 
-
+// some changes
 
 
 
